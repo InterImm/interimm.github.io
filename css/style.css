@@ -1,0 +1,21 @@
+.button-circle {
+width: 180px !important;
+line-height: 180px !important;
+height: 180px !important;
+}
+
+.footer a{
+  text-decoration:none;
+  color: white;
+}
+.splash-head {
+
+}
+.two-lines {
+line-height: 50px !important;
+padding-top: 25px;
+}
+.three-lines {
+  line-height: 33px !important;
+  padding-top:35px;
+}
