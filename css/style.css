@@ -1,3 +1,9 @@
+body {
+  font-family:Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif !important;
+}
+
+
+
 .button-circle {
 width: 180px !important;
 line-height: 180px !important;
@@ -34,4 +40,12 @@ table.center {
     font-size:80%;
     text-align:center;
     color:grey;
+}
+
+.home-menu.pure-menu-open {
+background: black !important;
+}
+
+.pure-menu-selected {
+  font-family:Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif !important;
 }
