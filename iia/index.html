@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <title>星际机构 &ndash; 星际移民中心</title>
+
+
+
+
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="57x57" href="../favicons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../favicons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../favicons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../favicons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../favicons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../favicons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../favicons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../favicons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="../favicons/favicon-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="../favicons/favicon-160x160.png" sizes="160x160">
+        <link rel="icon" type="image/png" href="../favicons/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="../favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="../favicons/favicon-32x32.png" sizes="32x32">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-TileImage" content="../favicons/mstile-144x144.png">
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/strapped.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand nav-link" href="#top">星际机构</a>
+        </div> <!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#iia" class="nav-link">星际移民局</a></li>
+            <li><a href="#upi" class="nav-link">太空商会</a></li>
+            <li><button class="btn btn-warning btn-sm navbar-btn"><a href="../index.html">回首页</a></button></li>
+          </ul>
+        </div> <!-- /.navbar-collapse -->
+      </div> <!-- /.container -->
+    </nav> <!-- /.navbar -->
+
+    <div id="top" class="jumbotron">
+      <div class="container">
+        <h1>星际机构</h1>
+        <h2>除了星际移民局，著名的星际机构还包括诸多太空商会。</h2>
+      </div> <!-- /.container -->
+    </div> <!-- /.jumbotron -->
+
+    <div class="container">
+
+      <h3 id="iia" class="subhead">星际移民局</a></h3>
+      <div class="row">
+
+<div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">星际移民局简介</h3>
+      </div>
+      <div class="panel-body">
+星际移民局，即 Interplanetary Immigration Agency，简称 IIA.
+      </div>
+    </div>
+
+
+
+<img src="./img/iiaOrg.png" width="100%">
+
+
+
+      </div> <!-- /.row -->
+
+      <div class="sect-border"></div>
+
+      <h3 id="upi" class="subhead">太空商会</h3>
+
+      <div class="row">
+<div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">太空商会简介</h3>
+      </div>
+      <div class="panel-body">
+太空商会包括联合行星（United Planet，简称 UPI），轨道旅游局（OrbiTA），联合发射同盟（ULA） 和宇宙通信卫星组织（Unisat）组成。
+      </div>
+    </div>
+
+<img src="./img/upiOrg.png" width="100%">
+
+</div>
+
+
+
+
+
+
+
+      <div class="sect-border"></div>
+
+
+
+
+
+
+
+    </div> <!-- /.container -->
+
+    <footer>
+      <div class="container clearfix">
+        <p class="pull-left" style="margin-left:1em;">
+<a href="../index.html">星际移民中心</a>
+        </p>
+        <p class="pull-right" style="color:grey;">
+          模板致谢 <a href="http://coverstrap.com" target="_blank">Coverstrap</a>
+        </p>
+      </div> <!-- /.container -->
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      $(".nav-link").click(function(e) {
+        e.preventDefault();
+        var link = $(this);
+        var href = link.attr("href");
+        $("html,body").animate({scrollTop: $(href).offset().top - 80}, 500);
+        link.closest(".navbar").find(".navbar-toggle:not(.collapsed)").click();
+      });
+    </script>
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50146153-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+  </body>
+</html>
