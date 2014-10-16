@@ -27,6 +27,7 @@ padding-top: 25px;
 }
 .splash-container {
 background: #000 !important;
+background-size: 100%; 
 }
 
 table.center {
@@ -49,3 +50,4 @@ background: black !important;
 .pure-menu-selected {
   font-family:Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif !important;
 }
+

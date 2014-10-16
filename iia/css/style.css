@@ -21,3 +21,8 @@
 	text-align: center;
 	margin: 0.3em 0;
 }
+
+.jumbotron {
+background: url(../../images/360-degree_Panorama_of_the_Southern_Sky.jpg)  !important;
+background-size: cover !important;
+}
