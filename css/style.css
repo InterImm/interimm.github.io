@@ -51,3 +51,6 @@ background: black !important;
   font-family:Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif !important;
 }
 
+.pure-menu-highlight a {
+  color: #FFF0D9 !important;
+}
