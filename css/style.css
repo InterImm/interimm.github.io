@@ -54,3 +54,26 @@ background: black !important;
 .pure-menu-highlight a {
   color: #FFF0D9 !important;
 }
+
+
+/* Recent Activities */
+
+
+.recent {
+  margin-top: 0px !important;
+  background: #FDF3E7;
+}
+.recent p{
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  text-align: center;
+}
+
+.activities-span-title {
+  font-weight: bold;
+  background: #FDF3E7 !important;
+  color:black !important;
+}
+
+/* Recent Activities END*/
+
