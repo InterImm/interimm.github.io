@@ -46,7 +46,7 @@
 
 
 
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/buttons.css">
 <link rel="stylesheet" href="css/style.css">
 
@@ -109,42 +109,43 @@
 </div>
 
 
-<!--  Popup -->
+<!--  Calendar Popup -->
 
 
 <section class="modal--show" id="activities" tabindex="-1"
         role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
     <div class="modal-inner">
-        <header id="modal-label"><!-- Header --></header>
+        <header>
+          <h2 id="modal-label" style="text-align:center;">星际移民中心活动</h2>
+          </header>
         <div class="modal-content"><!-- The modals content -->
-          <h2>星际移民中心活动</h2>
-          <div><h3>即将举行的活动</h3>
-          <p>暂未发布。请 subscribe 我们的 <a href="https://github.com/InterImm/roundTable">Round Table</a> 以获得最新通知。</p>
+          <div>
+          <h3>即将举行的活动</h3>
+          <p>暂未发布。请 subscribe 我们的 <a href="https://github.com/InterImm/roundTable"><span class="pure-badge-info">Round Table</span></a> 以获得最新通知。</p>
           </div>
           <div><h3>过往活动</h3>
           <p>
-          <button class="button-success pure-button">
-          <a href="https://github.com/InterImm/roundTable/issues/5" target="_blank" style="text-decoration:none;">第四次圆桌讨论：星际移民背景下的新的职业</a></button></p>
-                    <p><button class="button-success pure-button">
-          <a href="https://github.com/InterImm/roundTable/issues/3" target="_blank" style="text-decoration:none;">第三次圆桌讨论：火星历法和计时</a></button></p>
-                    <p><button class="button-success pure-button">
-          <a href="https://github.com/InterImm/roundTable/issues/2" target="_blank" style="text-decoration:none;">第二次圆桌讨论：火星移民以及火星基地建设</a></button></p>
-                    <p><button class="button-success pure-button">
-          <a href="https://github.com/InterImm/roundTable/issues/1" target="_blank" style="text-decoration:none;">第一次圆桌讨论：电磁推进技术</a></button>
-
-          </p>
+          <a href="https://github.com/InterImm/roundTable/issues/5" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
+          第四次圆桌讨论：星际移民背景下的新的职业</button></a></p>
+                    <p><a href="https://github.com/InterImm/roundTable/issues/3" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
+          第三次圆桌讨论：火星历法和计时</button></a></p>
+                    <p><a href="https://github.com/InterImm/roundTable/issues/2" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
+          第二次圆桌讨论：火星移民以及火星基地建设</button></a></p>
+                    <p><a href="https://github.com/InterImm/roundTable/issues/1" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
+          第一次圆桌讨论：电磁推进技术</button></a></p>
           </div>
         </div>
-        <footer><!-- Footer --></footer>
+        <footer><!-- Footer -->
+          <p style="text-align:center;"><a href="#!" class="pure-button-small pure-button" style="background-color:grey;" title="关闭" data-dismiss="modal">关闭</a></p>
+        </footer>
     </div>
 
-    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
-        data-dismiss="modal">?</a>
+    
 </section>
 
 
-<!-- Popup END -->
+<!-- Calendar Popup END -->
 
 
 
@@ -247,14 +248,90 @@
     </div>
 
 
+<!--  Contact Popup -->
 
+
+<section class="modal--show" id="contact" tabindex="-1"
+        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
+    <div class="modal-inner">
+        <header>
+          <h2 id="modal-label" style="text-align:center;">联系星际移民中心</h2>
+          </header>
+        <div class="modal-content"><!-- The modals content -->
+          <div>
+
+
+<table class="pure-table pure-table-horizontal center" style="margin-bottom:1em;">
+    <thead>
+        <tr>
+            <th>方式</th>
+            <th>地址</th>
+            <th>事务</th>
+            <th>备注</th>
+        </tr>
+    </thead>
+
+      <tbody>
+          <tr>
+              <td>邮件</td>
+              <td><span class="pure-badge-inverse">admin <i class="fa fa-at"></i> interimm.org</span></td>
+              <td>综合事务</td>
+              <td></td>
+          </tr>
+
+          <tr>
+              <td>邮件</td>
+              <td><span class="pure-badge-inverse">magazine <i class="fa fa-at"></i> interimm.org</span></td>
+              <td>星海航纪</td>
+              <td>接受投稿</td>
+          </tr>
+
+          <tr>
+              <td>微博</td>
+              <td><a href="http://www.weibo.com/iiaofficial"><span class="pure-badge-warning"><i class="fa fa-at"></i>星际移民中心</span></a></td>
+              <td>一般事务</td>
+              <td></td>
+          </tr>
+
+          <tr>
+              <td>GitHub</td>
+              <td><a href="http://www.github.com/InterImm"><span class="pure-badge-info"><i class="fa fa-at"></i>InterImm</span></a></td>
+              <td>ISSUES</td>
+              <td></td>
+          </tr>
+      </tbody>
+  </table>
+
+
+          </div>
+
+  <div class="pure-alert pure-alert" style="text-align:center;">
+            <label><strong>要加入星际移民中心？请将自己的相关专业能力发送邮件到</strong></label><br>
+<span class="pure-badge-inverse">admin <i class="fa fa-at"></i> interimm.org</span>
+        </div>
+
+        </div>
+        <footer><!-- Footer -->
+          <p style="text-align:center;"><a href="#!" class="pure-button-small pure-button" style="background-color:grey;" title="关闭" data-dismiss="modal">关闭</a></p>
+        </footer>
+    </div>
+
+
+</section>
+
+
+<!-- Contact Popup END -->
 
     <div class="footer l-box is-center">
-<span class="pure-badge"><a href="http://purecss.io" target="_blank">PURECSS</a></span> <span class="pure-badge"><a href="http://alexwolfe.github.io/Buttons/" target="_blank">Buttons</a></span> <span class="pure-badge"><a href="http://fontawesome.io" target="_blank">Font Awesome</a></span>  <span class="pure-badge-info"><a href="https://github.com/InterImm/service/wiki/members" target="_blank">星际移民中心学员列表</a></span> <span class="pure-badge-success"><a href="https://github.com/InterImm/service/releases" target="_blank">Press Kit</a></span> <span class="pure-badge-inverse"><a href="http://www.weibo.com/iiaofficial" target="_blank">联系我们</a></span>
+<span class="pure-badge-info"><a href="https://github.com/InterImm/service/wiki/members" target="_blank">星际移民中心学员列表</a></span> <span class="pure-badge-success"><a href="https://github.com/InterImm/service/releases" target="_blank">Press Kit</a></span> <span class="pure-badge-inverse"><a href="#contact">联系我们</a></span>
     </div>
 
 </div>
 
+<!-- Thanks to
+<span class="pure-badge"><a href="http://purecss.io" target="_blank">PURECSS</a></span> <span class="pure-badge"><a href="http://alexwolfe.github.io/Buttons/" target="_blank">Buttons</a></span> <span class="pure-badge"><a href="http://fontawesome.io" target="_blank">Font Awesome</a></span>  
+-->
 
 
 
