@@ -1,378 +1,106 @@
-<!doctl>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
+    <!-- Site for Interplanetary Immigration Center -->
+    <head>
+        <meta charset="utf-8">
 
-
-</html>
-
-<head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/css/ripples.min.css" rel="stylesheet">
+		<link href="assets/css/material-wfont.min.css" rel="stylesheet">
+		<link href="assets/css/snackbar.min.css" rel="stylesheet">
+		<link href="assets/css/style.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="星际移民中心官方网站">
 <meta name="baidu-site-verification" content="ZgrwbB2tQf" />
     <title>星际移民中心 &ndash; 星际移民局</title>
 
-
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="apple-touch-icon" sizes="57x57" href="./favicons/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="./favicons/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="72x72" href="./favicons/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="144x144" href="./favicons/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="60x60" href="./favicons/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="120x120" href="./favicons/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="76x76" href="./favicons/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="152x152" href="./favicons/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon-180x180.png">
-<link rel="icon" type="image/png" href="./favicons/favicon-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="./favicons/favicon-160x160.png" sizes="160x160">
-<link rel="icon" type="image/png" href="./favicons/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="./favicons/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="./favicons/favicon-32x32.png" sizes="32x32">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="msapplication-TileImage" content="./favicons/mstile-144x144.png">
-
-
-<link rel="stylesheet" href="css/hint.css">
-
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
-<link rel="stylesheet" href="css/pure-extras.css">
-
-
-<!-- A popup modal -->
-<link rel="stylesheet" href="css/modal.css">
-<!-- Include the modal JS -->
-    <script src="js/modal.js"></script>
+<!--  ICONS -->
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" sizes="57x57" href="./favicons/apple-touch-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="./favicons/apple-touch-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="./favicons/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="./favicons/apple-touch-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="./favicons/apple-touch-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="./favicons/apple-touch-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="./favicons/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="./favicons/apple-touch-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon-180x180.png">
+      <link rel="icon" type="image/png" href="./favicons/favicon-192x192.png" sizes="192x192">
+      <link rel="icon" type="image/png" href="./favicons/favicon-160x160.png" sizes="160x160">
+      <link rel="icon" type="image/png" href="./favicons/favicon-96x96.png" sizes="96x96">
+      <link rel="icon" type="image/png" href="./favicons/favicon-16x16.png" sizes="16x16">
+      <link rel="icon" type="image/png" href="./favicons/favicon-32x32.png" sizes="32x32">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="msapplication-TileImage" content="./favicons/mstile-144x144.png">
 
 
 
-
-
+<!--  Fontawesome -->
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/buttons.css">
-<link rel="stylesheet" href="css/style.css">
 
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="css/main-grid-old-ie.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="css/main-grid.css">
-    <!--<![endif]-->
+	</head>
 
-
-
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="css/layouts/marketing-old-ie.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="css/layouts/marketing.css">
-    <!--<![endif]-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
 <body>
 
+<!-- Nav Bar at top -->
+<div class="navbar navbar-black">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="javascript:void(0)">星际移民中心</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-inverse-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="javascript:void(0)">首页</a></li>
+            <li><a href="magazine">星海航纪</a></li>
+            <li><a href="InterImmBook">星际移民之书</a></li>
+            <li><a href="exoplanets">系外行星档案</a></li>
 
-
-
-
-
-
-
-
-
-
-
-
-<div class="header">
-    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-      <a class="pure-menu-heading" ><i class="fa fa-rocket"></i> &nbsp; 星际移民中心</a>
-
-        <ul>
-        <li class="pure-menu-selected pure-menu-highlight"><a href="http://interimm.org/magazine" title=" 一本星际移民杂志"> <i class="fa fa-compass">&nbsp; 星海航纪</i></a></li>
-          <li class="pure-menu-selected"><a href="ip/index.html"> <i class="fa fa-sitemap">&nbsp; 星际机构</i></a></li>
-            <li class="pure-menu-selected"><a href="toolbox.html"> <i class="fa fa-cogs">&nbsp; 工具箱</i></a></li>
-            <li class="pure-menu-selected"><a href="http://www.weibo.com/3515857914" target="_blank" title="星际移民中心微博"> <i class="fa fa-weibo"></i></i></a></li>
-            <li class="pure-menu-selected"><a href="https://github.com/InterImm" target="_blank" title="星际移民中心的 GitHub"> <i class="fa fa-github"></i></a></li>
-            <li class="pure-menu-selected"><a href="#activities" title="星际移民中心活动"><i class="fa fa-calendar" style="color:orange;"></i></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://weibo.com/iiaofficial" target="_blank"> <i class="fa fa-weibo"></i>&nbsp; 新浪微博</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://github.com/InterImm" target="_blank">GitHub</a></li>
+                    <li class="divider"></li>
+                    <li><a href="ip/index.html">星际机构</a></li>
+                    <li><a href="toolbox.html">工具箱</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
 
 
-<!--  Calendar Popup -->
 
 
-<section class="modal--show" id="activities" tabindex="-1"
-        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
-    <div class="modal-inner">
-        <header>
-          <h2 id="modal-label" style="text-align:center;">星际移民中心活动</h2>
-          </header>
-        <div class="modal-content"><!-- The modals content -->
-          <div>
-          <h3>即将举行的活动</h3>
-          <p><a href="https://github.com/InterImm/roundTable/issues/6" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
-          第五次圆桌讨论：系外行星价值判定以及本中心的工具的使用</button></a></p></p>
-          <p>请 subscribe 我们的 <a href="https://github.com/InterImm/roundTable"><span class="pure-badge-info">Round Table</span></a> 以获得最新通知。</p>
-          </div>
-          <div><h3>过往活动</h3>
-          <p>
-          <a href="https://github.com/InterImm/roundTable/issues/5" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
-          第四次圆桌讨论：星际移民背景下的新的职业</button></a></p>
-                    <p><a href="https://github.com/InterImm/roundTable/issues/3" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
-          第三次圆桌讨论：火星历法和计时</button></a></p>
-                    <p><a href="https://github.com/InterImm/roundTable/issues/2" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
-          第二次圆桌讨论：火星移民以及火星基地建设</button></a></p>
-                    <p><a href="https://github.com/InterImm/roundTable/issues/1" target="_blank" style="text-decoration:none;"><button class="button-success pure-button">
-          第一次圆桌讨论：电磁推进技术</button></a></p>
-          </div>
-        </div>
-        <footer><!-- Footer -->
-          <p style="text-align:center;"><a href="#!" class="pure-button-small pure-button" style="background-color:grey;" title="关闭" data-dismiss="modal">关闭</a></p>
-        </footer>
-    </div>
 
-    
-</section>
 
 
-<!-- Calendar Popup END -->
-
-
-
-
-
-<div class="splash-container" style="background: url(images/Kepler-62f_with_62e_as_Morning_Star.jpg) no-repeat fixed center !important;background-size:cover !important;">
-    <div class="splash">
-        <h1 class="splash-head"><span class="hint--bottom hint--bounce" data-hint="【隐藏文档】&#10; 很多科研工作是关于远未来的可能技术的，&#10; 看起来是非常科幻的，但是却是有理有据的，&#10; 有公式有计算的，要比单纯的幻想靠谱的多。&#10; 星际移民中心这个虚构出来的机构，&#10; 是一个在科研和科幻之间搭起桥梁的尝试。">星际移民中心</span></h1>
-        <p class="splash-subhead">
-星际移民局附属星际移民研究与服务中心
-        </p>
-<p>
-            <span class="pure-button pure-button-primary" style="border:5px solid #FDF3E7;background:black;"><a href="http://interimm.github.io/InterImmBook/" style="text-decoration:none;font-weight:bold;color:#FDF3E7;">星际移民之书</a></span>
-        </p>
-<p>
-            <span class="pure-button pure-button-primary" style="border:5px solid #FDF3E7;background:black;"><a href="http://interimm.org/exoplanets" style="text-decoration:none;font-weight:bold;color:#FDF3E7;">系外行星<span style="color:orange;">[新地址]</span></a></span>
-        </p>
-    </div>
-</div>
-
-<div class="content-wrapper">
-
-<div class="content recent pure-alert-succes">
-  <p><span class="activities-span-title pure-badge-inverse">热门讨论：</span>
-  <a href="https://github.com/InterImm/InterImmBook/issues/48"><span class="pure-badge-info">太空职业记录</span></a>
-  <a href="https://github.com/InterImm/exoplanets/issues/7"><span class="pure-badge-info">系外行星分级</span></a>
-  <a href="https://github.com/InterImm/marsCalendar/issues"><span class="pure-badge-info">火星历法程序</span></a>
-  <a href="http://interimm.org/magazine/about/"><span class="pure-badge-info">《星海航纪》杂志约稿</span></a>
-  </p>
-</div>
-    <div class="content">
-        <h2 class="content-head is-center">星际移民中心研究内容</h2>
-
-
-<div class="pure-u-g" style="text-align:center;padding:1em 0 2em 0;">
-
-  <a href="#"class="button button-border-highlight button-circle">人工智能</a>
-  <a href="#" class="button button-border-highlight button-circle">推进技术</a>
-  <a href="#" class="button button-border-highlight button-circle">大规模轨道弹射</a>
-  <a href="#" class="button button-border-highlight button-circle">行星探测</a>
-  <a href="#" class="button button-border-highlight button-circle">行星生态改造</a>
-</div>
-        <div class="pure-g">
-
-
-
-
-
-            <div class="pure-u-1" style="padding-left:1em;padding-right:1em;text-align:center;">
-                <h3 class="content-subhead">
-                    <i class="fa fa-rocket"></i>
-星际移民中心是星际移民局的附属部门
-                </h3>
-			<p>星际移民局是一家进行星际移民研究的机构。后改为非营利机构，并将总部迁往火星第九区。</p><p>随着机构的壮大，星际移民局将星际移民研究和服务分拆出来，成立星际移民中心，并延用其非营利机构的性质。</p>
-
-            </div>
-
-        </div>
-    </div>
-
-
-
-
-
-    <div class="ribbon l-box-lrg pure-g-r" style="background:black !important;">
-        <div class="l-box-lrg is-center pure-u-1 pure-u-med-1-5 pure-u-1-5">
-            <img src="./images/logo.png" style="-webkit-filter: invert(100%);">
-        </div>
-        <div class="is-center pure-u-1 pure-u-med-2-5 pure-u-lrg-2-5 pure-u-2-5" style="color:white;">
-
-
-
- <div>
-                <h3 class="content-subhead" style="color:white;">
-                    <i class="fa fa-cloud"></i>
-果壳网讨论小组
-                </h3>
-
-
-
-     <ul style="font-size:70%;list-style-type:none;">
-     <li><a href="http://www.guokr.com/post/582686/"  style="text-decoration:none;color:white;">被恒星潮汐锁定后的行星上文明存在的形式？</a></li>
-     <li><a href="http://www.guokr.com/post/591492/"  style="text-decoration:none;color:white;">两个行星文明之间战争成败的决定性因素？</a></li>
-     </ul>
-     <p>更多讨论：<a href="http://www.guokr.com/group/396/" style="color:orange;text-decoration:none;">果壳网小组</a></p>
-            </div>
-
-
-
-
-        </div>
-
-
-        <div class="is-center pure-u-1 pure-u-med-2-5 pure-u-lrg-2-5 pure-u-2-5" style="color:white;">
-        <div>
-            <h3 class="content-subhead" style="color:white;"><i class="fa fa-weibo"></i> 新浪微博</h3>
-            <a href="http://weibo.com/u/3515857914?s=6uyXnP" target="_blank"><img border="0" src="http://service.t.sina.com.cn/widget/qmd/3515857914/08a73b28/10.png"/ style="vertical-align:text-middle;"></a>    </div>
-        </div>
-
-    </div>
-
-
-<!--  Contact Popup -->
-
-
-<section class="modal--show" id="contact" tabindex="-1"
-        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-
-    <div class="modal-inner">
-        <header>
-          <h2 id="modal-label" style="text-align:center;">联系星际移民中心</h2>
-          </header>
-        <div class="modal-content"><!-- The modals content -->
-          <div>
-
-
-<table class="pure-table pure-table-horizontal center" style="margin-bottom:1em;">
-    <thead>
-        <tr>
-            <th>方式</th>
-            <th>地址</th>
-            <th>事务</th>
-            <th>备注</th>
-        </tr>
-    </thead>
-
-      <tbody>
-          <tr>
-              <td>邮件</td>
-              <td><span class="pure-badge-inverse">admin <i class="fa fa-at"></i> interimm.org</span></td>
-              <td>综合事务</td>
-              <td></td>
-          </tr>
-
-          <tr>
-              <td>邮件</td>
-              <td><span class="pure-badge-inverse">magazine <i class="fa fa-at"></i> interimm.org</span></td>
-              <td>星海航纪</td>
-              <td>接受投稿</td>
-          </tr>
-
-          <tr>
-              <td>微博</td>
-              <td><a href="http://www.weibo.com/iiaofficial"><span class="pure-badge-warning"><i class="fa fa-at"></i>星际移民中心</span></a></td>
-              <td>一般事务</td>
-              <td></td>
-          </tr>
-
-          <tr>
-              <td>GitHub</td>
-              <td><a href="http://www.github.com/InterImm"><span class="pure-badge-info"><i class="fa fa-at"></i>InterImm</span></a></td>
-              <td>ISSUES</td>
-              <td></td>
-          </tr>
-      </tbody>
-  </table>
-
-
-          </div>
-
-  <div class="pure-alert pure-alert" style="text-align:center;">
-            <label><strong>要加入星际移民中心？请将自己的相关专业能力发送邮件到</strong></label><br>
-<span class="pure-badge-inverse">admin <i class="fa fa-at"></i> interimm.org</span>
-        </div>
-
-        </div>
-        <footer><!-- Footer -->
-          <p style="text-align:center;"><a href="#!" class="pure-button-small pure-button" style="background-color:grey;" title="关闭" data-dismiss="modal">关闭</a></p>
-        </footer>
-    </div>
-
-
-</section>
-
-
-<!-- Contact Popup END -->
-
-    <div class="footer l-box is-center">
-<span class="pure-badge-info"><a href="https://github.com/InterImm/service/wiki/members" target="_blank">星际移民中心学员列表</a></span> <span class="pure-badge-success"><a href="https://github.com/InterImm/service/releases" target="_blank">Press Kit</a></span> <span class="pure-badge-inverse"><a href="#contact">联系我们</a></span>
-    </div>
-
-</div>
-
-<!-- Thanks to
-<span class="pure-badge"><a href="http://purecss.io" target="_blank">PURECSS</a></span> <span class="pure-badge"><a href="http://alexwolfe.github.io/Buttons/" target="_blank">Buttons</a></span> <span class="pure-badge"><a href="http://fontawesome.io" target="_blank">Font Awesome</a></span>  
--->
-
-
-
-
-
-
-
-
-
-<script src="http://yui.yahooapis.com/3.14.1/build/yui/yui.js"></script>
-
-
-
-
-
-<script>
-YUI().use('node-base', 'node-event-delegate', function (Y) {
-    // This just makes sure that the href="#" attached to the <a> elements
-    // don't scroll you back up the page.
-    Y.one('body').delegate('click', function (e) {
-        e.preventDefault();
-    }, 'a[href="#"]');
-});
-</script>
-
-
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-50146153-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+              <script src="assets/js/ripples.min.js"></script>
+        <script src="assets/js/material.min.js"></script>
+        <script src="assets/js/snackbar.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+        <script>
+            $(function() {
+                $.material.init();
+                $(".slider").noUiSlider({
+                    start: 40,
+                    connect: "lower",
+                    range: {
+                        min: 0,
+                        max: 100
+                    }
+                });
+            });
+        </script>
 
 </body>
 </html>
