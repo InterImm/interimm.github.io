@@ -1,4 +1,72 @@
+body {
+  background-color:black !important;
+}
 .navbar-black {
   background-color: black;
   border-color: transparent;
+}
+.navbar {
+  margin-bottom:0 !important;
+}
+.splash-container {
+  background: url(../../assets/images/Kepler-62f_with_62e_as_Morning_Star.jpg) no-repeat fixed center !important;
+  background-size:cover !important;
+  height:30em;
+  color:white;
+  margin-bottom: 0 !important;
+}
+.splash-boxed {
+/*border: 3px solid #FFF;*/
+margin:0 auto;
+width: 50%;
+border-bottom: 3px solid #FFF;
+padding: 1em 1.6em;
+font-weight: 100;
+border-radius: 5px;
+line-height: 1em;
+}
+.splash-head {
+  text-align:center;
+}
+.splash-container p {
+  text-align: center;
+  padding-top: 2em;
+}
+.strip {
+  font-size: 110%;
+  background-color: #162932;
+}
+.input-form-card {
+  border-style: solid;
+  cursor: text;
+  text-align: center;
+}
+.input-form-card-link {
+  cursor: default;
+}
+.form-control:disabled {
+  border-style: solid !important;
+}
+.input[disabled] {
+  cursor: text !important;
+}
+.form-control[disabled] {
+ cursor: text !important; 
+}
+
+
+.footer {
+  text-align: center;
+  border-top: 1px solid gray;
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+}
+
+
+
+.bot-container {
+  background:url(../../assets/images/360-degree_Panorama_of_the_Southern_Sky.jpg) !important;
+  opacity: 1;
+  background-size: cover !important;
+  color: white;
 }
