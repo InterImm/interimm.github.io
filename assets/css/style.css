@@ -33,12 +33,39 @@ h6 {
 .navbar-border-r {
   border-right: 1px solid #3F3B3B;
 }
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+.navbar .navbar-nav-black > li > a {
+  color: rgba(255, 255, 255, 0.84);
+}
+.navbar .navbar-nav-black > li > a:hover,
+.navbar .navbar-nav-black > li > a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.navbar .navbar-nav-black > .active > a,
+.navbar .navbar-nav-black > .active > a:hover,
+.navbar .navbar-nav-black > .active > a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar .brand-style:hover,
+.navbar .brand-style:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
 .black-bg {
   background-color: black;
 }
-.black-bg>li>a {
+.black-bg li a {
   color: white;
 }
+.black-bg li a:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: white;
+}
+
+
 .jumbotron {
   background-color:rgba(255,255,255,0.1) !important; 
 }
