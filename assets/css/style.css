@@ -30,6 +30,9 @@ h6 {
 .navbar {
   margin-bottom:0 !important;
 }
+.navbar-border-r {
+  border-right: 1px solid #3F3B3B;
+}
 .black-bg {
   background-color: black;
 }
