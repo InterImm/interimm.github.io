@@ -8,7 +8,22 @@ body {
 .navbar {
   margin-bottom:0 !important;
 }
+.black-bg {
+  background-color: black;
+}
+.black-bg>li>a {
+  color: white;
+}
+.jumbotron {
+  background-color:rgba(255,255,255,0.1) !important; 
+}
 .splash-container {
+  background-color:rgba(255,0,0,0.5);
+  height:30em;
+  color:white;
+  margin-bottom: 0 !important;
+}
+.splash-container-1 {
   background: url(../../assets/images/Kepler-62f_with_62e_as_Morning_Star.jpg) no-repeat fixed center !important;
   background-size:cover !important;
   height:30em;
