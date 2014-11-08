@@ -1,5 +1,7 @@
 body {
   background-color:black !important;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei", sans-serif;
 }
 .navbar-black {
   background-color: black;
