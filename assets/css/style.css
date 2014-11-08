@@ -3,6 +3,26 @@ body {
   font-family: "Hiragino Sans GB", "Microsoft YaHei",
              "WenQuanYi Micro Hei", sans-serif;
 }
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4 {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei", sans-serif !important;
+             }
+h5,
+h6 {
+  font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei", sans-serif !important;
+}
+
 .navbar-black {
   background-color: black;
   border-color: transparent;
