@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	var config = {
-		siteURL		: 'neuronstar.github.io',	// Change this to your site
+		siteURL		: 'interimm.org',	// Change this to your site
 		searchSite	: true,
 		type		: 'web',
 		append		: false,
