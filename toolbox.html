@@ -9,6 +9,8 @@
 		<link href="assets/css/material-wfont.min.css" rel="stylesheet">
 		<link href="assets/css/snackbar.min.css" rel="stylesheet">
 		<link href="assets/css/style.css" rel="stylesheet">
+
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="星际移民中心官方网站">
 <meta name="baidu-site-verification" content="ZgrwbB2tQf" />
@@ -322,9 +324,24 @@
         <h3 id="mars-cities" class="panel-title" style="text-align:center;">火星城市与旅游图</h3>
       </div>
       <div class="panel-body" style="text-align:center;">
-        <img src="./assets/images/marsCities.png" width="100%">
+        <img id="marscities" src="./assets/images/marsCities.png" width="100%">
       </div>
     </div>
+
+
+<script src="assets/js/okzoom.js"></script>
+<script type="text/javascript">
+    $(function(){
+$('#marscities').okzoom({
+  width: 200,
+  height: 200,
+  border: "0px solid black",
+  shadow: "0 0 1px #000"
+});
+});
+</script>
+<!-- This zoom plugin is called okzoom and can be found at https://github.com/okfocus/okzoom -->
+
 
 </div>
 <!-- 3rd row END -->
