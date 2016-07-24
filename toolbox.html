@@ -126,9 +126,15 @@
 
 
     <p style="text-align:center;">
-<span class="label label-primary"><a href="#solarsystem" style="text-decoration:none;font-weight:bold;color:white;">太阳系</a>：<a href="#solarsystem-3d" style="text-decoration:none;font-weight:bold;color:white;">三维太阳系</a></span><br>
+<span class="label label-primary"><a href="#solarsystem" style="text-decoration:none;font-weight:bold;color:white;">太阳系</a>：<a href="#solarsystem-3d" style="text-decoration:none;font-weight:bold;color:white;">三维太阳系</a></span>
 <span class="label label-primary"><a href="#outersolarsystem" style="text-decoration:none;font-weight:bold;color:white;">外太阳系</a>：<a href="#jovian" style="text-decoration:none;font-weight:bold;color:white;">木星系统</a>；<a href="#saturn" style="text-decoration:none;font-weight:bold;color:white;">土星系统</a></span><br>
-    <span class="label label-primary"><a href="#mars" style="text-decoration:none;font-weight:bold;color:white;">火星工具箱</a>：<a href="#mars-p" style="text-decoration:none;font-weight:bold;color:white;">火星参数</a> ；<a href="#mars-cities" style="text-decoration:none;font-weight:bold;color:white;">火星城市</a></span>
+    <span class="label label-primary"><a href="#mars" style="text-decoration:none;font-weight:bold;color:white;">火星工具箱</a>：</span>
+        <span class="label label-primary"><a href="#mars-p" style="text-decoration:none;font-weight:bold;color:white;">火星参数</a></span>
+
+        <span class="label label-primary"><a href="#mars-c" style="text-decoration:none;font-weight:bold;color:white;">火星计时和历法</a></span>
+
+        <span class="label label-primary"><a href="#mars-cities" style="text-decoration:none;font-weight:bold;color:white;">火星地图</a></span>
+
     </p>
 
 </div>
@@ -164,9 +170,18 @@
       </div>
       <div class="panel-body" style="text-align:center;">
 
+
+
+          <a class="btn btn-success btn-raised" style="display:inline-block;" role="button" href="#solarSystem" aria-expanded="false" data-toggle="collapse"><span style="display:inline-block;">三维太阳系在线工具</span></a>
+
+<div id="solarSystem" class="collapse">
+
       <span class="label label-info"><a href="http://interimm.org/solarsystem">如不能工作点击此处在新窗口体验或者使用 Chrome 浏览器</a></span><br><br>
 
       <iframe src="http://interimm.org/solarsystem" scrolling="no" width="100%" height="700em" sandbox="allow-same-origin allow-scripts allow-popups allow-same-origin allow-top-navigation" seamless  frameborder="0"></iframe>
+
+</div>
+
       </div>
 </div>
 </div>
@@ -540,7 +555,7 @@
 
 <!-- another row -->
 
-<!--<div class="row">
+<div class="row">
   <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 id="mars-c" class="panel-title" style="text-align:center;">火星历法</h3>
@@ -549,14 +564,16 @@
 历法的说明在<a href="http://interimm.org/InterImmBook/navigator/mars.html#marscalendar">《星际移民之书》的火星历法章节</a>。这里<a href="http://nbviewer.ipython.org/github/InterImm/marsCalendar/blob/master/py/calendar.ipynb" target='_blank'>有一份 iPython Notebook 的算法说明</a>。
 
 <div>
-<span class="label label-info"><a href="http://interimm.org/mars-clock">如不能工作点击此处在新窗口打开火星时钟或者使用 Chrome 浏览器</a></span><br><br>
+    <a class="btn btn-success btn-raised" style="display:inline-block;" role="button" href="http://interimm.org/mars-clock" aria-expanded="false"><span style="display:inline-block;">火星时钟在线工具</span></a>
 
-      <iframe src="http://interimm.org/mars-clock" scrolling="no" width="100%" height="1800em" sandbox="allow-same-origin allow-scripts allow-popups allow-same-origin allow-top-navigation" seamless  frameborder="0"></iframe>
+<!-- <span class="label label-info"><a href="http://interimm.org/mars-clock">如不能工作点击此处在新窗口打开火星时钟或者使用 Chrome 浏览器</a></span><br><br> -->
+
+      <!-- <iframe src="http://interimm.org/mars-clock" scrolling="no" width="100%" height="600em" sandbox="allow-same-origin allow-scripts allow-popups allow-same-origin allow-top-navigation" seamless  frameborder="0"></iframe> -->
 </div>
       </div>
     </div>
 
-</div>-->
+</div>
 <!-- another row END -->
 
 <div class="sect-border"></div>
@@ -565,10 +582,23 @@
 <div class="row">
   <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 id="mars-cities" class="panel-title" style="text-align:center;">火星城市与旅游图</h3>
+        <h3 id="mars-cities" class="panel-title" style="text-align:center;">火星城市与旅游地图</h3>
       </div>
       <div class="panel-body" style="text-align:center;">
+          <a class="btn btn-success btn-raised" style="display:inline-block;" role="button" href="http://interimm.org/mars-map" aria-expanded="false"><span style="display:inline-block;">互动版火星地图</span></a><br>
+
+          <a class="btn btn-success btn-raised" style="display:inline-block;" role="button" href="#martianMap" aria-expanded="false" data-toggle="collapse"><span style="display:inline-block;">图片版火星地图</span></a><br>
+
+
+<div id="martianMap" class="collapse">
+
+
+
+
+          <!-- <span class="label label-info"><a href="http://interimm.org/mars-map">点击此处使用互动版火星地图</a></span><br><br> -->
         <img id="marscities" src="./assets/images/marsCities.png" width="100%">
+</div>
+
       </div>
     </div>
 
