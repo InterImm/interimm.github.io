@@ -2,28 +2,27 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <h4>About</h4>
+                <h4>关于</h4>
                 <div class="hline-w"></div>
                 <p>{{ site.about }}</p>
             </div>
             <div class="col-lg-4">
-                <h4>Social Links</h4>
+                <h4>社交网站</h4>
                 <div class="hline-w"></div>
                 <p>
-                    {% for network in site.social %}
-                        <a href="{{ network.url }}" class="btn-social btn-outline">
-                          <i class="fa fa-{{ network.title }}" aria-hidden="true"></i>
-                          <span class="sr-only">{{network.title}}</span>
+                    {% for social in site.data.social %}
+                        <a href="{{ social.url }}" class="btn-social btn-outline">
+                          <span class="sr-only">{{social.title}}</span>
                         </a>
                     {% endfor %}
                 </p>
             </div>
             <div class="col-lg-4">
-                <h4>Our Bunker</h4>
+                <h4>网络</h4>
                 <div class="hline-w"></div>
                 <p>
-                    {% for line in site.address.first.lines %}
-                        {{ line }} <br>
+                    {% for website in site.data.network %}
+                       <a href="{{website.url}}" target="_blank"> {{ website.title }} </a>  <br>
                     {% endfor %}
                 </p>
             </div>

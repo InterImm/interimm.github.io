@@ -516,9 +516,13 @@ body {
     background-color: rgba(255,255,255,0.1)!important;
     height: 60vh;
 }
+#headerwrap .container {
+  margin-top:10vh;
+}
 
 #portfoliowrap {
-  background-color: rgba(255,255,255,0.6)!important;
+  background-color: rgba(255,255,255,0.9)!important;
+  margin-bottom: 0 !important;
 }
 
 .strip {
@@ -597,4 +601,9 @@ line-height: 1em;
 }
 #service{
     background: rgba(255,255,255,0.9);
+    padding: 7rem 0 7rem 0;
+}
+#misc{
+  background: rgba(255,255,255,0.9);
+  padding: 7rem 0 7rem 0;
 }
