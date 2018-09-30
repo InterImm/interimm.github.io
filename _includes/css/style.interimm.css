@@ -1,0 +1,92 @@
+body {
+    font-family: "Hiragino Sans GB", "Microsoft YaHei",
+               "WenQuanYi Micro Hei", sans-serif;
+  }
+
+
+#headerwrap {
+    background-color: rgba(255,255,255,0.1)!important;
+    height: 60vh;
+}
+
+#portfoliowrap {
+  background-color: rgba(255,255,255,0.6)!important;
+}
+
+.strip {
+  font-size: 110%;
+  background-color: #162932;
+}
+
+#home--updates {
+  border-color: none !important;
+}
+
+#home--updates p{
+  color: white;
+}
+#home--updates p a {
+  color: white;
+}
+
+.jumbotron {
+  background-color:rgba(255,255,255,0.1) !important; 
+}
+.splash-container {
+  background-color:rgba(255,0,0,0.5);
+  /* height:30em; */
+  color:white;
+  margin-bottom: 0 !important;
+}
+.splash-container h1 {
+    font-size: 4rem;
+  }
+.splash-container-1 {
+  background: url(../../assets/images/Kepler-62f_with_62e_as_Morning_Star.jpg) no-repeat fixed center !important;
+  background-size:cover !important;
+  height:30em;
+  color:white;
+  margin-bottom: 0 !important;
+}
+.splash-container-2 {
+  background: url(../../assets/images/360-degree_Panorama_of_the_Southern_Sky.jpg) no-repeat fixed center !important;
+  background-size:cover !important;
+  height:30em;
+  color:white;
+  margin-bottom: 0 !important;
+}
+.splash-container-3 {
+  background: url(../../assets/images/1280px-Triple-star_sunset.jpg) no-repeat fixed center !important;
+  background-size:cover !important;
+  height:30em;
+  color:white;
+  margin-bottom: 0 !important;
+}
+.splash-boxed {
+/*border: 3px solid #FFF;*/
+margin:0 auto;
+width: 50%;
+border-bottom: 3px solid #FFF;
+padding: 1em 1.6em;
+font-weight: 100;
+border-radius: 5px;
+line-height: 1em;
+}
+.splash-head {
+  text-align:center;
+}
+.splash-container p {
+  text-align: center;
+  padding-top: 2em;
+}
+.splash-container-2 p {
+  text-align: center;
+  padding-top: 2em;
+}
+.splash-container-3 p {
+  text-align: center;
+  padding-top: 2em;
+}
+#service{
+    background: rgba(255,255,255,0.9);
+}

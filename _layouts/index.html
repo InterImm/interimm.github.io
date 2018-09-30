@@ -1,9 +1,10 @@
 ---
-layout: default
+layout: home
 ---
-{% include header.html %}
+{% include home/header.html %}
+
 
   {{ content }}
 
-{% include testimonial.html %}
-{% include clients.html %}
+{% comment %} {% include testimonial.html %} {% endcomment %}
+{% include home/clients.html %}
