@@ -514,10 +514,10 @@ body {
 
 #headerwrap {
     background-color: rgba(255,255,255,0.1)!important;
-    height: 60vh;
+    height: 60%;
 }
 #headerwrap .container {
-  margin-top:10vh;
+  margin-top:10%;
 }
 
 #portfoliowrap {
