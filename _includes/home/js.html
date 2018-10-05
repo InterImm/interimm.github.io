@@ -25,13 +25,20 @@
 
 <!-- Backstretch CODE -->
 <script>
-    $.backstretch([
+// Get a random number between 0 and the number of images
+imgs = [
       "assets/img/bg/bg-1.jpg"
     , "assets/img/bg/bg-2.jpg"
     , "assets/img/bg/bg-3.jpg"
     , "assets/img/bg/bg-4.jpg"
     , "assets/img/bg/bg-5.jpg"
-  ], {duration: 10000, fade: 750});
+  	]
+	  imgs_len = imgs.length
+
+    var randomNumber = Math.floor( Math.random() * imgs_len );
+	imgs_random = [ imgs[randomNumber], imgs[ (randomNumber+1)%imgs_len ], imgs[ (randomNumber+2)%imgs_len ], imgs[ (randomNumber+3)%imgs_len ], imgs[ (randomNumber+4)%imgs_len ] ]
+
+    $.backstretch( imgs_random , {duration: 10000, fade: 750});
 </script>
 
 <!-- Backstretch CODE END -->

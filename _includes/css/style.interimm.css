@@ -41,6 +41,7 @@ body {
   /* height:30em; */
   color:white;
   margin-bottom: 0 !important;
+  padding-top: 100px !important;
 }
 .splash-container h1 {
     font-size: 4rem;
