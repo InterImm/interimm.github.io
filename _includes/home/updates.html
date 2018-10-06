@@ -3,7 +3,13 @@
 <div id="home--updates" class="alert strip" style="margin-bottom:0;">
 
   <p style="text-align:center;"><!-- <span class="label">最近更新：</span> -->
-    更新记录：2018-04-06: 行星大学网站建立；<a href="http://planiversity.interimm.org">链接</a>
+    <center>
+    {% for update in site.data.updates %}
+      {% if update.status == "published" %}
+      {{update.content | markdownify}}
+    {% endif %}
+    {% endfor %}
+    <center>
   </p>
 </div>
 
