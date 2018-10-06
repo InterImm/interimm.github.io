@@ -1,8 +1,8 @@
 ### GENERAL SETTINGS ###
 
 # Site settings
-title: 星际移民中心 &ndash; 星际移民局
-description: "星际移民中心官方网站"
+title: 星际移民中心
+description: "星际移民中心 (星际移民局直属) 官方网站"
 analytics: #Google analytics code in the format XX-nnnnnnnn-n
 baseurl: "" #important: start with /
 #url: "http://interimm.org"
@@ -48,11 +48,11 @@ social:
 # Postal address (add as many lines as necessary). Shown in footer and on Contact page.
 address:
   - lines:
-    - Some Ave, 987,
-    - 23890, New York,
+    - Solar Ave, 137,
+    - Isidis, Mars
     - United States.
-email: hello@solidtheme.com
-tel: +34 8493-4893
+email: admin@interimm.org
+tel: +M001 
 
 
 ### GENERAL DATA FOR VARIOUS LOCATIONS ###
@@ -108,7 +108,7 @@ clients:
     img: client04.png
 
 # Short text about your company. Shown in footer on every page and also separately on Home and Contact page.
-about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+about: "星际移民中心是星际移民局的核心机构，从事太阳系开发的各项研究，同时也为火星火星基地提供支持。"
 
 # Testimonial content. Shown on Home and About page.
 testimonial:

@@ -7,13 +7,14 @@
                 <p>{{ site.about }}</p>
             </div>
             <div class="col-lg-4">
-                <h4>社交网站</h4>
+                <h4>发现我们</h4>
                 <div class="hline-w"></div>
                 <p>
-                    {% for social in site.data.social %}
-                        <a href="{{ social.url }}" class="btn-social btn-outline">
-                          <span class="sr-only">{{social.title}}</span>
+                    {% for connect in site.data.connect %}
+                        <a href="{{connect.url}}" class="btn btn-outline">
+                          <span class="label" target="_blank">{{connect.title}}</span>
                         </a>
+                     <br>
                     {% endfor %}
                 </p>
             </div>
@@ -22,7 +23,8 @@
                 <div class="hline-w"></div>
                 <p>
                     {% for website in site.data.network %}
-                       <a href="{{website.url}}" target="_blank"> {{ website.title }} </a>  <br>
+                       <a href="{{website.url}}" class="btn btn-outline" target="_blank"> 
+                           <span class="label">{{ website.title }} </span> </a>  <br>
                     {% endfor %}
                 </p>
             </div>
