@@ -5,8 +5,8 @@
     <description>星际移民中心 (星际移民局直属) 官方网站</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 07 Oct 2018 19:00:31 +0200</pubDate>
-    <lastBuildDate>Sun, 07 Oct 2018 19:00:31 +0200</lastBuildDate>
+    <pubDate>Sun, 07 Oct 2018 19:07:59 +0200</pubDate>
+    <lastBuildDate>Sun, 07 Oct 2018 19:07:59 +0200</lastBuildDate>
     <generator>Jekyll v3.8.4</generator>
     
       <item>
