@@ -1,5 +1,4 @@
 /*	################################################################
-From Solid
 
 	Author: Carlos Alvarez
 	URL: http://alvarez.is
@@ -26,7 +25,7 @@ body {
 	background: #ffffff !important;
 	margin: 0;
 	height: 100%;
-	color: {{ site.colors.secondary }};
+	color: #384452;
 	font-family: 'Lato', sans-serif;
 	font-weight: 400;
 	}
@@ -43,7 +42,7 @@ p {
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 24px;
-	color: {{ site.colors.secondary }};
+	color: #384452;
 	margin-top: 10px;
 }
 
@@ -63,7 +62,7 @@ ol {
 }
 
 a {
-    color:{{ site.colors.link }};
+    color:#428bca;
     padding: 0;
 	margin: 0;
 	text-decoration: none;
@@ -76,18 +75,18 @@ a {
 a:hover,
 a:focus {
   text-decoration: none;
-  color:{{ site.colors.link_hover }};
+  color:#01b2fe;
 }
 
 ::-moz-selection  {
 	color: #fff;
 	text-shadow:none;
-	background:{{ site.colors.secondary }};
+	background:#384452;
 }
 ::selection {
 	color: #fff;
 	text-shadow:none;
-	background:{{ site.colors.secondary }};
+	background:#384452;
 }
 
 .centered {
@@ -119,21 +118,21 @@ a:focus {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-	color: {{ site.colors.primary }};
+	color: #082d3a;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-	color: {{ site.colors.primary }};
+	color: #082d3a;
 	background-color: transparent;
 }
 
 .navbar-default {
-	background-color: {{ site.colors.secondary }};
+	background-color: #384452;
 	border-color: transparent;
 }
 
 .dropdown-menu {
-	background: {{ site.colors.secondary }};
+	background: #384452;
 }
 
 .dropdown-menu > li > a {
@@ -144,8 +143,8 @@ a:focus {
 
 .btn-theme {
   color: #fff;
-  background-color: {{ site.colors.secondary }};
-  border-color: {{ site.colors.secondary }};
+  background-color: #384452;
+  border-color: #384452;
   margin: 4px;
 }
 .btn-theme:hover,
@@ -154,8 +153,8 @@ a:focus {
 .btn-theme.active,
 .open .dropdown-toggle.btn-theme {
   color: #fff;
-  background-color: {{ site.colors.primary }};
-  border-color: {{ site.colors.primary }};
+  background-color: #082d3a;
+  border-color: #082d3a;
 }
 
 .dmbutton:hover,
@@ -205,7 +204,7 @@ a:focus {
 }
 
 .hline {
-	border-bottom: 2px solid {{ site.colors.secondary }};
+	border-bottom: 2px solid #384452;
 }
 
 .hline-w {
@@ -217,7 +216,7 @@ a:focus {
 ################################################################# */
 
 #headerwrap {
-	background-color: {{ site.colors.primary }};
+	background-color: #082d3a;
 	min-height: 0px;
 	padding-top: 100px;
 	padding-bottom: 50px;
@@ -245,7 +244,7 @@ a:focus {
 }
 
 #service i {
-	color: {{ site.colors.primary }};
+	color: #082d3a;
 	font-size: 60px;
 	padding: 15px;
 }
@@ -293,15 +292,15 @@ a:focus {
 {
 	height:100%;
 	width:100%;
-	background-color:{{ site.colors.primary }};
-	background-color:rgba({{ site.colors.primary_rgb }},.9);
+	background-color:#082d3a;
+	background-color:rgba(0,179,254,.9);
 	text-align:center;
 }
 
 /* Testimonials Wrap */
 #twrapback {
-    background-color: {{ site.colors.primary }};
-    background-color:rgba({{ site.colors.primary_rgb }},.8);
+    background-color: #082d3a;
+    background-color:rgba(0,179,254,.8);
     position: absolute;
     top: 0;
     left: 0;
@@ -359,25 +358,25 @@ a:focus {
 #footerwrap {
 	padding-top: 60px;
 	padding-bottom: 60px;
-	background: {{ site.colors.secondary }};
+	background: #384452;
 }
 
 #footerwrap p {
-	color: {{ site.colors.footer_content }};
+	color: #bfc9d3;
 }
 
 #footerwrap h4 {
-	color: {{ site.colors.footer_heading }};
+	color: #ffffff;
 }
 
 #footerwrap i {
 	font-size: 30px;
-	color: {{ site.colors.footer_content }};
+	color: #bfc9d3;
 	padding-right: 25px;
 }
 
 #footerwrap i:hover {
-	color: {{ site.colors.primary }}
+	color: #082d3a
 }
 
 /*	################################################################
@@ -386,7 +385,7 @@ a:focus {
 /* General Tweaks */
 
 #blue {
-	background: {{ site.colors.primary }};
+	background: #082d3a;
 	margin-top: 60px;
 	margin-bottom: 60px;
 	padding-top: 25px;
@@ -421,7 +420,7 @@ a:focus {
 }
 
 .ctitle {
-	color: {{ site.colors.primary }};
+	color: #082d3a;
 	font-weight: 700;
 	margin-bottom: 15px;
 }
@@ -437,7 +436,7 @@ csmall {
 }
 
 .badge-theme {
-	background: {{ site.colors.primary }};
+	background: #082d3a;
 }
 
 /* Contact Page */
@@ -507,11 +506,6 @@ a.anchor{
     visibility: hidden;
 }
 
-/*
-style.interimm.css
-*/
-
-
 body {
     font-family: "Hiragino Sans GB", "Microsoft YaHei",
                "WenQuanYi Micro Hei", sans-serif;
@@ -548,7 +542,7 @@ body {
 }
 
 .jumbotron {
-  background-color:rgba(255,255,255,0.1) !important;
+  background-color:rgba(255,255,255,0.1) !important; 
 }
 .splash-container {
   background-color:rgba(255,0,0,0.5);
@@ -674,3 +668,4 @@ line-height: 1em;
   background-color: rgba(255, 255, 255, 0.2) !important;
   color: white;
 }
+
