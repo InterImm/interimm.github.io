@@ -22,7 +22,7 @@
 	} 
 
 body { 
-	background: #ffffff; 
+	background: #ffffff !important; 
 	margin: 0; 
 	height: 100%; 
 	color: {{ site.colors.secondary }};
@@ -98,7 +98,7 @@ a:focus {
 ################################################################# */
 .navbar {
 	min-height: 70px;
-	padding-top: 10px;
+	padding-top: 5px;
 	margin-bottom: 0px;
 }
 

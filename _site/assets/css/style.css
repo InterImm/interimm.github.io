@@ -22,7 +22,7 @@
 	} 
 
 body { 
-	background: #ffffff; 
+	background: #ffffff !important; 
 	margin: 0; 
 	height: 100%; 
 	color: #384452;
@@ -98,7 +98,7 @@ a:focus {
 ################################################################# */
 .navbar {
 	min-height: 70px;
-	padding-top: 10px;
+	padding-top: 5px;
 	margin-bottom: 0px;
 }
 
@@ -118,11 +118,11 @@ a:focus {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-	color: #00b3fe;
+	color: #082d3a;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-	color: #00b3fe;
+	color: #082d3a;
 	background-color: transparent;
 }
 
@@ -153,8 +153,8 @@ a:focus {
 .btn-theme.active,
 .open .dropdown-toggle.btn-theme {
   color: #fff;
-  background-color: #00b3fe;
-  border-color: #00b3fe;
+  background-color: #082d3a;
+  border-color: #082d3a;
 }
 
 .dmbutton:hover,
@@ -216,7 +216,7 @@ a:focus {
 ################################################################# */
 
 #headerwrap {
-	background-color: #00b3fe;
+	background-color: #082d3a;
 	min-height: 0px;
 	padding-top: 100px;
 	padding-bottom: 50px;
@@ -244,7 +244,7 @@ a:focus {
 }
 
 #service i {
-	color: #00b3fe;
+	color: #082d3a;
 	font-size: 60px;
 	padding: 15px;
 }
@@ -292,14 +292,14 @@ a:focus {
 {
 	height:100%;
 	width:100%;
-	background-color:#00b3fe;
+	background-color:#082d3a;
 	background-color:rgba(0,179,254,.9);
 	text-align:center;
 }
 
 /* Testimonials Wrap */
 #twrapback {
-    background-color: #00b3fe;
+    background-color: #082d3a;
     background-color:rgba(0,179,254,.8);
     position: absolute;
     top: 0;
@@ -376,7 +376,7 @@ a:focus {
 }
 
 #footerwrap i:hover {
-	color: #00b3fe
+	color: #082d3a
 }
 
 /*	################################################################
@@ -385,7 +385,7 @@ a:focus {
 /* General Tweaks */
 
 #blue {
-	background: #00b3fe;
+	background: #082d3a;
 	margin-top: 60px;
 	margin-bottom: 60px;
 	padding-top: 25px;
@@ -420,7 +420,7 @@ a:focus {
 }
 
 .ctitle {
-	color: #00b3fe;
+	color: #082d3a;
 	font-weight: 700;
 	margin-bottom: 15px;
 }
@@ -436,7 +436,7 @@ csmall {
 }
 
 .badge-theme {
-	background: #00b3fe;
+	background: #082d3a;
 }
 
 /* Contact Page */
@@ -513,7 +513,7 @@ body {
 
 
 #headerwrap {
-    background-color: rgba(255,255,255,0.1)!important;
+    background-color: rgba(0,0,0,0.7)!important;
     height: 60%;
 }
 #headerwrap .container {
@@ -608,3 +608,64 @@ line-height: 1em;
   background: rgba(255,255,255,0.9);
   padding: 7rem 0 7rem 0;
 }
+
+
+/*	################################################################
+	PAGE CONFIGURATIONS
+################################################################# */
+/* General Tweaks */
+
+#grey {
+	background:  #082d3a;
+	margin-top: 60px;
+	margin-bottom: 60px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+#grey h3 {
+	color: white;
+	margin-left: 15px;
+}
+
+.navbar-black {
+  background-color: black;
+  border-color: transparent;
+}
+.navbar {
+  margin-bottom:0 !important;
+}
+.navbar-border-r {
+  border-right: 1px solid #3F3B3B;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+.navbar .navbar-nav-black > li > a {
+  color: rgba(255, 255, 255, 0.84);
+}
+.navbar .navbar-nav-black > li > a:hover,
+.navbar .navbar-nav-black > li > a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.navbar .navbar-nav-black > .active > a,
+.navbar .navbar-nav-black > .active > a:hover,
+.navbar .navbar-nav-black > .active > a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar .brand-style:hover,
+.navbar .brand-style:focus {
+  color: rgba(255, 255, 255, 1);
+}
+.black-bg {
+  background-color: black;
+}
+.black-bg li a {
+  color: white;
+}
+.black-bg li a:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: white;
+}
+

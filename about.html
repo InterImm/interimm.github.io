@@ -1,20 +1,60 @@
 ---
 layout: about
-title: About
+title: 关于
 permalink: /about/
 ---
 
 <div class="container mtb">
     <div class="row">
         <div class="col-lg-6">
-            <img class="img-responsive" src="{{ "/assets/img/about.jpg" | prepend: site.baseurl }}" alt="">
+                <video width="100%" poster="/assets/img/about/interimm_banner_black.png" autoplay="autoplay">
+                        <source src="/assets/img/about/iia.mp4" type="video/mp4" />
+                      </video>
+            <!-- <img class="img-responsive" src="{{ "/assets/img/about.jpg" | prepend: site.baseurl }}" alt=""> -->
         </div>
         <div class="col-lg-6">
-            <h4>More About Our Agency.</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-            <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <p>Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-            <p><br/><a href="/contact/" class="btn btn-theme">Contact Us</a></p>
+            <h4>关于星际移民中心</h4>
+            <p>
+                星际移民中心是一所致力于太阳系开发的研究和服务机构，是星际移民局的核心部门之一。
+            
+            </p>
+                <p>星际移民中心总部坐落在火星 Isidis 城市圈，并且在地球各大洲设有多处地球事物部，承担地球相关的业务。
+            </p>
+            <p><br/><a href="mailto@admin@interimm.org" class="btn">更多请联系我们：admin@interimm.org </a></p>
         </div>
     </div><! --/row -->
+
+        
 </div><! --/container -->
+
+<div id="twrap">
+        <div id="twrapback"></div>
+        <div class="container centered">
+            <div class="row" style="height:100vh;">
+                <div class="col-lg-12">
+                <i class="fa fa-map"></i>
+                <h4>星际移民中心总部坐落在火星南河城</h4>
+                <p>
+                        <iframe src="http://interimm.org/mars-map/"  scrolling="no" width="100%" height="500rem" sandbox="allow-same-origin allow-scripts allow-popups allow-same-origin allow-top-navigation" seamless  frameborder="0"></iframe> 
+                    <!-- <img src={{ "/assets/img/about/martian-cities.png" | prepend: site.baseurl }}> -->
+                </p>
+                </div>
+            </div><! --/row -->
+        </div><! --/container -->
+    </div><! --/twrap -->
+
+
+    <div id="cwrap">
+            <div class="container">
+                <div class="row centered">
+                    <h3>我们的社交网络</h3>
+                    {% for social in site.data.connect %}
+                    {% if social.status == "contact" or social.status == "highlight" %}
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <a href="{{social.url}}" target="_blank"><span class="btn btn-default"> {{ social.title }} </span>  </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div><! --/row -->
+            </div><! --/container -->
+        </div><! --/cwrap -->

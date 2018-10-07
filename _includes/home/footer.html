@@ -5,16 +5,19 @@
                 <h4>关于</h4>
                 <div class="hline-w"></div>
                 <p>{{ site.about }}</p>
+                <p> <a href="https://github.com/InterImm/service/releases" class="btn btn-outline" target="_blank"> <span class="label">Press Kit</span> </a> </p>
             </div>
             <div class="col-lg-4">
                 <h4>发现我们</h4>
                 <div class="hline-w"></div>
                 <p>
                     {% for connect in site.data.connect %}
+                    {%if connect.status == "contact" %}
                         <a href="{{connect.url}}" class="btn btn-outline">
                           <span class="label" target="_blank">{{connect.title}}</span>
                         </a>
                      <br>
+                     {% endif %}
                     {% endfor %}
                 </p>
             </div>

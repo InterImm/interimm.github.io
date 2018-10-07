@@ -32,11 +32,11 @@
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
 
-    <link href="assets/css/material/ripples.min.css" rel="stylesheet">
-		<link href="assets/css/material/material-wfont.min.css" rel="stylesheet">
-		<link href="assets/css/material/snackbar.min.css" rel="stylesheet">
-      <link href="assets/css/material/animate.min.css" rel="stylesheet">
-		<link href="assets/css/material/style.css" rel="stylesheet">
+    <link href="/assets/css/material/ripples.min.css" rel="stylesheet">
+		<link href="/assets/css/material/material-wfont.min.css" rel="stylesheet">
+		<link href="/assets/css/material/snackbar.min.css" rel="stylesheet">
+    <link href="/assets/css/material/animate.min.css" rel="stylesheet">
+		<link href="/assets/css/material/style.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/assets/css/style.css" rel="stylesheet">
@@ -55,18 +55,19 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
     <body>
         <!-- Nav Bar at top -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-black navbar-fixed-top" role="navigation">
     <div class="navbar-header navbar-border-r">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand brand-style" href="javascript:void(0)"><i class="fa fa-home"></i> &nbsp; 星际移民中心</a>
+        <a class="navbar-brand brand-style" href="/""><i class="fa fa-home"></i> &nbsp; 星际移民中心</a>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav navbar-nav-black">
@@ -80,17 +81,19 @@
         <ul class="nav navbar-nav navbar-right navbar-nav-black">
         <!-- Switch on/off between the following two lines to activate/deactivate the calendar icon -->
         <!-- <li><a href="#activities" style="color:orange;"><i class="fa fa-calendar"></i></a></li> -->
-        <li><a href="#activities" style="color:grey;" data-toggle="tooltip" data-placement="bottom" title="相关活动"><i class="fa fa-calendar"></i></a></li>
+        <li><a href="activities.html" style="color:grey;" data-toggle="tooltip" data-placement="bottom" title="相关活动"><i class="fa fa-calendar"></i></a></li>
         <!-- <li><a href="http://zhuanlan.zhihu.com/interimm" target="_blank"><i class="fa fa-newspaper-o"></i>&nbsp; 知乎专栏</a></li> -->
         <li><a href="http://weibo.com/iiaofficial" style="color:#5bc0de;" target="_blank" data-toggle="tooltip" data-placement="bottom" title="微博"> <i class="fa fa-weibo"></i></a></li>
-        <li><a href="http://interimm.org/mars-map/" style="color:orange;" data-toggle="tooltip" data-placement="bottom" title="火星互动地图"><i class="fa fa-map"></i></a></li>
+        <li><a href="http://interimm.org/mars-map/" style="color:orange;" data-toggle="tooltip" data-placement="bottom" title="火星互动地图">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+        </a></li>
 
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-o-down"></i> 更多<b class="caret"></b></a>
                 <ul class="dropdown-menu black-bg">
-                   <li><a href="institutes.html"><i class="fa fa-sitemap"></i>&nbsp;星际机构</a></li>
+                   <li><a href="/institutes.html"><i class="fa fa-sitemap"></i>&nbsp;星际机构</a></li>
 
-                   <li><a href="toolbox.html"><i class="fa fa-cogs"></i>&nbsp;工具箱</a></li>
+                   <li><a href="/"><i class="fa fa-cogs"></i>&nbsp;工具箱</a></li>
                    <li><a href="http://interimm.org/mars-clock"><i class="fa fa-clock-o"></i>&nbsp;火星时钟</a></li>
 
                    <li><a href="http://interimm.org/mars-map/" style="color:orange;" data-toggle="tooltip" data-placement="bottom" title="火星互动地图"><i class="fa fa-map"></i>&nbsp;火星地图</a></li>
@@ -111,7 +114,7 @@
 
 <!--  Nav Bar Top END -->
 
-            <div id="blue">
+            <div id="grey">
     <div class="container">
         <div class="row">
             <h3>Time to change your apps</h3>
@@ -281,52 +284,68 @@ It is a long established fact that a reader will be distracted by the readable c
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <h4>About</h4>
+                <h4>关于</h4>
                 <div class="hline-w"></div>
                 <p>星际移民中心是星际移民局的核心机构，从事太阳系开发的各项研究，同时也为火星火星基地提供支持。</p>
+                <p> <a href="https://github.com/InterImm/service/releases" class="btn btn-outline" target="_blank"> <span class="label">Press Kit</span> </a> </p>
             </div>
             <div class="col-lg-4">
-                <h4>Social Links</h4>
+                <h4>发现我们</h4>
                 <div class="hline-w"></div>
                 <p>
                     
-                        <a href="" class="btn-social btn-outline">
-                          <i class="fa fa-dribbble" aria-hidden="true"></i>
-                          <span class="sr-only">dribbble</span>
-                        </a>
                     
-                        <a href="" class="btn-social btn-outline">
-                          <i class="fa fa-facebook" aria-hidden="true"></i>
-                          <span class="sr-only">facebook</span>
+                        <a href="http://www.github.com/InterImm" class="btn btn-outline">
+                          <span class="label" target="_blank">GitHub Issues</span>
                         </a>
+                     <br>
+                     
                     
-                        <a href="" class="btn-social btn-outline">
-                          <i class="fa fa-twitter" aria-hidden="true"></i>
-                          <span class="sr-only">twitter</span>
-                        </a>
                     
-                        <a href="" class="btn-social btn-outline">
-                          <i class="fa fa-instagram" aria-hidden="true"></i>
-                          <span class="sr-only">instagram</span>
+                        <a href="mailto:admin@interimm.org" class="btn btn-outline">
+                          <span class="label" target="_blank">admin@interimm.org</span>
                         </a>
+                     <br>
+                     
                     
-                        <a href="" class="btn-social btn-outline">
-                          <i class="fa fa-tumblr" aria-hidden="true"></i>
-                          <span class="sr-only">tumblr</span>
+                    
+                    
+                    
+                        <a href="http://www.weibo.com/iiaofficial" class="btn btn-outline">
+                          <span class="label" target="_blank">微博 @星际移民中心</span>
                         </a>
+                     <br>
+                     
+                    
+                    
+                    
+                    
+                        <a href="http://www.zhihu.com/people/interimm" class="btn btn-outline">
+                          <span class="label" target="_blank">知乎@星际移民中心</span>
+                        </a>
+                     <br>
+                     
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     
                 </p>
             </div>
             <div class="col-lg-4">
-                <h4>Our Bunker</h4>
+                <h4>网络</h4>
                 <div class="hline-w"></div>
                 <p>
                     
-                        Solar Ave, 137, <br>
+                       <a href="http://exponentialdeepspace.org" class="btn btn-outline" target="_blank"> 
+                           <span class="label">Exponential Deep Space </span> </a>  <br>
                     
-                        Isidis, Mars <br>
-                    
-                        United States. <br>
+                       <a href="http://planetiversity.interimm.org" class="btn btn-outline" target="_blank"> 
+                           <span class="label">Planetary University of Mars </span> </a>  <br>
                     
                 </p>
             </div>

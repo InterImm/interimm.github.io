@@ -1,12 +1,12 @@
 <!-- Nav Bar at top -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-black navbar-fixed-top" role="navigation">
     <div class="navbar-header navbar-border-r">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand brand-style" href="javascript:void(0)"><i class="fa fa-home"></i> &nbsp; 星际移民中心</a>
+        <a class="navbar-brand brand-style" href="{{ "/" | prepend: site.baseurl }}""><i class="fa fa-home"></i> &nbsp; 星际移民中心</a>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav navbar-nav-black">
@@ -30,9 +30,9 @@
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-o-down"></i> 更多<b class="caret"></b></a>
                 <ul class="dropdown-menu black-bg">
-                   <li><a href="institutes.html"><i class="fa fa-sitemap"></i>&nbsp;星际机构</a></li>
+                   <li><a href="{{ "/institutes.html" | prepend: site.baseurl }}"><i class="fa fa-sitemap"></i>&nbsp;星际机构</a></li>
 
-                   <li><a href="toolbox.html"><i class="fa fa-cogs"></i>&nbsp;工具箱</a></li>
+                   <li><a href="{{ "/"toolbox.html" | prepend: site.baseurl }}"><i class="fa fa-cogs"></i>&nbsp;工具箱</a></li>
                    <li><a href="http://interimm.org/mars-clock"><i class="fa fa-clock-o"></i>&nbsp;火星时钟</a></li>
 
                    <li><a href="http://interimm.org/mars-map/" style="color:orange;" data-toggle="tooltip" data-placement="bottom" title="火星互动地图"><i class="fa fa-map"></i>&nbsp;火星地图</a></li>
