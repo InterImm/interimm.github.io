@@ -5,7 +5,7 @@ title: 星际移民中心
 description: "星际移民中心 (星际移民局直属) 官方网站"
 analytics: #Google analytics code in the format XX-nnnnnnnn-n
 baseurl: "" #important: start with /
-#url: "http://interimm.org"
+url: "http://interimm.org"
 
 # Build settings
 markdown: kramdown
@@ -52,7 +52,7 @@ address:
     - Isidis, Mars
     - United States.
 email: admin@interimm.org
-tel: +M001 
+tel: +M001
 
 
 ### GENERAL DATA FOR VARIOUS LOCATIONS ###
