@@ -60,3 +60,27 @@ permalink: /about/
                 </div><! --/row -->
             </div><! --/container -->
         </div><! --/cwrap -->
+
+        <div id="cwrap">
+            <div class="container">
+                <div class="row centered">
+                    <h3>Licenses</h3>
+                    {% for license in site.data.licenses %}
+                        <div class="col-md-4">
+                            <span class="sr-only">Love of the universe</span>
+                            <h4>{{license.title}}</h4>
+                            <p>
+                            {{license.author}}
+                            </p>
+                            <p> {{license.comment}}
+                            </p>
+                            <p>
+                            <br/>
+                             <a href="{{license.url}}" target="_blank"><span class="btn btn-default"> LINK </span>  </a>
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div><! --/row -->
+            </div><! --/container -->
+        </div><! --/cwrap -->
+

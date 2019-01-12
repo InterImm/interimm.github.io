@@ -7,10 +7,9 @@
 <script src="{{ "/assets/js/jquery.isotope.min.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/assets/js/custom.js" | prepend: site.baseurl }}"></script>
 
-
-<script src="assets/js/ripples.min.js"></script>
-<script src="assets/js/material.min.js"></script>
-<script src="assets/js/snackbar.min.js"></script>
+<script src="{{"/assets/js/ripples.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{"/assets/js/material.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{"/assets/js/snackbar.min.js" | prepend: site.baseurl }}"></script>
 <!-- <script src="assets/js/bootstrap-notify.js"></script> -->
 
 <script>
@@ -40,11 +39,11 @@ $(function () {
 <script>
 // Get a random number between 0 and the number of images
 imgs = [
-      "assets/img/bg/bg-1.jpg"
-    , "assets/img/bg/bg-2.jpg"
-    , "assets/img/bg/bg-3.jpg"
-    , "assets/img/bg/bg-4.jpg"
-    , "assets/img/bg/bg-5.jpg"
+      "{{"/assets/img/bg/bg-1.jpg" | prepend: site.baseurl }}"
+    , "{{"/assets/img/bg/bg-2.jpg" | prepend: site.baseurl }}"
+    , "{{"/assets/img/bg/bg-3.jpg" | prepend: site.baseurl }}"
+    , "{{"/assets/img/bg/bg-4.jpg" | prepend: site.baseurl }}"
+    , "{{"/assets/img/bg/bg-5.jpg" | prepend: site.baseurl }}"
   	]
 	  imgs_len = imgs.length
 
