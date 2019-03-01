@@ -1,10 +1,10 @@
 ---
 layout: about
 title: 关于
-permalink: /about/
+permalink: /en/about/
 switch_lang: 
-  link: /en/about
-  nav: "EN"
+  link: /about
+  nav: "中文"
 ---
 
 <div class="container mtb">
@@ -16,16 +16,15 @@ switch_lang:
             <!-- <img class="img-responsive" src="{{ "/assets/img/about.jpg" | prepend: site.baseurl }}" alt=""> -->
         </div>
         <div class="col-lg-6">
-            <h4>关于星际移民中心</h4>
+            <h4>About Interplanetary Immigration Center</h4>
             <p>
-                星际移民中心是一所致力于太阳系开发的研究和服务机构，是星际移民局的核心部门之一。
-
+                Interplanetary Immigration Center is helping human beings building a better life on Mars.
             </p>
-                <p>星际移民中心总部坐落在火星 Isidis 城市圈，并且在地球各大洲设有多处地球事物部，承担地球相关的业务。
+                <p>We are located at Isidis metropolitan area on Mars. Numerous offices are founded by our partners on Earth.
             </p>
             <p><br/>
-              <a href="{{"/institutes.html" | prepend: site.baseurl }}" class="btn">机构设置</a></p>
-              <a href="mailto:admin@interimm.org" class="btn">更多信息请联系我们：admin@interimm.org </a></p>
+              <a href="{{"/en/institutes" | prepend: site.baseurl }}" class="btn">Institutes</a></p>
+              <a href="mailto:admin@interimm.org" class="btn">Contact us: admin@interimm.org </a></p>
         </div>
     </div><! --/row -->
 
@@ -38,7 +37,7 @@ switch_lang:
             <div class="row" style="height:100vh;">
                 <div class="col-lg-12">
                 <i class="fa fa-map"></i>
-                <h4>星际移民中心总部坐落在火星南河城</h4>
+                <h4>The HQ of Interplanetary Immigration Center is located at the south of Procyon city.</h4>
                 <p>
                         <iframe src="http://interimm.org/mars-map/"  scrolling="no" width="100%" height="500rem" sandbox="allow-same-origin allow-scripts allow-popups allow-same-origin allow-top-navigation" seamless  frameborder="0"></iframe>
                     <!-- <img src={{ "/assets/img/about/martian-cities.png" | prepend: site.baseurl }}> -->
@@ -52,7 +51,7 @@ switch_lang:
     <div id="cwrap">
             <div class="container">
                 <div class="row centered">
-                    <h3>我们的社交网络</h3>
+                    <h3>We are online</h3>
                     {% for social in site.data.connect %}
                     {% if social.status == "contact" or social.status == "highlight" %}
                         <div class="col-lg-3 col-md-3 col-sm-3">

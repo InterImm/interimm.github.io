@@ -61,13 +61,13 @@ tel: +M001
 
 # Members information. Shown on About page.
 members:
-  - name: Mark Webber
-    position: CEO
-    text: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  - name: Lei Ma
+    position: Founder
+    text: We build a better life on Mars.
     img: team01.jpg
     social:
       - title: envelope #use for email address
-        url: mailto:name@domain.com
+        url: mailto:octomial@interimm.org
       - title: twitter
         url: http://twitter.com/handle
   - name: Paul Jameson
