@@ -5,7 +5,7 @@ title: 星际移民中心
 titles: 
   en: "Interplanetary Immigration Center"
 description: "星际移民中心 (星际移民局直属) 官方网站"
-analytics: #Google analytics code in the format XX-nnnnnnnn-n
+analytics: UA-50146153-1 #Google analytics code in the format XX-nnnnnnnn-n
 baseurl: "" #important: start with /
 url: "http://interimm.org"
 
