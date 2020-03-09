@@ -2,7 +2,7 @@
 
 # Site settings
 title: 星际移民中心
-titles: 
+titles:
   en: "Interplanetary Immigration Center"
 description: "星际移民中心 (星际移民局直属) 官方网站"
 analytics: UA-50146153-1 #Google analytics code in the format XX-nnnnnnnn-n
@@ -53,8 +53,8 @@ address:
     - Solar Ave, 137,
     - Isidis, Mars
     - United States.
-email: admin@interimm.org
-tel: +M001
+email: "admin@interimm.org"
+tel: "+M001"
 
 
 ### GENERAL DATA FOR VARIOUS LOCATIONS ###
@@ -110,7 +110,7 @@ clients:
     img: client04.png
 
 # Short text about your company. Shown in footer on every page and also separately on Home and Contact page.
-about: 
+about:
   cn: "星际移民中心是星际移民局的核心机构，从事太阳系开发的各项研究，同时也为火星火星基地提供支持。"
   en: "Interplanetary Immigration Center is the key member of Interplanetary Immigration Agency. We research and develop space related products and serve the society on Mars."
 
