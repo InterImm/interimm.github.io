@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 火星城市：南河城
+title: 火星 - 南河城
 description: 由于历史原因，南河城的主要功能是服务业。位于城市中心的是星际移民中心的巨型建筑。关于南河城的起源可以参考<a href="http://book.interimm.org/history/mars_immigration.html#index-10">伊希地城市圈</a>。
 ---
 
