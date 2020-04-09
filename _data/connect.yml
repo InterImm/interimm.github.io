@@ -18,7 +18,10 @@
   status: contact
 - title: InterImm@Discord
   url: https://discord.gg/pyfyR2X
-  status: inuse
+  status: social
+- title: InterImm@Discord
+  url: https://discord.gg/pyfyR2X
+  status: contact
 - title: Bilibili @ 星际移民中心
   url: http://space.bilibili.com/6296332
   status: highlight
