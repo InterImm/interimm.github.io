@@ -1,0 +1,4 @@
+---
+title: Institutes
+layout: pages
+---
