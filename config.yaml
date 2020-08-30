@@ -8,7 +8,7 @@ IsMultiLingual: true
 DefaultContentLanguage: "cn"
 
 enableRobotsTXT: true # Suggested, it generates a robots.txt
-googleAnalytics: "" # Optional, add tracking Id for analytics
+googleAnalytics: "UA-50146153-1" # Optional, add tracking Id for analytics
 disqusShortname: "" # Optional, add Disqus shortname for comments
 # SectionPagesMenu: "main" # Enable menu system for lazy bloggers
 
