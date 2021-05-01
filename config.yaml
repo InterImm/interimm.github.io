@@ -87,7 +87,7 @@ params:
   home:
     primary_button:
       title: 欢迎登船
-      link: /guide
+      link: /archives/
   tags:
     - "星际开发研究"
     - "火星移民服务"
