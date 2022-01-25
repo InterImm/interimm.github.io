@@ -1,6 +1,6 @@
 ---
 title: 南河城
-description: 南河城是位于火星依希地的一座重要城市
+description: 南河城是位于火星伊希地的一座重要城市
 image:
 tags:
   - 2123
