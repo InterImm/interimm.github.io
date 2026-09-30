@@ -104,6 +104,11 @@ languages:
           parent: more
           url: https://magazine.interimm.org/
           weight: 3
+        - identifier: logistics
+          name: 星际物流
+          parent: more
+          url: https://interimm.org/interplanetary-logistics/
+          weight: 4
   en:
     languageCode: en
     languageName: English
@@ -174,3 +179,8 @@ languages:
           parent: more
           url: https://magazine.interimm.org/
           weight: 3
+        - identifier: logistics
+          name: Logistics
+          parent: more
+          url: https://interimm.org/interplanetary-logistics/
+          weight: 4
