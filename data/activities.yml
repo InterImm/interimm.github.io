@@ -2,11 +2,16 @@ cn:
   title: "更新"
   description: "星际移民中心的活动记录"
   list:
+    - title: "星际物流：地火转移窗口规划器"
+      description: 计算地球到火星的最低能耗转移窗口，并估算运价；完全在浏览器中运行（页面为英文）
+      datetime: "2026-10-01"
+      icon: "🚀"
+      link: https://interimm.org/interplanetary-logistics/
     - title: "星际物流 API"
       description: 星际物流提供了可以用来计算太阳系内物流的 API
       datetime: "2019-12-08"
       icon: "🚀"
-      link: https://github.com/InterImm/interplanetary-logistics
+      link: https://github.com/InterImm/interplanetary-logistics/tree/python-api
     - title: 火星地球通信延时计算工具
       description: 计算太阳系内任意行星之间任意时刻的通信延时
       datetime: "2019-03-29"
@@ -37,11 +42,16 @@ en:
   title: "Updates"
   description: "Activities and Updates"
   list:
+    - title: "Interplanetary Logistics: Earth to Mars transfer planner"
+      description: Find the cheapest Earth to Mars transfer window and price a shipment from its delta-v. Runs entirely in the browser
+      datetime: "2026-10-01"
+      icon: "🚀"
+      link: https://interimm.org/interplanetary-logistics/
     - title: "Interplanetary Logistics API"
       description: API to provide trajectory calculation for shipments between planets
       datetime: "2019-12-08"
       icon: "🚀"
-      link: https://github.com/InterImm/interplanetary-logistics
+      link: https://github.com/InterImm/interplanetary-logistics/tree/python-api
     - title: Communication latency calculator
       description: Calculate the communication latency between planets in the solar system
       datetime: "2019-03-29"
