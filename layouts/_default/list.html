@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "title" .Title "description" .Description) }}
+<div class="section">
+  <div class="wrap">
+    {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+    <div class="card-grid">
+      {{- range .RegularPagesRecursive }}
+      <article class="card">
+        <h2 class="card-title"><a class="card-link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{- with .Description }}<p>{{ . }}</p>{{ end }}
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</div>
+{{ end }}

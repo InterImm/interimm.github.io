@@ -1,0 +1,20 @@
+{{- /* Interactive map over a flat image (e.g. a city plan). Reads `map:` from the page's front matter. */ -}}
+{{- with .Page.Params.map -}}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<figure class="imagemap">
+  <div id="imagemap" class="imagemap-canvas" role="region" aria-label="{{ .alt }}" data-image="{{ .image }}" data-width="{{ .width }}" data-height="{{ .height }}" data-alt="{{ .alt }}" data-new-tab="{{ i18n "external_link" }}"></div>
+  <figcaption>{{ i18n "map_hint" }}</figcaption>
+</figure>
+<script type="application/json" id="imagemap-markers">{{ .markers | jsonify | safeJS }}</script>
+<noscript>
+  <ul>
+    {{- range .markers }}
+    <li><a href="{{ .link }}">{{ .name }}</a>: {{ .description }}</li>
+    {{- end }}
+  </ul>
+</noscript>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+{{- with resources.Get "js/imagemap.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{- end }}
+{{- end -}}

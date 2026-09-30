@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="page-hero not-found">
+  <div class="wrap">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>{{ i18n "not_found_title" }}</h1>
+    <p class="lede">{{ i18n "not_found_text" }}</p>
+    <p><a class="btn btn-primary" href="{{ "/" | relLangURL }}">{{ i18n "back_home" }}</a></p>
+  </div>
+</section>
+{{ end }}

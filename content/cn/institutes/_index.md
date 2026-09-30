@@ -1,4 +1,4 @@
 ---
-title: 星际机构
-layout: pages
+title: "星际机构"
+description: "星际移民局和联合行星是最著名的两大星际机构"
 ---

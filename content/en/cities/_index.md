@@ -1,5 +1,4 @@
 ---
-title: Cities
-layout: cities
+title: "Martian Cities"
+description: "List of cities on Mars"
 ---
-

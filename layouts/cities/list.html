@@ -1,0 +1,26 @@
+{{ define "main" }}
+{{- $d := index site.Data.cities site.Language.Lang -}}
+{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description) }}
+<div class="section">
+  <div class="wrap">
+    <div class="card-grid">
+      {{- range .RegularPagesRecursive }}
+      <article class="card card-link-wrap card-media">
+        {{- $img := "/img/cities/default.svg" }}
+        {{- with .Params.images }}{{ $img = index . 0 }}{{ end }}
+        <img class="card-image" src="{{ $img | relURL }}" alt="" width="640" height="360" loading="lazy" decoding="async">
+        <div class="card-body">
+          <h2 class="card-title"><a class="card-link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{- with .Description }}<p>{{ . }}</p>{{ end }}
+          {{- with .Params.tags }}
+          <ul class="chips chips-small">
+            {{- range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          {{- end }}
+        </div>
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</div>
+{{ end }}

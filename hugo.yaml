@@ -1,0 +1,176 @@
+baseURL: "https://interimm.org/"
+title: "星际移民中心"
+
+defaultContentLanguage: cn
+defaultContentLanguageInSubdir: false
+
+enableRobotsTXT: true
+enableEmoji: true
+
+# No blog/taxonomies on this site, so no feeds or term pages to generate.
+disableKinds:
+  - RSS
+  - taxonomy
+  - term
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # content embeds small HTML snippets (video, iframes)
+
+# Analytics: the old Universal Analytics property (UA-50146153-1) stopped
+# collecting data in July 2023. To turn analytics back on, create a GA4
+# property and uncomment this. The layout only emits the tag in production
+# builds and when an id is set.
+# services:
+#   googleAnalytics:
+#     id: G-XXXXXXXXXX
+
+params:
+  author: InterImm
+  github: interimm
+  # Default social-sharing image (pages can override with `images:` in front matter).
+  images:
+    - /images/about/interimm_banner_black.png
+
+languages:
+  cn:
+    languageCode: zh-CN
+    languageName: 中文
+    weight: 1
+    contentDir: content/cn
+    title: 星际移民中心
+    params:
+      description: "星际移民中心直属"
+      splash: /images/home/undraw_Taken_if77.svg
+      tags:
+        - 星际开发研究
+        - 火星移民服务
+      primary_button:
+        title: 欢迎登船
+        link: /archives/
+    menus:
+      main:
+        - identifier: archives
+          name: 档案馆
+          weight: 10
+        - identifier: archives-all
+          name: 全部档案
+          parent: archives
+          pageRef: /archives
+          weight: 1
+        - identifier: archives-book
+          name: 星际移民之书
+          parent: archives
+          url: https://book.interimm.org/
+          weight: 2
+        - identifier: archives-exoplanets
+          name: 系外行星文档
+          parent: archives
+          url: https://exoplanets.interimm.org/
+          weight: 3
+        - identifier: archives-hub
+          name: 太空企业
+          parent: archives
+          url: https://interimm.org/hub/
+          weight: 4
+        - identifier: planiversity
+          name: 行星大学
+          url: https://planiversity.interimm.org/
+          weight: 20
+        - identifier: activities
+          name: 活动
+          pageRef: /activities
+          weight: 30
+        - identifier: mars-map
+          name: 火星地图
+          url: https://interimm.org/mars-map/
+          weight: 40
+        - identifier: more
+          name: 更多
+          weight: 50
+        - identifier: institutes
+          name: 机构
+          parent: more
+          pageRef: /institutes
+          weight: 1
+        - identifier: timeline
+          name: 时间线
+          parent: more
+          url: https://timeline.interimm.org/
+          weight: 2
+        - identifier: magazine
+          name: 星海航纪
+          parent: more
+          url: https://magazine.interimm.org/
+          weight: 3
+  en:
+    languageCode: en
+    languageName: English
+    weight: 2
+    contentDir: content/en
+    title: InterImm
+    params:
+      description: "by Interplanetary Immigration Agency"
+      splash: /images/home/undraw_Taken_if77.svg
+      tags:
+        - Developing Spacefaring Civilization
+        - Connecting Mars and Earth
+      primary_button:
+        title: Welcome on Board
+        link: /archives/
+    menus:
+      main:
+        - identifier: archives
+          name: Archives
+          weight: 10
+        - identifier: archives-all
+          name: All archives
+          parent: archives
+          pageRef: /archives
+          weight: 1
+        - identifier: archives-book
+          name: The Book of Interplanetary Civilization
+          parent: archives
+          url: https://book.interimm.org/
+          weight: 2
+        - identifier: archives-exoplanets
+          name: The Book of Exoplanets
+          parent: archives
+          url: https://exoplanets.interimm.org/
+          weight: 3
+        - identifier: archives-hub
+          name: Space Yellow Page
+          parent: archives
+          url: https://interimm.org/hub/
+          weight: 4
+        - identifier: planiversity
+          name: Planetary University
+          url: https://planiversity.interimm.org/
+          weight: 20
+        - identifier: activities
+          name: Activities
+          pageRef: /activities
+          weight: 30
+        - identifier: mars-map
+          name: Mars Map
+          url: https://interimm.org/mars-map/
+          weight: 40
+        - identifier: more
+          name: More
+          weight: 50
+        - identifier: institutes
+          name: Institutes
+          parent: more
+          pageRef: /institutes
+          weight: 1
+        - identifier: timeline
+          name: Timeline
+          parent: more
+          url: https://timeline.interimm.org/
+          weight: 2
+        - identifier: magazine
+          name: Magazine
+          parent: more
+          url: https://magazine.interimm.org/
+          weight: 3

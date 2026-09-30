@@ -1,0 +1,26 @@
+cn:
+  - title: "星际移民中心"
+    content: "成立时间：2062年7月23日; 总部：火星 Isidis （伊希地）"
+    button: 关于
+    link: /about
+  - title: "技术研发"
+    content: "立足火星，致力于推进技术和飞行器，系外行星，以及太空自动化的研发。"
+    button: 研究
+    link: https://planiversity.interimm.org/
+  - title: "太空档案"
+    content: "采集和托管太空数据，设有太空数据仓库。同时也致力于太空开发历史研究。"
+    button: 档案
+    link: /archives
+en:
+  - title: "InterImm"
+    content: "Founded on 2062-07-23; Headquarter located at Isidis on Mars"
+    button: About
+    link: /about
+  - title: "R & D"
+    content: "new frontiers of propulsion technology, spaceship, AI for space industries, even exoplanets"
+    button: Research
+    link: https://planiversity.interimm.org/
+  - title: "Archive of Space"
+    content: "data for space with data warehouses secured in space, history of space civilization"
+    button: Space Archive
+    link: /archives

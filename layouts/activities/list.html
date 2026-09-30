@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{- $d := index site.Data.activities site.Language.Lang -}}
+{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description) }}
+<div class="section">
+  <div class="wrap">
+    <ol class="timeline">
+      {{- range $d.list }}
+      <li class="timeline-item">
+        <span class="timeline-icon" aria-hidden="true">{{ .icon }}</span>
+        <p class="timeline-date"><time>{{ .datetime }}</time></p>
+        <h2 class="timeline-title">
+          {{- if .link }}<a href="{{ partial "link.html" .link }}">{{ .title | markdownify | emojify }}</a>{{ else }}{{ .title | markdownify | emojify }}{{ end -}}
+        </h2>
+        {{- with .description }}<p>{{ . }}</p>{{ end }}
+      </li>
+      {{- end }}
+    </ol>
+  </div>
+</div>
+{{ end }}

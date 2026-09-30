@@ -31,4 +31,7 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 
+# Hugo
+public/
+resources/
 .hugo_build.lock

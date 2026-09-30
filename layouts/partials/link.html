@@ -1,0 +1,9 @@
+{{- /* Turns a data-file link into a usable URL: site-internal paths get the current language prefix and a trailing slash, everything else is left alone. */ -}}
+{{- $u := . -}}
+{{- if and (strings.HasPrefix $u "/") (not (strings.HasPrefix $u "//")) -}}
+  {{- $u = $u | relLangURL -}}
+  {{- if not (or (strings.HasSuffix $u "/") (strings.Contains $u ".") (strings.Contains $u "#") (strings.Contains $u "?")) -}}
+    {{- $u = printf "%s/" $u -}}
+  {{- end -}}
+{{- end -}}
+{{- return $u -}}
