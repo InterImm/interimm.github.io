@@ -1,0 +1,79 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <h1>{{ site.Title }}</h1>
+      {{- with site.Params.description }}<p class="lede">{{ . }}</p>{{ end }}
+      {{- with site.Params.tags }}
+      <ul class="chips">
+        {{- range . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+      {{- end }}
+      {{- with site.Params.primary_button }}
+      <p><a class="btn btn-primary btn-lg" href="{{ partial "link.html" .link }}">{{ .title }}</a></p>
+      {{- end }}
+    </div>
+    {{- with site.Params.splash }}
+    <img class="hero-art" src="{{ . | relURL }}" alt="" width="840" height="727" fetchpriority="high">
+    {{- end }}
+  </div>
+</section>
+
+{{- /* The newest entry in the activity log doubles as the "latest" banner. */ -}}
+{{- with index site.Data.activities site.Language.Lang }}
+{{- with index .list 0 }}
+<div class="latest">
+  <div class="wrap">
+    <span class="badge">{{ i18n "latest" }}</span>
+    <time>{{ .datetime }}</time>
+    <a href="{{ partial "link.html" .link }}">{{ .title | markdownify | emojify }}</a>
+  </div>
+</div>
+{{- end }}
+{{- end }}
+
+{{- with index site.Data.showcards site.Language.Lang }}
+<section class="section">
+  <div class="wrap">
+    <div class="card-grid">
+      {{- range . }}
+      <article class="card">
+        <h2 class="card-title">{{ .title }}</h2>
+        <p>{{ .content | markdownify }}</p>
+        <p class="card-action"><a class="btn" href="{{ partial "link.html" .link }}">{{ .button }}</a></p>
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{- with index site.Data.topics site.Language.Lang }}
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">{{ i18n "topics" }}</h2>
+    <ul class="pills">
+      {{- range . }}
+      <li><a href="{{ partial "link.html" .link }}">{{ .topic }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+{{- end }}
+
+{{- with index site.Data.support site.Language.Lang }}
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">{{ .title }}</h2>
+    <div class="card-grid card-grid-4">
+      {{- range .list }}
+      <article class="card card-plain">
+        <h3 class="card-title">{{ .title }}</h3>
+        <p>{{ .content | markdownify }}</p>
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+{{ end }}

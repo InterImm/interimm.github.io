@@ -1,0 +1,8 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "title" .Title "description" .Description "tags" .Params.tags) }}
+<article class="section">
+  <div class="wrap prose{{ if .Params.wide }} prose-wide{{ end }}">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

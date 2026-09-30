@@ -1,0 +1,62 @@
+{{- $title := site.Title -}}
+{{- if .IsHome -}}
+  {{- with site.Params.description }}{{ $title = printf "%s | %s" site.Title . }}{{ end -}}
+{{- else if eq .Kind "404" -}}
+  {{- $title = printf "%s | %s" (i18n "not_found_title") site.Title -}}
+{{- else -}}
+  {{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+{{- $description := .Description | default site.Params.description -}}
+{{- $locale := replace site.Language.LanguageCode "-" "_" -}}
+{{- if eq $locale "en" }}{{ $locale = "en_US" }}{{ end -}}
+{{- $image := "" -}}
+{{- with .Params.images }}{{ $image = index . 0 }}{{ else }}{{ with site.Params.images }}{{ $image = index . 0 }}{{ end }}{{ end -}}
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f7fb" media="(prefers-color-scheme: light)">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="author" content="{{ site.Params.author }}">
+{{- if eq .Kind "404" }}
+<meta name="robots" content="noindex">
+{{- end }}
+{{ hugo.Generator }}
+
+<link rel="canonical" href="{{ .Permalink }}">
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{- end }}
+{{- $default := site.Sites.Default }}
+{{- range .AllTranslations }}{{ if eq .Language.Lang $default.Language.Lang }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{- end }}{{ end }}
+
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="{{ $locale }}">
+{{- with $image }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{- end }}
+<meta name="twitter:card" content="{{ if $image }}summary_large_image{{ else }}summary{{ end }}">
+
+<link rel="icon" href="{{ "assets/ico/favicon.ico" | relURL }}" sizes="32x32">
+<link rel="icon" type="image/png" href="{{ "assets/ico/favicon-192x192.png" | relURL }}" sizes="192x192">
+<link rel="apple-touch-icon" href="{{ "assets/ico/apple-touch-icon.png" | relURL }}">
+
+{{- with resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{- end }}
+
+{{- if .IsHome }}
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@type" "Organization" "name" site.Title "url" (site.BaseURL) "logo" ("assets/ico/favicon-192x192.png" | absURL) "sameAs" (slice (printf "https://github.com/%s" site.Params.github)) | jsonify (dict "noHTMLEscape" true) | safeJS }}
+</script>
+{{- end }}
+
+{{- if hugo.IsProduction }}{{ template "_internal/google_analytics.html" . }}{{ end }}

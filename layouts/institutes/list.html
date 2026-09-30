@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{- $d := index site.Data.institutes site.Language.Lang -}}
+{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description "tags" $d.tags) }}
+<div class="section">
+  <div class="wrap stack">
+    {{- range $d.list }}
+    <article class="card card-wide">
+      <h2 class="card-title">{{ .title }}</h2>
+      <p>{{ .description }}</p>
+      {{- with .image }}
+      <figure class="figure">
+        <img src="{{ .src | relURL }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" loading="lazy" decoding="async">
+      </figure>
+      {{- end }}
+    </article>
+    {{- end }}
+  </div>
+</div>
+{{ end }}

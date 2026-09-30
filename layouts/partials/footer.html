@@ -1,0 +1,21 @@
+{{- $columns := index site.Data.footer site.Language.Lang -}}
+<footer class="site-footer">
+  <div class="wrap">
+    {{- with $columns }}
+    <div class="footer-grid">
+      {{- range . }}
+      <section class="footer-col">
+        <h2>{{ .title }}</h2>
+        {{- with .description }}<p>{{ . }}</p>{{ end }}
+        <ul>
+          {{- range .list }}
+          <li><a href="{{ partial "link.html" .link }}">{{ .title }}</a></li>
+          {{- end }}
+        </ul>
+      </section>
+      {{- end }}
+    </div>
+    {{- end }}
+    <p class="footer-legal">© {{ now.Year }} {{ site.Params.author }}</p>
+  </div>
+</footer>

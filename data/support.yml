@@ -1,0 +1,24 @@
+cn:
+  title: "支持我们"
+  description:
+  list:
+    - title: "关注我们"
+      content: "关注我们的 GitHub 动态，或者社交网络动态，与大家分享我们的工作。"
+    - title: "参与讨论"
+      content: "我们时常组织关于太空科技和星际移民的在线讨论，参与并提出你的见解。"
+    - title: "使用我们的工具"
+      content: "我们创建了各种在线工具，如果我们的工具对您有所帮助，欢迎告知我们。"
+    - title: "加入我们"
+      content: "成为星际移民中心的一员，一起创造新的世界。"
+en:
+  title: Support Us
+  description:
+  list:
+    - title: "Connect with Us"
+      content: "Watch and star our GitHub repositories, connect on social media, and share our work with friends."
+    - title: "Join Our Discussions"
+      content: "We are hosting online free talks about space technology and spacefaring civilization, join the chat and promote your ideas."
+    - title: "Use Our Tools"
+      content: "We have created many tools to help you understand the life in other parts of the solar system. Feedback would be nice."
+    - title: "Join Us"
+      content: "Onboard the team and explore the new world with us."

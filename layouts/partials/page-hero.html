@@ -1,0 +1,12 @@
+{{- /* Expects a dict with title, and optionally description and tags. */ -}}
+<header class="page-hero">
+  <div class="wrap">
+    <h1>{{ .title }}</h1>
+    {{- with .description }}<p class="lede">{{ . }}</p>{{ end }}
+    {{- with .tags }}
+    <ul class="chips">
+      {{- range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{- end }}
+  </div>
+</header>
