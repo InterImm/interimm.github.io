@@ -26,8 +26,11 @@ The site is self-contained: layouts, styles and data live in this repository (th
 
 ## Deploy
 
-Pushing to the `hugo` branch builds the site in GitHub Actions and publishes the result to `master`.
-Pull requests against `hugo` only check that the site builds.
+Pushing to the `hugo` branch builds the site in GitHub Actions and publishes it with GitHub Pages' official
+deployment action. Pull requests against `hugo` only check that the site builds, and the workflow can also be
+run by hand from the Actions tab.
+
+This needs the repository's Pages source set to **GitHub Actions** (Settings > Pages > Build and deployment).
 
 Analytics is off: the old Universal Analytics property no longer collects data. To enable Google Analytics 4,
 uncomment the `services.googleAnalytics.id` block in `hugo.yaml`.

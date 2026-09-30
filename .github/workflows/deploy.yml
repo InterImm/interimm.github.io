@@ -1,5 +1,11 @@
 name: Deploy Website
 
+# Builds the Hugo site and publishes it with GitHub Pages' official deployment
+# action. Pull requests only verify that the site builds.
+#
+# One-time repo setting: Settings > Pages > Build and deployment > Source must
+# be "GitHub Actions" (not "Deploy from a branch").
+
 on:
   push:
     branches:
@@ -7,19 +13,22 @@ on:
   pull_request:
     branches:
       - hugo
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
+# Never cancel a deployment that is already running; superseded pull request
+# builds are cancelled.
 concurrency:
-  group: deploy-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -29,11 +38,22 @@ jobs:
       - name: Build
         run: hugo --minify --gc
 
-      # Pull requests only verify that the site builds; pushes to `hugo` publish it.
-      - name: Deploy
-        if: github.event_name == 'push'
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: master
+          path: ./public
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
