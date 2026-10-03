@@ -52,6 +52,17 @@ All of it is static files on GitHub Pages, so it costs nothing. GitHub Pages sen
 `data-lang` is `en` or `cn`; without it the script uses the page's `lang`. Without JavaScript, or if
 interimm.org can't be reached, the fallback markup stays.
 
+The header's language link (中文 / English) goes to the interimm.org home page of the other language. A site
+that has its own page in another language says where it is with `data-lang-cn` or `data-lang-en` on the header,
+for example `data-lang-cn="https://cities.interimm.org/?lang=cn"`, and the link goes there instead.
+
+### Caching
+
+GitHub Pages lets browsers cache files for about 10 minutes, so a kit change reaches other sites within that
+time. A site's own scripts and styles are a different matter: when a page starts using a new kit feature, add a
+version stamp to its own asset URLs (for example `js/main.js?v=20261003`, changed on every deploy) so phones
+don't keep running an old copy against the new page.
+
 Main building blocks: `.wrap`, `.space` (always-dark band with stars), `.kicker`, `.section`, `.section-alt`,
 `.section-title`, `.page-hero`, `.btn` / `.btn-primary` / `.btn-ghost` / `.btn-lg`, `.chips`, `.card`,
 `.card-grid`, `.tile` and `.bento`, `.card-link-wrap` + `.card-link` (whole card clickable), `.text-link`,

@@ -15,7 +15,7 @@
 
 {{- $languages := slice -}}
 {{- range site.Sites }}{{ if ne .Language.Lang site.Language.Lang -}}
-  {{- $languages = $languages | append (dict "code" .Language.LanguageCode "name" .Language.LanguageName "url" .Home.Permalink) -}}
+  {{- $languages = $languages | append (dict "lang" .Language.Lang "code" .Language.LanguageCode "name" .Language.LanguageName "url" .Home.Permalink) -}}
 {{- end }}{{ end -}}
 
 {{- $footer := slice -}}
