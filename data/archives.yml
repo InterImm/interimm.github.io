@@ -21,7 +21,7 @@ cn:
       description: 火星城市 3D 模型，以及各个火星城市的地图
       icon: "🏙️"
       button: 查看
-      link: https://interimm.org/cities
+      link: https://cities.interimm.org/?lang=cn
     - title: 火星地图
       description: 火星全球地图互动，包含火星城市和火星旅游景点
       icon: "🗺️"
@@ -91,7 +91,7 @@ en:
       description: 3D models and 2D map of cities on Mars
       icon: "🏙️"
       button: View
-      link: https://interimm.org/cities
+      link: https://cities.interimm.org/
     - title: Map of Mars
       description: Interactive map of mars with cities and sites marked
       icon: "🗺️"
