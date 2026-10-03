@@ -1,24 +1,51 @@
-// Live Mars clock on the home page (NASA Mars24 algorithm, Allison & McEwen 2000).
+// Home page instrument: today's positions of Earth and Mars and when a message
+// sent now reaches Isidis. The astronomy lives in the kit (window.InterImm.astro),
+// which also keeps the distance and delay readings live.
 (() => {
-  const el = document.querySelector('[data-mars-clock]');
-  if (!el) return;
-  const mtc = el.querySelector('[data-mtc]');
-  const msd = el.querySelector('[data-msd]');
-  const utc = el.querySelector('[data-utc]');
-  const TT_MINUS_UTC = 37 + 32.184; // TAI-UTC (leap seconds since 2017) + TT-TAI, in seconds
-  const pad = (n) => String(Math.floor(n)).padStart(2, '0');
-  const hms = (hours) => {
-    const s = hours * 3600;
-    return `${pad(s / 3600)}:${pad((s % 3600) / 60)}:${pad(s % 60)}`;
-  };
-  const tick = () => {
+  const root = document.querySelector('[data-instrument]');
+  const astro = window.InterImm && window.InterImm.astro;
+  if (!root || !astro) return;
+
+  const SCALE = 100; // svg units per AU; y is flipped so ecliptic north is up
+  const pt = ([x, y]) => [x * SCALE, -y * SCALE];
+
+  // Orbits: trace one full revolution through the mean anomaly.
+  ['earth', 'mars'].forEach((planet) => {
     const now = Date.now();
-    const jdTT = now / 86400000 + 2440587.5 + TT_MINUS_UTC / 86400;
-    const sol = (jdTT - 2405522.0028779) / 1.0274912517;
-    mtc.textContent = hms((((sol % 1) + 1) % 1) * 24);
-    msd.textContent = sol.toFixed(5);
-    utc.textContent = new Date(now).toISOString().slice(11, 19);
+    let d = '';
+    for (let k = 0; k <= 180; k += 1) {
+      const [x, y] = pt(astro.position(planet, now, k * 2 - 180));
+      d += `${k ? 'L' : 'M'}${x.toFixed(2)} ${y.toFixed(2)}`;
+    }
+    root.querySelector(`[data-orbit="${planet}"]`).setAttribute('d', `${d}Z`);
+  });
+
+  const beam = root.querySelector('[data-beam]');
+  const utc = root.querySelector('[data-arrive-utc]');
+  const mtc = root.querySelector('[data-arrive-mtc]');
+
+  const draw = () => {
+    const now = Date.now();
+    const pos = { earth: pt(astro.position('earth', now)), mars: pt(astro.position('mars', now)) };
+    Object.entries(pos).forEach(([planet, [x, y]]) => {
+      const dot = root.querySelector(`[data-planet="${planet}"]`);
+      dot.setAttribute('cx', x);
+      dot.setAttribute('cy', y);
+      const r = Math.hypot(x, y) || 1;
+      const label = root.querySelector(`[data-planet-label="${planet}"]`);
+      label.setAttribute('x', x + (x / r) * 10);
+      label.setAttribute('y', y + (y / r) * 10 + 3);
+      label.setAttribute('text-anchor', x >= 0 ? 'start' : 'end');
+    });
+    beam.setAttribute('x1', pos.earth[0]);
+    beam.setAttribute('y1', pos.earth[1]);
+    beam.setAttribute('x2', pos.mars[0]);
+    beam.setAttribute('y2', pos.mars[1]);
+
+    const arrive = now + astro.distance(now) * astro.AU_LIGHT_S * 1000;
+    utc.textContent = new Date(arrive).toISOString().slice(11, 19);
+    mtc.textContent = astro.mtc(arrive);
   };
-  tick();
-  setInterval(tick, 1000);
+  draw();
+  setInterval(draw, 1000);
 })();

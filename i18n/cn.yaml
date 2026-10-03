@@ -44,3 +44,59 @@
   translation: 实时计算，基于 NASA Mars24 算法
 - id: back_to_top
   translation: 回到顶部
+- id: org_name
+  translation: "星际移民中心"
+- id: org_sub
+  translation: "Interplanetary Immigration Center"
+- id: signal_distance
+  translation: "地球至火星"
+- id: signal_delay
+  translation: "单程信号"
+- id: signal_mars
+  translation: "伊希地"
+- id: signal_sol
+  translation: "火星日"
+- id: unit_min
+  translation: "分"
+- id: unit_s
+  translation: "秒"
+- id: about_project
+  translation: "关于这个项目"
+- id: hero_title
+  translation: "让火星上的生活更加美好。"
+- id: hero_lede
+  translation: "星际移民中心是星际移民局的核心机构，致力于太阳系开发的研究和服务。总部坐落在火星伊希地城市圈，并在地球各大洲设有地球事务部。"
+- id: distance_title
+  translation: "地球与火星的距离"
+- id: distance_note
+  translation: "百万公里，随两颗行星的运行不断变化。"
+- id: delay_title
+  translation: "单程信号延时"
+- id: arrive_before
+  translation: "此刻从地球发出的这个页面，将于 UTC"
+- id: arrive_mid
+  translation: "抵达伊希地，当地时间"
+- id: arrive_after
+  translation: "。"
+- id: instrument_note
+  translation: "各办事处之间的每一条消息都要跨越这段距离。数据由你的浏览器根据行星轨道和 NASA Mars24 算法实时计算。"
+- id: orbit_title
+  translation: "今日地球与火星绕太阳运行的位置，俯视图"
+- id: orbit_caption
+  translation: "黄道北极视角 · 今日"
+- id: earth
+  translation: "地球"
+- id: mars
+  translation: "火星"
+- id: from_center
+  translation: "中心动态"
+- id: log_columns
+  translation: "地球日期 · 火星日"
+- id: sol
+  translation: "火星日"
+- id: outside_story
+  translation: "故事之外"
+- id: outside_text
+  translation: "星际移民中心是虚构的，科学是真实的。InterImm 是一个开源的硬科幻与科普项目，自 2014 年起公开创作。"
+- id: in_city
+  translation: "城中机构"

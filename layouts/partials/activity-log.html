@@ -1,0 +1,23 @@
+{{- /* A list of activity entries, each dated in Earth time and in sols.
+       Expects a dict with `list` (entries from data/activities.yml). */ -}}
+<ol class="log-list">
+  {{- range .list }}
+  {{- $d := substr .datetime 0 10 }}
+  {{- if eq (len $d) 7 }}{{ $d = printf "%s-01" $d }}{{ end }}
+  {{- $sol := "" }}
+  {{- with time.AsTime (printf "%sT12:00:00Z" $d) }}
+    {{- /* Mars Sol Date (Mars24): days since the MSD epoch in Terrestrial Time, over the length of a sol. */ -}}
+    {{- $sol = math.Floor (div (sub (add (div (float .Unix) 86400) 2440587.5008007) 2405522.0028779) 1.0274912517) }}
+  {{- end }}
+  <li class="log-item">
+    <time class="log-date">{{ .datetime }}</time>
+    <span class="log-sol">{{ with $sol }}{{ i18n "sol" }} {{ lang.FormatNumberCustom 0 . }}{{ end }}</span>
+    <div class="log-body">
+      <h3 class="log-title">
+        {{- if .link }}<a href="{{ partial "link.html" .link }}">{{ .title | markdownify | emojify }}</a>{{ else }}{{ .title | markdownify | emojify }}{{ end -}}
+      </h3>
+      {{- with .description }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </li>
+  {{- end }}
+</ol>

@@ -4,7 +4,7 @@
     <div class="footer-brand">
       <a class="brand" href="{{ "/" | relLangURL }}">
         <img class="brand-mark" src="{{ "assets/ico/favicon-96x96.png" | relURL }}" alt="" width="36" height="36" loading="lazy">
-        <span class="brand-name">{{ site.Title }}</span>
+        <span class="brand-name">{{ i18n "org_name" }}<span class="brand-sub">{{ i18n "org_sub" }}</span></span>
       </a>
       <p class="kicker">{{ i18n "hero_kicker" }}</p>
     </div>
@@ -23,6 +23,6 @@
       {{- end }}
     </div>
     {{- end }}
-    <p class="footer-legal"><span>© {{ now.Year }} {{ site.Params.author }}</span><a href="#main">{{ i18n "back_to_top" }} ↑</a></p>
+    <p class="footer-legal"><span>© {{ now.Year }} {{ site.Params.author }}</span><span class="footer-legal-links"><a href="{{ "/project/" | relLangURL }}">{{ i18n "about_project" }}</a><a href="#main">{{ i18n "back_to_top" }} ↑</a></span></p>
   </div>
 </footer>

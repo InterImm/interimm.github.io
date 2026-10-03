@@ -1,92 +1,112 @@
 {{ define "main" }}
 {{- $archives := index site.Data.archives site.Language.Lang -}}
 {{- $activities := index site.Data.activities site.Language.Lang -}}
-<section class="hero space">
-  <div class="wrap hero-inner">
-    <div class="hero-copy">
-      <p class="kicker"><span class="pulse" aria-hidden="true"></span>{{ i18n "hero_kicker" }}</p>
-      <h1>{{ site.Title }}</h1>
-      {{- with site.Params.description }}<p class="lede">{{ . }}</p>{{ end }}
-      {{- with site.Params.tags }}
-      <ul class="chips">
-        {{- range . }}<li>{{ . }}</li>{{ end }}
-      </ul>
-      {{- end }}
-      <p class="hero-actions">
-        {{- with site.Params.primary_button }}
-        <a class="btn btn-primary btn-lg" href="{{ partial "link.html" .link }}">{{ .title }} <span aria-hidden="true">→</span></a>
-        {{- end }}
-        <a class="btn btn-ghost btn-lg" href="{{ "/about/" | relLangURL }}">{{ i18n "about_us" }}</a>
-      </p>
-    </div>
-
-    <div class="hero-visual">
-      <div class="planet-wrap" aria-hidden="true">
-        <div class="orbit orbit-1"><span class="moon"></span></div>
-        <div class="orbit orbit-2"><span class="moon moon-2"></span></div>
-        <div class="planet"></div>
-      </div>
-      <dl class="readout" data-mars-clock>
-        <div><dt>{{ i18n "mars_time" }}</dt><dd data-mtc>--:--:--</dd></div>
-        <div><dt>{{ i18n "mars_sol" }}</dt><dd data-msd>-----.-----</dd></div>
-        <div><dt>{{ i18n "earth_time" }}</dt><dd data-utc>--:--:--</dd></div>
-      </dl>
-    </div>
-  </div>
-
-  {{- /* The newest entry in the activity log doubles as the "latest" banner. */ -}}
-  {{- with $activities }}{{ with index .list 0 }}
+<section class="hero">
   <div class="wrap">
-    <a class="latest" href="{{ partial "link.html" .link }}">
-      <span class="badge">{{ i18n "latest" }}</span>
-      <time>{{ .datetime }}</time>
-      <span class="latest-title">{{ .title | markdownify | emojify }}</span>
-      <span class="latest-arrow" aria-hidden="true">→</span>
-    </a>
+    <p class="kicker">{{ i18n "hero_kicker" }}</p>
+    <h1>{{ i18n "hero_title" }}</h1>
+    <p class="lede">{{ i18n "hero_lede" }}</p>
+    {{- with site.Params.tags }}
+    <ul class="chips">
+      {{- range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{- end }}
+    <p class="hero-actions">
+      {{- with site.Params.primary_button }}
+      <a class="text-link" href="{{ partial "link.html" .link }}">{{ .title }} <span aria-hidden="true">→</span></a>
+      {{- end }}
+      <a class="text-link text-link-quiet" href="{{ "/about/" | relLangURL }}">{{ i18n "about_us" }}</a>
+    </p>
   </div>
-  {{- end }}{{ end }}
+</section>
+
+{{- /* The instrument: where Earth and Mars are today and how long a message takes. Filled in by main.js. */}}
+<section class="section instrument-section" data-instrument>
+  <div class="wrap instrument">
+    <figure class="orbit-figure">
+      <svg class="orbit" viewBox="-185 -185 370 370" role="img" aria-labelledby="orbit-title">
+        <title id="orbit-title">{{ i18n "orbit_title" }}</title>
+        <path class="orbit-path" data-orbit="earth"/>
+        <path class="orbit-path" data-orbit="mars"/>
+        <line class="orbit-beam" data-beam x1="0" y1="0" x2="0" y2="0"/>
+        <circle class="orbit-sun" r="3"/>
+        <circle class="orbit-earth" data-planet="earth" r="4" cx="-100" cy="0"/>
+        <circle class="orbit-mars" data-planet="mars" r="4" cx="150" cy="0"/>
+        <text data-planet-label="earth" x="-110" y="3" text-anchor="end">{{ i18n "earth" }}</text>
+        <text data-planet-label="mars" x="160" y="3">{{ i18n "mars" }}</text>
+      </svg>
+      <figcaption class="kicker">{{ i18n "orbit_caption" }}</figcaption>
+    </figure>
+    <div class="readings">
+      <div class="reading">
+        <p class="kicker">{{ i18n "distance_title" }}</p>
+        <p class="reading-value"><span data-signal-au>–</span> AU</p>
+        <p class="reading-note"><span data-signal-km>–</span> {{ i18n "distance_note" }}</p>
+      </div>
+      <div class="reading">
+        <p class="kicker">{{ i18n "delay_title" }}</p>
+        <p class="reading-value" data-signal-delay data-unit-min="{{ i18n "unit_min" }}" data-unit-s="{{ i18n "unit_s" }}">–</p>
+        <p class="reading-note">{{ i18n "arrive_before" }} <b data-arrive-utc>–</b> {{ i18n "arrive_mid" }} <b data-arrive-mtc>–</b>{{ if eq site.Language.Lang "en" }} {{ end }}{{ i18n "arrive_after" }}</p>
+      </div>
+      <p class="reading-note instrument-note">{{ i18n "instrument_note" }}</p>
+    </div>
+  </div>
 </section>
 
 {{- with index site.Data.showcards site.Language.Lang }}
 <section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="kicker">{{ i18n "what_we_do" }}</p>
-    </header>
-    <div class="pillars">
-      {{- range $i, $c := . }}
-      <article class="pillar">
-        <p class="pillar-num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</p>
-        <h2 class="pillar-title">{{ .title }}</h2>
-        <p>{{ .content | markdownify }}</p>
-        <p class="pillar-action"><a class="text-link" href="{{ partial "link.html" .link }}">{{ .button }} <span aria-hidden="true">→</span></a></p>
-      </article>
-      {{- end }}
+  <div class="wrap doc-grid">
+    <div class="doc-side"><p class="kicker">{{ i18n "what_we_do" }}</p></div>
+    <div class="doc-main">
+      <div class="pillars">
+        {{- range . }}
+        <article class="pillar">
+          <h2 class="pillar-title">{{ .title }}</h2>
+          <p>{{ .content | markdownify }}</p>
+          <p class="pillar-action"><a class="text-link" href="{{ partial "link.html" .link }}">{{ .button }} <span aria-hidden="true">→</span></a></p>
+        </article>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{- with $activities }}
+<section class="section">
+  <div class="wrap doc-grid">
+    <div class="doc-side">
+      <p class="kicker">{{ .title }}</p>
+      <p class="kicker">{{ i18n "log_columns" }}</p>
+    </div>
+    <div class="doc-main">
+      <header class="section-head section-head-split">
+        <h2 class="section-title">{{ i18n "from_center" }}</h2>
+        <a class="text-link" href="{{ "/activities/" | relLangURL }}">{{ i18n "all_activities" }} <span aria-hidden="true">→</span></a>
+      </header>
+      {{ partial "activity-log.html" (dict "list" (first 6 .list)) }}
     </div>
   </div>
 </section>
 {{- end }}
 
 {{- with $archives }}
-<section class="section section-alt">
-  <div class="wrap">
-    <header class="section-head section-head-split">
-      <div>
-        <p class="kicker">{{ .title }}</p>
-        <h2 class="section-title">{{ i18n "explore" }}</h2>
-        <p class="section-lede">{{ i18n "explore_lede" }}</p>
-      </div>
-      <a class="btn" href="{{ "/archives/" | relLangURL }}">{{ i18n "all_archives" }} <span aria-hidden="true">→</span></a>
-    </header>
-    <div class="bento bento-featured">
-      {{- range first 6 .list }}
-      <article class="tile card-link-wrap">
-        <span class="tile-icon">{{ partial "icon.html" .icon }}</span>
-        <h3 class="tile-title"><a class="card-link" href="{{ partial "link.html" .link }}">{{ .title }}</a></h3>
-        <p>{{ .description }}</p>
-        <p class="card-cta" aria-hidden="true">{{ .button }} <span>→</span></p>
-      </article>
-      {{- end }}
+<section class="section">
+  <div class="wrap doc-grid">
+    <div class="doc-side"><p class="kicker">{{ .title }}</p></div>
+    <div class="doc-main">
+      <header class="section-head section-head-split">
+        <div>
+          <h2 class="section-title">{{ i18n "explore" }}</h2>
+          <p class="section-lede">{{ i18n "explore_lede" }}</p>
+        </div>
+        <a class="text-link" href="{{ "/archives/" | relLangURL }}">{{ i18n "all_archives" }} <span aria-hidden="true">→</span></a>
+      </header>
+      <ul class="index-list">
+        {{- range .list }}
+        <li><a href="{{ partial "link.html" .link }}">{{ .title }}</a><span>{{ .description }}</span></li>
+        {{- end }}
+      </ul>
     </div>
   </div>
 </section>
@@ -94,34 +114,44 @@
 
 {{- with index site.Data.topics site.Language.Lang }}
 <section class="section">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="kicker">{{ i18n "topics" }}</p>
-    </header>
-    <ol class="topic-list">
-      {{- range $i, $t := . }}
-      <li><a href="{{ partial "link.html" .link }}"><span class="topic-num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span><span class="topic-name">{{ .topic }}</span><span class="topic-arrow" aria-hidden="true">↗</span></a></li>
-      {{- end }}
-    </ol>
+  <div class="wrap doc-grid">
+    <div class="doc-side"><p class="kicker">{{ i18n "topics" }}</p></div>
+    <div class="doc-main">
+      <ol class="topic-list">
+        {{- range . }}
+        <li><a href="{{ partial "link.html" .link }}"><span class="topic-name">{{ .topic }}</span><span class="topic-arrow" aria-hidden="true">↗</span></a></li>
+        {{- end }}
+      </ol>
+    </div>
   </div>
 </section>
 {{- end }}
 
 {{- with index site.Data.support site.Language.Lang }}
-<section class="section section-band space">
-  <div class="wrap">
-    <header class="section-head">
-      <h2 class="section-title">{{ .title }}</h2>
-    </header>
-    <div class="support-grid">
-      {{- range .list }}
-      <article class="support-item">
-        <h3>{{ .title }}</h3>
-        <p>{{ .content | markdownify }}</p>
-      </article>
-      {{- end }}
+<section class="section">
+  <div class="wrap doc-grid">
+    <div class="doc-side"><p class="kicker">{{ .title }}</p></div>
+    <div class="doc-main">
+      <div class="support-grid">
+        {{- range .list }}
+        <article class="support-item">
+          <h3>{{ .title }}</h3>
+          <p>{{ .content | markdownify }}</p>
+        </article>
+        {{- end }}
+      </div>
     </div>
   </div>
 </section>
 {{- end }}
+
+<section class="section">
+  <div class="wrap doc-grid">
+    <div class="doc-side"><p class="kicker">{{ i18n "outside_story" }}</p></div>
+    <div class="doc-main outside">
+      <p>{{ i18n "outside_text" }}</p>
+      <p><a class="text-link" href="{{ "/project/" | relLangURL }}">{{ i18n "about_project" }} <span aria-hidden="true">→</span></a></p>
+    </div>
+  </div>
+</section>
 {{ end }}

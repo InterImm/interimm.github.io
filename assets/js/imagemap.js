@@ -22,7 +22,7 @@
 
   const pin = L.divIcon({
     className: 'map-pin',
-    html: '<svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="#e5484d" stroke="#fff" stroke-width="2"/><path d="M14 5.5l2.6 5.7 6.2.7-4.6 4.2 1.3 6.1L14 19l-5.5 3.2 1.3-6.1-4.6-4.2 6.2-.7z" fill="#fff"/></svg>',
+    html: '<svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="#b0441c" stroke="#fff" stroke-width="2"/><path d="M14 5.5l2.6 5.7 6.2.7-4.6 4.2 1.3 6.1L14 19l-5.5 3.2 1.3-6.1-4.6-4.2 6.2-.7z" fill="#fff"/></svg>',
     iconSize: [28, 28],
     iconAnchor: [14, 14],
     popupAnchor: [0, -14],

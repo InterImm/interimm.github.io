@@ -44,3 +44,59 @@
   translation: Live, computed with the NASA Mars24 algorithm
 - id: back_to_top
   translation: Back to top
+- id: org_name
+  translation: "Interplanetary Immigration Center"
+- id: org_sub
+  translation: "Interplanetary Immigration Agency"
+- id: signal_distance
+  translation: "Earth to Mars"
+- id: signal_delay
+  translation: "One-way signal"
+- id: signal_mars
+  translation: "Isidis"
+- id: signal_sol
+  translation: "Sol"
+- id: unit_min
+  translation: "min"
+- id: unit_s
+  translation: "s"
+- id: about_project
+  translation: "About the project"
+- id: hero_title
+  translation: "Helping people build a better life on Mars."
+- id: hero_lede
+  translation: "The Interplanetary Immigration Center is the key member of the Interplanetary Immigration Agency. We research and develop the products a society on Mars needs, from our headquarters in Isidis and our offices on Earth."
+- id: distance_title
+  translation: "Distance, Earth to Mars"
+- id: distance_note
+  translation: "million kilometres, changing as both planets move."
+- id: delay_title
+  translation: "Signal delay, one way"
+- id: arrive_before
+  translation: "Sent now from Earth, this page reaches Isidis at"
+- id: arrive_mid
+  translation: "UTC,"
+- id: arrive_after
+  translation: "local Mars time."
+- id: instrument_note
+  translation: "Every message between our offices crosses this gap. Calculated in your browser from the planets’ orbits and the NASA Mars24 clock."
+- id: orbit_title
+  translation: "Earth and Mars around the Sun today, seen from above"
+- id: orbit_caption
+  translation: "Seen from ecliptic north · today"
+- id: earth
+  translation: "Earth"
+- id: mars
+  translation: "Mars"
+- id: from_center
+  translation: "From the Center"
+- id: log_columns
+  translation: "Earth date · Sol"
+- id: sol
+  translation: "Sol"
+- id: outside_story
+  translation: "A note from outside the story"
+- id: outside_text
+  translation: "The Center is fictional. The science is real. InterImm is an open-source science and science-fiction project, written in the open since 2014."
+- id: in_city
+  translation: "Places in the city"

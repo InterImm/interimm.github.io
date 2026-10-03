@@ -1,6 +1,9 @@
 # InterImm kit
 
-The shared look of every InterImm site: colours, fonts, header, footer, buttons, cards and page headers.
+The shared look of every InterImm site: colours, fonts, header, signal line, footer, buttons, cards and page headers.
+Every page reads as a public document of the Interplanetary Immigration Center: paper and ink, serif headings,
+thin rules, one Mars-rust accent, and a live signal line under the header with the Earth to Mars distance,
+the one-way signal delay, Isidis time (MTC) and the sol.
 interimm.org owns it and publishes it; every other site links it instead of copying it, so a change here
 reaches all of them on their next page load and they can't drift apart again.
 
@@ -9,7 +12,7 @@ reaches all of them on their next page load and they can't drift apart again.
 | `https://interimm.org/kit/interimm.css` | Stylesheet, including the fonts below | `assets/kit/interimm.css` |
 | `https://interimm.org/kit/interimm.js` | Header menu behaviour, and fills in the shared header and footer | `assets/kit/interimm.js` |
 | `https://interimm.org/kit/nav.cn.json`, `nav.en.json` | The current menu and footer for each language | generated from `hugo.yaml` and `data/footer.yml` by `layouts/partials/kit.html` |
-| `https://interimm.org/kit/fonts/` | Space Grotesk and JetBrains Mono (SIL OFL) | `static/kit/fonts/` |
+| `https://interimm.org/kit/fonts/` | Source Serif 4, IBM Plex Sans and IBM Plex Mono (SIL OFL) | `static/kit/fonts/` |
 | `https://interimm.org/kit/` | Live style guide showing every component | `static/kit/index.html` |
 
 All of it is static files on GitHub Pages, so it costs nothing. GitHub Pages sends
@@ -34,7 +37,7 @@ All of it is static files on GitHub Pages, so it costs nothing. GitHub Pages sen
   </header>
 
   <main id="main">
-    <header class="page-hero space">
+    <header class="page-hero">
       <div class="wrap">
         <p class="kicker">InterImm</p>
         <h1>Page title</h1>
@@ -48,6 +51,11 @@ All of it is static files on GitHub Pages, so it costs nothing. GitHub Pages sen
 </body>
 </html>
 ```
+
+The header gets the signal line automatically; add `data-no-signal` to the header to leave it out (for example on
+a full-screen app). Any element with `data-signal-au`, `data-signal-delay`, `data-signal-mtc` or `data-signal-sol`
+is filled in live, and page scripts can use the same calculations through `window.InterImm.astro`.
+`.space` no longer draws a dark starfield; it is kept so older pages still get the right spacing.
 
 `data-lang` is `en` or `cn`; without it the script uses the page's `lang`. Without JavaScript, or if
 interimm.org can't be reached, the fallback markup stays.
@@ -63,7 +71,8 @@ time. A site's own scripts and styles are a different matter: when a page starts
 version stamp to its own asset URLs (for example `js/main.js?v=20261003`, changed on every deploy) so phones
 don't keep running an old copy against the new page.
 
-Main building blocks: `.wrap`, `.space` (always-dark band with stars), `.kicker`, `.section`, `.section-alt`,
+Main building blocks: `.wrap`, `.kicker` (small mono label), `.signal`, `.doc-grid` + `.doc-side` + `.doc-main`,
+`.meta-list`, `.plate`, `.crumbs`, `.section`, `.section-alt`,
 `.section-title`, `.page-hero`, `.btn` / `.btn-primary` / `.btn-ghost` / `.btn-lg`, `.chips`, `.card`,
 `.card-grid`, `.tile` and `.bento`, `.card-link-wrap` + `.card-link` (whole card clickable), `.text-link`,
 `.prose`. Tokens such as `--bg`, `--surface`, `--text`, `--muted`, `--border`, `--accent`, `--link`,
