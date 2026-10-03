@@ -228,6 +228,12 @@ ul, ol { margin: 0 0 1em; }
 }
 
 @media (max-width: 58rem) {
+  /* brand and menu button stay on one row; a long name truncates instead of pushing the button down */
+  .header-inner { gap: 0.5rem 0.75rem; min-height: 0; padding-block: 0.6rem; }
+  .header-inner > .brand { flex: 1 1 0; min-width: 0; }
+  .header-inner > .brand .brand-name { min-width: 0; }
+  .header-inner > .brand .brand-name, .header-inner > .brand .brand-sub { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .nav-toggle { flex: none; }
   .js .nav-toggle { display: inline-flex; }
   .js .site-nav { display: none; flex-basis: 100%; padding-bottom: 0.75rem; }
   .js .site-nav.is-open { display: flex; flex-direction: column; align-items: stretch; }
