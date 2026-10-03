@@ -1,0 +1,41 @@
+{{- /* Publishes the shared kit at /kit/: interimm.css and interimm.js (unminified,
+       so other sites can read them) and, for the current language,
+       nav.<lang>.json with the menu and footer that other InterImm sites render.
+       Use with partialCached keyed by language. Returns the stylesheet and
+       script so this site can link them too. */ -}}
+{{- $css := resources.Get "kit/interimm.css" -}}
+{{- $js := resources.Get "kit/interimm.js" -}}
+
+{{- $menu := slice -}}
+{{- range site.Menus.main -}}
+  {{- $children := slice -}}
+  {{- range .Children }}{{ $children = $children | append (dict "id" .Identifier "name" .Name "url" (.URL | absURL)) }}{{ end -}}
+  {{- $menu = $menu | append (dict "id" .Identifier "name" .Name "url" (.URL | absURL) "children" $children) -}}
+{{- end -}}
+
+{{- $languages := slice -}}
+{{- range site.Sites }}{{ if ne .Language.Lang site.Language.Lang -}}
+  {{- $languages = $languages | append (dict "code" .Language.LanguageCode "name" .Language.LanguageName "url" .Home.Permalink) -}}
+{{- end }}{{ end -}}
+
+{{- $footer := slice -}}
+{{- range index site.Data.footer site.Language.Lang -}}
+  {{- $links := slice -}}
+  {{- range .list }}{{ $links = $links | append (dict "title" .title "url" ((partial "link.html" .link) | absURL)) }}{{ end -}}
+  {{- $footer = $footer | append (dict "title" .title "description" (.description | default "") "links" $links) -}}
+{{- end -}}
+
+{{- $nav := dict
+  "title" site.Title
+  "author" site.Params.author
+  "home" site.Home.Permalink
+  "logo" ("assets/ico/favicon-96x96.png" | absURL)
+  "github" (printf "https://github.com/%s" site.Params.github)
+  "labels" (dict "menu" (i18n "menu") "language" (i18n "language") "backToTop" (i18n "back_to_top") "kicker" (i18n "hero_kicker"))
+  "menu" $menu
+  "languages" $languages
+  "footer" $footer
+-}}
+{{- $json := resources.FromString (printf "kit/nav.%s.json" site.Language.Lang) ($nav | jsonify (dict "indent" "  " "noHTMLEscape" true)) -}}
+{{- $_ := $json.Permalink -}}
+{{- return (dict "css" $css "js" $js) -}}

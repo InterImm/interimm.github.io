@@ -78,7 +78,7 @@
       </div>
       <a class="btn" href="{{ "/archives/" | relLangURL }}">{{ i18n "all_archives" }} <span aria-hidden="true">→</span></a>
     </header>
-    <div class="bento">
+    <div class="bento bento-featured">
       {{- range first 6 .list }}
       <article class="tile card-link-wrap">
         <span class="tile-icon">{{ partial "icon.html" .icon }}</span>

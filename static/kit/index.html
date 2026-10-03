@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>InterImm kit | Style guide</title>
+<meta name="description" content="The shared styles, header and footer of every InterImm site.">
+<link rel="icon" href="/assets/ico/favicon.ico" sizes="32x32">
+<!-- Other sites use the absolute URLs https://interimm.org/kit/interimm.css and .js -->
+<link rel="stylesheet" href="interimm.css">
+<script src="interimm.js" defer></script>
+<style>
+  .swatches { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); margin: 0; padding: 0; list-style: none; }
+  .swatch { overflow: hidden; border: 1px solid var(--border); border-radius: 0.75rem; background: var(--surface); font-size: 0.85rem; }
+  .swatch span { display: block; height: 3.5rem; border-bottom: 1px solid var(--border); }
+  .swatch code { display: block; padding: 0.5rem 0.75rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .demo-label { margin: 2.5rem 0 1rem; }
+  pre { overflow-x: auto; padding: 1.25rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.6; }
+  .type-display { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin: 0 0 0.5rem; }
+  .type-mono { font-family: var(--font-mono); color: var(--muted); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-interimm-header data-lang="en" data-current="none">
+  <div class="wrap header-inner">
+    <a class="brand" href="/en/">InterImm</a>
+  </div>
+</header>
+
+<main id="main">
+  <header class="page-hero space">
+    <div class="wrap">
+      <p class="kicker">InterImm kit</p>
+      <h1>Style guide</h1>
+      <p class="lede">The shared colours, type, header, footer and components of every InterImm site. Link the kit, don't copy it.</p>
+      <ul class="chips"><li>interimm.css</li><li>interimm.js</li><li>nav.en.json · nav.cn.json</li></ul>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="kicker">Use</p>
+        <h2 class="section-title">Add it to a page</h2>
+        <p class="section-lede">The header and footer are filled in from interimm.org's live menu. Whatever is inside them is the fallback.</p>
+      </header>
+<pre>&lt;link rel="stylesheet" href="https://interimm.org/kit/interimm.css"&gt;
+&lt;script src="https://interimm.org/kit/interimm.js" defer&gt;&lt;/script&gt;
+
+&lt;header class="site-header" data-interimm-header data-lang="en" data-current="logistics"&gt;
+  &lt;div class="wrap header-inner"&gt;&lt;a class="brand" href="https://interimm.org/en/"&gt;InterImm&lt;/a&gt;&lt;/div&gt;
+&lt;/header&gt;
+...
+&lt;footer class="site-footer" data-interimm-footer&gt;&lt;/footer&gt;</pre>
+      <p>Full notes: <a href="https://github.com/InterImm/interimm.github.io/blob/hugo/kit/README.md">kit/README.md</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="kicker">Tokens</p>
+        <h2 class="section-title">Colour</h2>
+        <p class="section-lede">Follows the visitor's light or dark setting. Inside <code>.space</code> it is always dark.</p>
+      </header>
+      <ul class="swatches">
+        <li class="swatch"><span style="background: var(--bg)"></span><code>--bg</code></li>
+        <li class="swatch"><span style="background: var(--bg-alt)"></span><code>--bg-alt</code></li>
+        <li class="swatch"><span style="background: var(--surface)"></span><code>--surface</code></li>
+        <li class="swatch"><span style="background: var(--text)"></span><code>--text</code></li>
+        <li class="swatch"><span style="background: var(--muted)"></span><code>--muted</code></li>
+        <li class="swatch"><span style="background: var(--border-strong)"></span><code>--border-strong</code></li>
+        <li class="swatch"><span style="background: var(--accent)"></span><code>--accent</code></li>
+        <li class="swatch"><span style="background: var(--link)"></span><code>--link</code></li>
+      </ul>
+
+      <p class="kicker demo-label">Type</p>
+      <p class="type-display">Space Grotesk</p>
+      <p class="type-mono">JetBrains Mono · 02:07:11 MTC · 54302.08832</p>
+      <p>Body text uses the system font, with the system CJK font for Chinese. 正文使用系统字体。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="kicker">Components</p>
+        <h2 class="section-title">Buttons, chips and links</h2>
+      </header>
+      <div class="row">
+        <a class="btn btn-primary btn-lg" href="#">Primary <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost btn-lg" href="#">Ghost</a>
+        <a class="btn" href="#">Default <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="#">Text link <span aria-hidden="true">→</span></a>
+      </div>
+      <ul class="chips"><li>.chips</li><li>Developing Mars</li><li>Open source</li></ul>
+
+      <p class="kicker demo-label">.bento of .tile.card-link-wrap</p>
+      <div class="bento">
+        <article class="tile card-link-wrap">
+          <span class="tile-icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <h3 class="tile-title"><a class="card-link" href="#">Tile title</a></h3>
+          <p>The whole tile is clickable through its title link.</p>
+          <p class="card-cta" aria-hidden="true">Open <span>→</span></p>
+        </article>
+        <article class="tile">
+          <span class="tile-icon"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span>
+          <h3 class="tile-title">Plain tile</h3>
+          <p>Without the link wrapper it is static.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">.card</h3>
+          <p>A flat surface for forms, results and longer content.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section space">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="kicker">.space</p>
+        <h2 class="section-title">Always dark, with stars</h2>
+        <p class="section-lede">Use it for page headers and the occasional band. Components inside it pick up the dark tokens.</p>
+      </header>
+      <div class="row">
+        <a class="btn btn-primary" href="#">Primary</a>
+        <a class="btn btn-ghost" href="#">Ghost</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" data-interimm-footer></footer>
+</body>
+</html>
