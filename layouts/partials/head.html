@@ -49,6 +49,8 @@
 <link rel="icon" type="image/png" href="{{ "assets/ico/favicon-192x192.png" | relURL }}" sizes="192x192">
 <link rel="apple-touch-icon" href="{{ "assets/ico/apple-touch-icon.png" | relURL }}">
 
+{{- $kit := partialCached "kit.html" . site.Language.Lang }}
+<link rel="stylesheet" href="{{ $kit.css.RelPermalink }}?v={{ substr (md5 $kit.css.Content) 0 10 }}">
 {{- with resources.Get "css/main.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
 {{- end }}

@@ -1,6 +1,13 @@
 {{- $columns := index site.Data.footer site.Language.Lang -}}
 <footer class="site-footer">
   <div class="wrap">
+    <div class="footer-brand">
+      <a class="brand" href="{{ "/" | relLangURL }}">
+        <img class="brand-mark" src="{{ "assets/ico/favicon-96x96.png" | relURL }}" alt="" width="36" height="36" loading="lazy">
+        <span class="brand-name">{{ site.Title }}</span>
+      </a>
+      <p class="kicker">{{ i18n "hero_kicker" }}</p>
+    </div>
     {{- with $columns }}
     <div class="footer-grid">
       {{- range . }}
@@ -16,6 +23,6 @@
       {{- end }}
     </div>
     {{- end }}
-    <p class="footer-legal">© {{ now.Year }} {{ site.Params.author }}</p>
+    <p class="footer-legal"><span>© {{ now.Year }} {{ site.Params.author }}</span><a href="#main">{{ i18n "back_to_top" }} ↑</a></p>
   </div>
 </footer>

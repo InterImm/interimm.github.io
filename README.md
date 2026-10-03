@@ -22,6 +22,7 @@ The site is self-contained: layouts, styles and data live in this repository (th
 | `i18n/` | Small UI strings (menu label, 404 text, ...) |
 | `layouts/` | Templates |
 | `assets/` | CSS and JS, minified and fingerprinted by Hugo at build time |
+| `assets/kit/`, `static/kit/` | The shared InterImm kit (styles, fonts, header and footer) that other InterImm sites link from interimm.org/kit/. See [kit/README.md](kit/README.md) |
 | `static/` | Files served as-is (images, video, favicons) |
 
 ## Deploy

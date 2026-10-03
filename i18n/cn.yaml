@@ -20,3 +20,27 @@
   translation: 点击标记查看详情
 - id: topics
   translation: 探索方向
+- id: hero_kicker
+  translation: 火星 · 伊希地 · 成立于 2062
+- id: about_us
+  translation: 关于我们
+- id: what_we_do
+  translation: 我们做什么
+- id: explore
+  translation: 档案与工具
+- id: explore_lede
+  translation: 关于地球之外生活的书籍、地图与工具，全部开源。
+- id: all_archives
+  translation: 全部档案
+- id: all_activities
+  translation: 全部活动
+- id: mars_time
+  translation: 火星协调时 MTC
+- id: mars_sol
+  translation: 火星日序 MSD
+- id: earth_time
+  translation: 地球 UTC
+- id: clock_note
+  translation: 实时计算，基于 NASA Mars24 算法
+- id: back_to_top
+  translation: 回到顶部
