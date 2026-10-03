@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{- $d := index site.Data.cities site.Language.Lang -}}
-{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description) }}
+{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description "kicker" site.Title) }}
 <div class="section">
   <div class="wrap">
     <div class="card-grid">

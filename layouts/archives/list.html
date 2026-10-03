@@ -1,13 +1,13 @@
 {{ define "main" }}
 {{- $d := index site.Data.archives site.Language.Lang -}}
-{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description) }}
+{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description "kicker" site.Title) }}
 <div class="section">
   <div class="wrap">
-    <div class="card-grid">
+    <div class="bento">
       {{- range $d.list }}
-      <article class="card card-link-wrap">
-        <p class="card-icon" aria-hidden="true">{{ .icon }}</p>
-        <h2 class="card-title"><a class="card-link" href="{{ partial "link.html" .link }}">{{ .title }}</a></h2>
+      <article class="tile card-link-wrap">
+        <span class="tile-icon">{{ partial "icon.html" .icon }}</span>
+        <h2 class="tile-title"><a class="card-link" href="{{ partial "link.html" .link }}">{{ .title }}</a></h2>
         <p>{{ .description }}</p>
         <p class="card-cta" aria-hidden="true">{{ .button }} <span>→</span></p>
       </article>

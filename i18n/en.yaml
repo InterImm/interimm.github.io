@@ -20,3 +20,27 @@
   translation: Select a marker for details
 - id: topics
   translation: Explore topics
+- id: hero_kicker
+  translation: Isidis, Mars · Est. 2062
+- id: about_us
+  translation: About us
+- id: what_we_do
+  translation: What we do
+- id: explore
+  translation: Archives and tools
+- id: explore_lede
+  translation: Books, maps and calculators for life beyond Earth, all open source.
+- id: all_archives
+  translation: All archives
+- id: all_activities
+  translation: All activities
+- id: mars_time
+  translation: Coordinated Mars Time
+- id: mars_sol
+  translation: Mars Sol Date
+- id: earth_time
+  translation: Earth UTC
+- id: clock_note
+  translation: Live, computed with the NASA Mars24 algorithm
+- id: back_to_top
+  translation: Back to top

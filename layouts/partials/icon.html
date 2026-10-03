@@ -1,0 +1,25 @@
+{{- /* Line icon for a data-file entry. Takes the entry's emoji `icon` and returns a matching SVG; unknown emoji are shown as-is. */ -}}
+{{- $paths := dict
+  "📖" `<path d="M3 5.5C5.5 4.5 8.5 4.5 12 6.5v13c-3.5-2-6.5-2-9-1z"/><path d="M21 5.5c-2.5-1-5.5-1-9 1v13c3.5-2 6.5-2 9-1z"/>`
+  "🪐" `<circle cx="12" cy="12" r="5"/><path d="M7.2 10.6C3.6 12.4 1.9 14.6 2.7 16c1.1 1.9 6.6.8 12.2-2.4s9-7.4 7.9-9.3c-.8-1.4-3.6-1.3-7.1.1"/>`
+  "🏢" `<path d="M4 21V5l8-2v18M12 21V9l8 2v10M2 21h20"/><path d="M7 8h2M7 12h2M7 16h2M15 14h2M15 17h2"/>`
+  "🏙️" `<path d="M3 21V11l5-3v13M8 21V5l6-2v18M14 21V9l7 3v9M2 21h20"/><path d="M11 8v.01M11 12v.01M11 16v.01M17 14v.01M17 17v.01"/>`
+  "🗺️" `<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>`
+  "🕒" `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`
+  "☀️" `<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>`
+  "⭐" `<path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z"/>`
+  "⏳" `<path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9s10 4 10 9"/>`
+  "📡" `<path d="M4 10a8 8 0 0 0 10 10z"/><path d="m9 15 3-3M13 3a8 8 0 0 1 8 8M13 7a4 4 0 0 1 4 4"/>`
+  "🎫" `<path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a3 3 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a3 3 0 0 0 0-6z"/><path d="M14 5v3M14 11v2M14 16v3"/>`
+  "🚀" `<path d="M5 15c-1.5 1.3-2 4-2 6 2 0 4.7-.5 6-2"/><path d="M9 12a17 17 0 0 1 11-9c0 4-1.3 8-9 11"/><path d="M9 12H5l2-4h4M12 15v4l4-2v-4"/><circle cx="15" cy="9" r="1"/>`
+  "🧭" `<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>`
+  "🎓" `<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/>`
+  "🛰️" `<path d="m13 7 4 4-6 6-4-4z"/><path d="m9 5 3 3M5 9l3 3M16 12l3 3M12 16l3 3M15 15l2-2"/><path d="M5 19a3 3 0 0 0 3-3"/>`
+  "🎤" `<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>`
+  "💬" `<path d="M4 5h16v11H9l-5 4z"/>`
+-}}
+{{- with index $paths . -}}
+<svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{{ . | safeHTML }}</svg>
+{{- else -}}
+<span class="icon icon-emoji" aria-hidden="true">{{ . }}</span>
+{{- end -}}

@@ -1,6 +1,7 @@
-{{- /* Expects a dict with title, and optionally description and tags. */ -}}
-<header class="page-hero">
+{{- /* Expects a dict with title, and optionally kicker, description and tags. */ -}}
+<header class="page-hero space">
   <div class="wrap">
+    {{- with .kicker }}<p class="kicker">{{ . }}</p>{{ end }}
     <h1>{{ .title }}</h1>
     {{- with .description }}<p class="lede">{{ . }}</p>{{ end }}
     {{- with .tags }}

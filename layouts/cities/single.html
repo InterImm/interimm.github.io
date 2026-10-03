@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ partial "page-hero.html" (dict "title" .Title "description" .Description) }}
+{{ partial "page-hero.html" (dict "title" .Title "description" .Description "kicker" .FirstSection.Title) }}
 <article class="section">
   <div class="wrap prose prose-wide">
     {{ .Content }}

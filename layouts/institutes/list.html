@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{- $d := index site.Data.institutes site.Language.Lang -}}
-{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description "tags" $d.tags) }}
+{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description "tags" $d.tags "kicker" site.Title) }}
 <div class="section">
   <div class="wrap stack">
     {{- range $d.list }}

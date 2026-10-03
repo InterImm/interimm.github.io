@@ -22,7 +22,7 @@ The site is self-contained: layouts, styles and data live in this repository (th
 | `i18n/` | Small UI strings (menu label, 404 text, ...) |
 | `layouts/` | Templates |
 | `assets/` | CSS and JS, minified and fingerprinted by Hugo at build time |
-| `static/` | Files served as-is (images, video, favicons) |
+| `static/` | Files served as-is (images, video, favicons, self-hosted fonts under `fonts/`) |
 
 ## Deploy
 

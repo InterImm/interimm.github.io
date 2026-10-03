@@ -1,17 +1,22 @@
 {{ define "main" }}
 {{- $d := index site.Data.activities site.Language.Lang -}}
-{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description) }}
+{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description "kicker" site.Title) }}
 <div class="section">
   <div class="wrap">
     <ol class="timeline">
+      {{- $year := "" }}
       {{- range $d.list }}
+      {{- $y := substr .datetime 0 4 }}
       <li class="timeline-item">
-        <span class="timeline-icon" aria-hidden="true">{{ .icon }}</span>
-        <p class="timeline-date"><time>{{ .datetime }}</time></p>
-        <h2 class="timeline-title">
-          {{- if .link }}<a href="{{ partial "link.html" .link }}">{{ .title | markdownify | emojify }}</a>{{ else }}{{ .title | markdownify | emojify }}{{ end -}}
-        </h2>
-        {{- with .description }}<p>{{ . }}</p>{{ end }}
+        {{- if ne $y $year }}{{ $year = $y }}<p class="timeline-year" aria-hidden="true">{{ $y }}</p>{{ end }}
+        <span class="timeline-icon">{{ partial "icon.html" .icon }}</span>
+        <div class="timeline-body">
+          <p class="timeline-date"><time>{{ .datetime }}</time></p>
+          <h2 class="timeline-title">
+            {{- if .link }}<a href="{{ partial "link.html" .link }}">{{ .title | markdownify | emojify }}</a>{{ else }}{{ .title | markdownify | emojify }}{{ end -}}
+          </h2>
+          {{- with .description }}<p>{{ . }}</p>{{ end }}
+        </div>
       </li>
       {{- end }}
     </ol>
