@@ -100,3 +100,23 @@
   translation: "星际移民中心是虚构的，科学是真实的。InterImm 是一个开源的硬科幻与科普项目，自 2014 年起公开创作。"
 - id: in_city
   translation: "城中机构"
+- id: open_3d
+  translation: "在 3D 中打开"
+- id: model_caption
+  translation: "3D 模型。走进城市的街道，看看维持这座城市需要什么。"
+- id: facilities
+  translation: "城市设施"
+- id: facilities_lede
+  translation: "在火星开放设施模拟中实时运行，数据每 10 分钟更新一次。"
+- id: open_dashboard
+  translation: "仪表盘"
+- id: status_operating
+  translation: "运行中"
+- id: status_maintenance
+  translation: "检修中"
+- id: status_reduced
+  translation: "减产"
+- id: status_offline
+  translation: "停机"
+- id: design_value
+  translation: "设计值"

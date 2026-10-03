@@ -1,6 +1,11 @@
 ---
 title: 南河城
 description: 南河城是位于火星伊希地的一座重要城市
+images:
+  - /images/cities/isidis-procyon-3d.jpg
+# City id in the 3D explorer (cities.interimm.org) and city name in Mars Open Facilities
+explorer: isidis-procyon
+facility_city: Procyon City
 tags:
   - 2123
   - 服务业
@@ -37,6 +42,4 @@ map:
 
 目前建设情况可以参考下面的3D模型。可以在我们的 GitHub 创建新的 [Issues](https://github.com/InterImm/martian-cities/issues/2) 来提出你的建筑或者地标设想，并且命名。
 
-{{< rawhtml >}}
-<div class="embed"><iframe title="南河城 3D 模型" src="https://sketchfab.com/models/38483b36866847baba1dd115066dd5eb/embed" loading="lazy" allow="fullscreen; xr-spatial-tracking" allowfullscreen></iframe></div>
-{{< /rawhtml >}}
+{{< city3d >}}

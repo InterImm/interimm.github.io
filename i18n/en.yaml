@@ -100,3 +100,23 @@
   translation: "The Center is fictional. The science is real. InterImm is an open-source science and science-fiction project, written in the open since 2014."
 - id: in_city
   translation: "Places in the city"
+- id: open_3d
+  translation: "Open in 3D"
+- id: model_caption
+  translation: "3D model. Walk its streets and see what it takes to keep the city alive."
+- id: facilities
+  translation: "Facilities"
+- id: facilities_lede
+  translation: "Running live in the Mars Open Facilities simulation. Values update every 10 minutes."
+- id: open_dashboard
+  translation: "Dashboard"
+- id: status_operating
+  translation: "Operating"
+- id: status_maintenance
+  translation: "Maintenance"
+- id: status_reduced
+  translation: "Reduced output"
+- id: status_offline
+  translation: "Offline"
+- id: design_value
+  translation: "design"

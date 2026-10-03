@@ -1,0 +1,12 @@
+{{- /* A still of the city's 3D model that opens it in the explorer (cities.interimm.org). Reads `explorer` and `images` from front matter. */ -}}
+{{- $p := .Page -}}
+{{- with $p.Params.explorer -}}
+{{- $url := printf "%s#city=%s" site.Params.explorer . -}}
+<figure class="plate city3d">
+  <a class="plate-frame plate-link" href="{{ $url }}">
+    {{- with $p.Params.images }}<img src="{{ index . 0 | relURL }}" alt="" width="1854" height="968" loading="lazy" decoding="async">{{ end }}
+    <span class="plate-action">{{ i18n "open_3d" }} <span aria-hidden="true">↗</span></span>
+  </a>
+  <figcaption><span>{{ $p.Title }} · {{ i18n "model_caption" }}</span><a class="mono" href="{{ $url }}">cities.interimm.org</a></figcaption>
+</figure>
+{{- end -}}

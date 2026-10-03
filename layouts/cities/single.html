@@ -18,6 +18,7 @@
     {{ .Content }}
   </div>
 </article>
+{{- partial "city-facilities.html" . }}
 {{- with .Params.map.markers }}
 <section class="section">
   <div class="wrap doc-grid">
