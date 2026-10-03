@@ -22,6 +22,11 @@ cn:
       icon: "🏙️"
       button: 查看
       link: https://cities.interimm.org/?lang=cn
+    - title: 火星开放设施
+      description: 火星殖民地的关键工厂实时运行：推进剂、能源、空气、钢铁、水和食物
+      icon: "🏭"
+      button: 查看
+      link: https://interimm.org/mars-open-facilities/
     - title: 火星地图
       description: 火星全球地图互动，包含火星城市和火星旅游景点
       icon: "🗺️"
@@ -92,6 +97,11 @@ en:
       icon: "🏙️"
       button: View
       link: https://cities.interimm.org/
+    - title: Mars Open Facilities
+      description: "The key plants of the Mars colonies, running live: propellant, power, air, iron, water and food"
+      icon: "🏭"
+      button: View Live
+      link: https://interimm.org/mars-open-facilities/
     - title: Map of Mars
       description: Interactive map of mars with cities and sites marked
       icon: "🗺️"
