@@ -15,7 +15,7 @@
 
 {{- $languages := slice -}}
 {{- range site.Sites }}{{ if ne .Language.Lang site.Language.Lang -}}
-  {{- $languages = $languages | append (dict "code" .Language.LanguageCode "name" .Language.LanguageName "url" .Home.Permalink) -}}
+  {{- $languages = $languages | append (dict "lang" .Language.Lang "code" .Language.LanguageCode "name" .Language.LanguageName "url" .Home.Permalink) -}}
 {{- end }}{{ end -}}
 
 {{- $footer := slice -}}
@@ -27,11 +27,14 @@
 
 {{- $nav := dict
   "title" site.Title
+  "name" (i18n "org_name")
+  "subtitle" (i18n "org_sub")
+  "project" (dict "name" (i18n "about_project") "url" ("/project/" | absLangURL))
   "author" site.Params.author
   "home" site.Home.Permalink
   "logo" ("assets/ico/favicon-96x96.png" | absURL)
   "github" (printf "https://github.com/%s" site.Params.github)
-  "labels" (dict "menu" (i18n "menu") "language" (i18n "language") "backToTop" (i18n "back_to_top") "kicker" (i18n "hero_kicker"))
+  "labels" (dict "menu" (i18n "menu") "language" (i18n "language") "backToTop" (i18n "back_to_top") "kicker" (i18n "hero_kicker") "signal" (dict "distance" (i18n "signal_distance") "delay" (i18n "signal_delay") "mars" (i18n "signal_mars") "sol" (i18n "signal_sol") "min" (i18n "unit_min") "s" (i18n "unit_s")))
   "menu" $menu
   "languages" $languages
   "footer" $footer

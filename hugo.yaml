@@ -32,6 +32,14 @@ params:
   # Default social-sharing image (pages can override with `images:` in front matter).
   images:
     - /images/about/interimm_banner_black.png
+  # Sister sites that city pages link to and read from.
+  explorer: https://cities.interimm.org/
+  facilities:
+    dashboard: https://interimm.org/mars-open-facilities/
+    # Read at build time, and again in the browser for live values (first that answers wins).
+    data:
+      - https://interimm.org/mars-open-facilities/data/index.json
+      - https://raw.githubusercontent.com/InterImm/mars-open-facilities/data/index.json
 
 languages:
   cn:
@@ -184,3 +192,8 @@ languages:
           parent: more
           url: https://interimm.org/interplanetary-logistics/
           weight: 4
+
+# City pages read live facility data at build time; don't reuse a stale copy.
+caches:
+  getresource:
+    maxAge: 10m

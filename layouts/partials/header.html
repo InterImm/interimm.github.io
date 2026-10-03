@@ -2,8 +2,8 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{{ "/" | relLangURL }}">
-      <img class="brand-mark" src="{{ "assets/ico/favicon-96x96.png" | relURL }}" alt="" width="32" height="32">
-      <span class="brand-name">{{ site.Title }}</span>
+      <img class="brand-mark" src="{{ "assets/ico/favicon-96x96.png" | relURL }}" alt="" width="36" height="36">
+      <span class="brand-name">{{ i18n "org_name" }}<span class="brand-sub">{{ i18n "org_sub" }}</span></span>
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -57,4 +57,5 @@
       </ul>
     </nav>
   </div>
+  {{- partial "signal.html" . }}
 </header>

@@ -1,8 +1,42 @@
 {{ define "main" }}
-{{ partial "page-hero.html" (dict "title" .Title "description" .Description "kicker" .FirstSection.Title) }}
-<article class="section">
+{{- $crumbs := slice (dict "name" .FirstSection.Title "url" .FirstSection.RelPermalink) }}
+{{- with .Parent }}{{ if ne . $.FirstSection }}{{ $crumbs = $crumbs | append (dict "name" .Title "url" .RelPermalink) }}{{ end }}{{ end }}
+<header class="page-hero record-head">
+  <div class="wrap">
+    <p class="crumbs kicker">{{ range $i, $c := $crumbs }}{{ if $i }} / {{ end }}<a href="{{ $c.url }}">{{ $c.name }}</a>{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+    {{- with .Params.tags }}
+    <ul class="chips">
+      {{- range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{- end }}
+  </div>
+</header>
+<article class="section section-flush">
   <div class="wrap prose prose-wide">
     {{ .Content }}
   </div>
 </article>
+{{- partial "city-facilities.html" . }}
+{{- with .Params.map.markers }}
+<section class="section">
+  <div class="wrap doc-grid">
+    <div class="doc-side"><p class="kicker">{{ i18n "in_city" }}</p></div>
+    <div class="doc-main">
+      <ol class="entry-list">
+        {{- range $i, $m := . }}
+        <li>
+          <span class="entry-num">{{ printf "%02d" (add $i 1) }}</span>
+          <div>
+            <h2 class="entry-title">{{ with .link }}<a href="{{ . }}">{{ $m.name }}</a>{{ else }}{{ .name }}{{ end }}</h2>
+            {{- with .description }}<p>{{ . }}</p>{{ end }}
+          </div>
+        </li>
+        {{- end }}
+      </ol>
+    </div>
+  </div>
+</section>
+{{- end }}
 {{ end }}

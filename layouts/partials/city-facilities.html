@@ -1,0 +1,53 @@
+{{- /* The city's facilities in Mars Open Facilities: name, status and headline readings.
+       Rendered at build time from the published index.json; js/facilities.js refreshes the
+       values in the browser. Expects the page; uses its `facility_city` front matter. */ -}}
+{{- $city := .Params.facility_city -}}
+{{- $cfg := site.Params.facilities -}}
+{{- $list := slice -}}
+{{- if and $city $cfg -}}
+  {{- range $cfg.data -}}
+    {{- if not $list -}}
+      {{- with resources.GetRemote . -}}
+        {{- with .Err }}{{ warnf "facilities: %s" . }}{{ else -}}
+          {{- range (. | transform.Unmarshal).facilities }}{{ if eq .city $city }}{{ $list = $list | append . }}{{ end }}{{ end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $zh := eq site.Language.Lang "cn" -}}
+{{- with $list }}
+<section class="section" data-facilities="{{ $cfg.data | jsonify }}" data-city="{{ $city }}">
+  <div class="wrap doc-grid">
+    <div class="doc-side"><p class="kicker">{{ i18n "facilities" }}</p></div>
+    <div class="doc-main">
+      <p class="section-lede">{{ i18n "facilities_lede" }}</p>
+      <ul class="facility-list">
+        {{- range . }}
+        <li class="facility" data-facility="{{ .id }}">
+          <div class="facility-head">
+            <h2 class="facility-name"><a href="{{ $cfg.dashboard }}#{{ .id }}">{{ if $zh }}{{ .name_zh | default .name }}{{ else }}{{ .name }}{{ end }}</a></h2>
+            <span class="facility-status" data-status="{{ .status }}"
+              data-label-operating="{{ i18n "status_operating" }}" data-label-maintenance="{{ i18n "status_maintenance" }}"
+              data-label-reduced="{{ i18n "status_reduced" }}" data-label-offline="{{ i18n "status_offline" }}">{{ i18n (printf "status_%s" .status) | default .status }}</span>
+          </div>
+          {{- if not $zh }}{{ with .summary }}<p class="facility-summary">{{ . }}</p>{{ end }}{{ end }}
+          <dl class="facility-kpis">
+            {{- range first 3 .kpis }}
+            <div data-kpi="{{ .tag }}">
+              <dt>{{ .label }}</dt>
+              <dd><b data-value>{{ lang.FormatNumber 1 (.value | default 0) }}</b> {{ .unit }}<span class="facility-design"> · {{ i18n "design_value" }} {{ .design }}</span></dd>
+            </div>
+            {{- end }}
+          </dl>
+          <p class="facility-link"><a class="text-link" href="{{ $cfg.dashboard }}#{{ .id }}">{{ i18n "open_dashboard" }} <span aria-hidden="true">↗</span></a></p>
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+  </div>
+</section>
+{{- with resources.Get "js/facilities.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{- end }}
+{{- end }}

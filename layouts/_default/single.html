@@ -1,6 +1,6 @@
 {{ define "main" }}
-{{ partial "page-hero.html" (dict "title" .Title "description" .Description "tags" .Params.tags "kicker" site.Title) }}
-<article class="section">
+{{ partial "page-hero.html" (dict "title" .Title "description" .Description "tags" .Params.tags "kicker" (i18n "org_name")) }}
+<article class="section section-flush">
   <div class="wrap prose{{ if .Params.wide }} prose-wide{{ end }}">
     {{ .Content }}
   </div>

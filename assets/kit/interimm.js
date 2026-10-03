@@ -10,17 +10,109 @@
 // 2. On every page it wires up the header menu: the mobile toggle and one
 //    dropdown open at a time. Without JavaScript the menu is simply always
 //    visible and the dropdowns are native <details> elements.
+// 3. It keeps the signal line under the header live: the current Earth to Mars
+//    distance, the one-way signal delay, Mars time (MTC) and the sol. Any
+//    element with data-signal-au, -delay, -mtc or -sol is filled in. The same
+//    calculations are exposed as window.InterImm.astro for page scripts.
 (() => {
   document.documentElement.classList.add('js');
   const script = document.currentScript;
   const base = script ? new URL('.', script.src) : new URL('/kit/', location.href);
+
+  // ---------- astronomy ----------
+  // Mars time: NASA Mars24 (Allison & McEwen 2000). Planet positions: JPL
+  // approximate Keplerian elements (Standish), accurate to a few thousandths
+  // of an AU over 1800-2050, which is plenty for a light-time readout.
+  const TT_MINUS_UTC = 37 + 32.184; // TAI-UTC (leap seconds since 2017) + TT-TAI, seconds
+  const AU_KM = 149597870.7;
+  const AU_LIGHT_S = 499.004784;
+  const RAD = Math.PI / 180;
+  const julian = (ms) => ms / 86400000 + 2440587.5;
+  const msd = (ms) => (julian(ms) + TT_MINUS_UTC / 86400 - 2405522.0028779) / 1.0274912517;
+  const pad = (n) => String(Math.floor(n)).padStart(2, '0');
+  const mtc = (ms) => {
+    const s = Math.floor((((msd(ms) % 1) + 1) % 1) * 86400);
+    return `${pad(s / 3600)}:${pad((s % 3600) / 60)}:${pad(s % 60)}`;
+  };
+  // a (AU), e, I, L, longitude of perihelion, longitude of node (deg), then rates per century
+  const ELEMENTS = {
+    earth: [1.00000261, 0.01671123, -0.00001531, 100.46457166, 102.93768193, 0, 0.00000562, -0.00004392, -0.01294668, 35999.37244981, 0.32327364, 0],
+    mars: [1.52371034, 0.09339410, 1.84969142, -4.55343205, -23.94362959, 49.55953891, 0.00001847, 0.00007882, -0.00813131, 19140.30268499, 0.44441088, -0.29257343],
+  };
+  // Heliocentric ecliptic position in AU. Pass meanAnomaly (deg) to trace the orbit instead.
+  const position = (planet, ms, meanAnomaly) => {
+    const T = (julian(ms) - 2451545) / 36525;
+    const [a0, e0, i0, l0, p0, o0, da, de, di, dl, dp, dO] = ELEMENTS[planet];
+    const a = a0 + da * T;
+    const e = e0 + de * T;
+    const inc = (i0 + di * T) * RAD;
+    const peri = p0 + dp * T;
+    const node = (o0 + dO * T) * RAD;
+    const w = peri * RAD - node;
+    const M = (meanAnomaly ?? ((((l0 + dl * T - peri) % 360) + 540) % 360) - 180) * RAD;
+    let E = M + e * Math.sin(M);
+    for (let k = 0; k < 8; k++) E -= (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E));
+    const x1 = a * (Math.cos(E) - e);
+    const y1 = a * Math.sqrt(1 - e * e) * Math.sin(E);
+    const cw = Math.cos(w), sw = Math.sin(w), cn = Math.cos(node), sn = Math.sin(node), ci = Math.cos(inc);
+    return [
+      (cw * cn - sw * sn * ci) * x1 + (-sw * cn - cw * sn * ci) * y1,
+      (cw * sn + sw * cn * ci) * x1 + (-sw * sn + cw * cn * ci) * y1,
+      Math.sin(w) * Math.sin(inc) * x1 + Math.cos(w) * Math.sin(inc) * y1,
+    ];
+  };
+  const distance = (ms) => {
+    const e = position('earth', ms);
+    const m = position('mars', ms);
+    return Math.hypot(m[0] - e[0], m[1] - e[1], m[2] - e[2]);
+  };
+  const astro = { msd, mtc, position, distance, AU_KM, AU_LIGHT_S };
+  window.InterImm = Object.assign(window.InterImm || {}, { astro });
+
+  // "13 min 42 s" / "13 分 42 秒", from the page's own data-unit-min / data-unit-s, else English.
+  const duration = (seconds, el) => {
+    const min = el.dataset.unitMin || 'min';
+    const sec = el.dataset.unitS || 's';
+    return `${Math.floor(seconds / 60)} ${min} ${String(Math.round(seconds % 60)).padStart(2, '0')} ${sec}`;
+  };
+  const tickSignal = () => {
+    const now = Date.now();
+    const au = distance(now);
+    const set = (attr, fn) => document.querySelectorAll(`[${attr}]`).forEach((el) => { el.textContent = fn(el); });
+    set('data-signal-au', () => au.toFixed(3));
+    set('data-signal-km', () => (au * AU_KM / 1e6).toFixed(1));
+    set('data-signal-delay', (el) => duration(au * AU_LIGHT_S, el));
+    set('data-signal-mtc', () => mtc(now));
+    set('data-signal-sol', () => Math.floor(msd(now)).toLocaleString('en-US'));
+  };
+  const startSignal = () => {
+    if (!document.querySelector('[data-signal-au],[data-signal-delay],[data-signal-mtc],[data-signal-sol]')) return;
+    tickSignal();
+    setInterval(tickSignal, 1000);
+  };
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
   const GITHUB_ICON = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.921.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>';
   const MENU_ICON = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 
-  const renderHeader = (nav, current) => {
+  // A site with its own page in another language names it on the header, e.g.
+  // data-lang-cn="https://cities.interimm.org/?lang=cn"; otherwise the language
+  // link goes to that language's interimm.org home page.
+  const langUrl = (header, l) => header.getAttribute(`data-lang-${l.lang}`) || l.url;
+
+  const renderSignal = (nav) => {
+    const s = nav.labels.signal;
+    if (!s) return '';
+    return `<div class="signal"><p class="wrap signal-inner">
+      <span class="signal-item">${esc(s.distance)} <b data-signal-au>–</b> AU</span>
+      <span class="signal-item">${esc(s.delay)} <b data-signal-delay data-unit-min="${esc(s.min)}" data-unit-s="${esc(s.s)}">–</b></span>
+      <span class="signal-item">${esc(s.mars)} <b data-signal-mtc>–</b> MTC</span>
+      <span class="signal-item">${esc(s.sol)} <b data-signal-sol>–</b></span>
+    </p></div>`;
+  };
+
+  const renderHeader = (header, nav, current) => {
     const link = (item) => `<a href="${esc(item.url)}"${item.id === current ? ' aria-current="page"' : ''}>${esc(item.name)}</a>`;
     const items = nav.menu.map((item) => {
       if (item.children && item.children.length) {
@@ -29,9 +121,9 @@
       }
       return `<li class="nav-item">${link(item).replace('<a ', '<a class="nav-link" ')}</li>`;
     }).join('');
-    const langs = nav.languages.map((l) => `<a class="nav-link lang-link" href="${esc(l.url)}" hreflang="${esc(l.code)}" lang="${esc(l.code)}"><span class="sr-only">${esc(nav.labels.language)}: </span>${esc(l.name)}</a>`).join('');
+    const langs = nav.languages.map((l) => `<a class="nav-link lang-link" href="${esc(langUrl(header, l))}" hreflang="${esc(l.code)}" lang="${esc(l.code)}"><span class="sr-only">${esc(nav.labels.language)}: </span>${esc(l.name)}</a>`).join('');
     return `<div class="wrap header-inner">
-      <a class="brand" href="${esc(nav.home)}"><img class="brand-mark" src="${esc(nav.logo)}" alt="" width="32" height="32"><span class="brand-name">${esc(nav.title)}</span></a>
+      <a class="brand" href="${esc(nav.home)}"><img class="brand-mark" src="${esc(nav.logo)}" alt="" width="36" height="36"><span class="brand-name">${esc(nav.name || nav.title)}${nav.subtitle ? `<span class="brand-sub">${esc(nav.subtitle)}</span>` : ''}</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">${esc(nav.labels.menu)}</span>${MENU_ICON}</button>
       <nav id="site-nav" class="site-nav" aria-label="${esc(nav.labels.menu)}">
         <ul class="nav-list">${items}</ul>
@@ -40,16 +132,16 @@
           ${langs ? `<li class="nav-item">${langs}</li>` : ''}
         </ul>
       </nav>
-    </div>`;
+    </div>${header.hasAttribute('data-no-signal') ? '' : renderSignal(nav)}`;
   };
 
   const renderFooter = (nav) => `<div class="wrap">
       <div class="footer-brand">
-        <a class="brand" href="${esc(nav.home)}"><img class="brand-mark" src="${esc(nav.logo)}" alt="" width="36" height="36" loading="lazy"><span class="brand-name">${esc(nav.title)}</span></a>
+        <a class="brand" href="${esc(nav.home)}"><img class="brand-mark" src="${esc(nav.logo)}" alt="" width="36" height="36" loading="lazy"><span class="brand-name">${esc(nav.name || nav.title)}${nav.subtitle ? `<span class="brand-sub">${esc(nav.subtitle)}</span>` : ''}</span></a>
         <p class="kicker">${esc(nav.labels.kicker)}</p>
       </div>
       <div class="footer-grid">${nav.footer.map((col) => `<section class="footer-col"><h2>${esc(col.title)}</h2>${col.description ? `<p>${esc(col.description)}</p>` : ''}<ul>${col.links.map((l) => `<li><a href="${esc(l.url)}">${esc(l.title)}</a></li>`).join('')}</ul></section>`).join('')}</div>
-      <p class="footer-legal"><span>© ${new Date().getFullYear()} ${esc(nav.author)}</span><a href="#">${esc(nav.labels.backToTop)} ↑</a></p>
+      <p class="footer-legal"><span>© ${new Date().getFullYear()} ${esc(nav.author)}</span><span class="footer-legal-links">${nav.project ? `<a href="${esc(nav.project.url)}">${esc(nav.project.name)}</a>` : ''}<a href="#">${esc(nav.labels.backToTop)} ↑</a></span></p>
     </div>`;
 
   const initMenu = () => {
@@ -94,18 +186,18 @@
   const start = () => {
     const header = document.querySelector('[data-interimm-header]');
     const footer = document.querySelector('[data-interimm-footer]');
-    if (!header && !footer) { initMenu(); return; }
+    if (!header && !footer) { initMenu(); startSignal(); return; }
 
     const host = header || footer;
     const lang = host.dataset.lang || (document.documentElement.lang.toLowerCase().startsWith('zh') ? 'cn' : 'en');
     fetch(new URL(`nav.${lang}.json`, base))
       .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then((nav) => {
-        if (header) header.innerHTML = renderHeader(nav, header.dataset.current);
+        if (header) header.innerHTML = renderHeader(header, nav, header.dataset.current);
         if (footer) footer.innerHTML = renderFooter(nav);
       })
       .catch(() => { /* keep the page's own fallback markup */ })
-      .finally(initMenu);
+      .finally(() => { initMenu(); startSignal(); });
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

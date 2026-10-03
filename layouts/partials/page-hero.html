@@ -1,7 +1,9 @@
-{{- /* Expects a dict with title, and optionally kicker, description and tags. */ -}}
-<header class="page-hero space">
+{{- /* Expects a dict with title, and optionally kicker, description, tags and crumbs (a slice of dicts with name and url). */ -}}
+<header class="page-hero">
   <div class="wrap">
-    {{- with .kicker }}<p class="kicker">{{ . }}</p>{{ end }}
+    {{- with .crumbs }}
+    <p class="crumbs kicker">{{ range $i, $c := . }}{{ if $i }} / {{ end }}<a href="{{ $c.url }}">{{ $c.name }}</a>{{ end }}</p>
+    {{- else }}{{ with .kicker }}<p class="kicker">{{ . }}</p>{{ end }}{{ end }}
     <h1>{{ .title }}</h1>
     {{- with .description }}<p class="lede">{{ . }}</p>{{ end }}
     {{- with .tags }}

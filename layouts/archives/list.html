@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{- $d := index site.Data.archives site.Language.Lang -}}
-{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description "kicker" site.Title) }}
-<div class="section">
+{{ partial "page-hero.html" (dict "title" $d.title "description" $d.description "kicker" (i18n "org_name")) }}
+<div class="section section-flush">
   <div class="wrap">
     <div class="bento">
       {{- range $d.list }}

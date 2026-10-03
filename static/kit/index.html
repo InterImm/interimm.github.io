@@ -18,7 +18,7 @@
   .row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
   .demo-label { margin: 2.5rem 0 1rem; }
   pre { overflow-x: auto; padding: 1.25rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.6; }
-  .type-display { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin: 0 0 0.5rem; }
+  .type-display { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1; margin: 0 0 0.5rem; }
   .type-mono { font-family: var(--font-mono); color: var(--muted); }
 </style>
 </head>
@@ -32,7 +32,7 @@
 </header>
 
 <main id="main">
-  <header class="page-hero space">
+  <header class="page-hero">
     <div class="wrap">
       <p class="kicker">InterImm kit</p>
       <h1>Style guide</h1>
@@ -65,7 +65,7 @@
       <header class="section-head">
         <p class="kicker">Tokens</p>
         <h2 class="section-title">Colour</h2>
-        <p class="section-lede">Follows the visitor's light or dark setting. Inside <code>.space</code> it is always dark.</p>
+        <p class="section-lede">Follows the visitor's light or dark setting.</p>
       </header>
       <ul class="swatches">
         <li class="swatch"><span style="background: var(--bg)"></span><code>--bg</code></li>
@@ -79,9 +79,9 @@
       </ul>
 
       <p class="kicker demo-label">Type</p>
-      <p class="type-display">Space Grotesk</p>
-      <p class="type-mono">JetBrains Mono · 02:07:11 MTC · 54302.08832</p>
-      <p>Body text uses the system font, with the system CJK font for Chinese. 正文使用系统字体。</p>
+      <p class="type-display">Source Serif 4</p>
+      <p>IBM Plex Sans for text. Chinese uses the system Song (serif) and Hei (sans) faces. 正文使用系统中文字体。</p>
+      <p class="type-mono">IBM Plex Mono · 06:13:20 MTC · Sol 54,302</p>
     </div>
   </section>
 
@@ -120,17 +120,19 @@
     </div>
   </section>
 
-  <section class="section space">
+  <section class="section">
     <div class="wrap">
       <header class="section-head">
-        <p class="kicker">.space</p>
-        <h2 class="section-title">Always dark, with stars</h2>
-        <p class="section-lede">Use it for page headers and the occasional band. Components inside it pick up the dark tokens.</p>
+        <p class="kicker">.signal</p>
+        <h2 class="section-title">The signal line</h2>
+        <p class="section-lede">Every page carries the live Earth to Mars distance, the one-way signal delay, Isidis time and the sol under its header. The kit adds it to the shared header; any element with <code>data-signal-au</code>, <code>-delay</code>, <code>-mtc</code> or <code>-sol</code> is kept up to date.</p>
       </header>
-      <div class="row">
-        <a class="btn btn-primary" href="#">Primary</a>
-        <a class="btn btn-ghost" href="#">Ghost</a>
-      </div>
+      <dl class="meta-list">
+        <div><dt>Earth to Mars</dt><dd><span data-signal-au>–</span> AU</dd></div>
+        <div><dt>One-way signal</dt><dd data-signal-delay>–</dd></div>
+        <div><dt>Isidis</dt><dd><span data-signal-mtc>–</span> MTC</dd></div>
+        <div><dt>Sol</dt><dd data-signal-sol>–</dd></div>
+      </dl>
     </div>
   </section>
 </main>
