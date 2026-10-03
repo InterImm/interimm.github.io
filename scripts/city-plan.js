@@ -1,9 +1,22 @@
 // Draws a top-down city plan (PNG) from a binary STL: the highest surface at each
 // point, shaded by height and outlined. Prints the image size and the model-to-pixel
 // transform used to place map markers.
-// Usage: node scripts/city-plan.js <model.stl> <out.png> [width]
+// Usage: node scripts/city-plan.js <model.stl> <out.png> [width] [--skip x0,y0,x1,y1,zmin ...]
+// --skip leaves out geometry lying above zmin inside a box of model coordinates, for
+// example lettering modelled on a roof. Nanhe City (isidis-procyon) uses:
+//   --skip 1700,60,2200,260,18.3   (the POWER PLANT lettering on the power plant)
 const fs = require('fs'), zlib = require('zlib');
-const [, , stlPath, outPath, widthArg] = process.argv;
+const [, , stlPath, outPath, ...rest] = process.argv;
+const skips = [];
+let widthArg;
+for (let i = 0; i < rest.length; i++) {
+  if (rest[i] === '--skip') skips.push(rest[++i].split(',').map(Number));
+  else widthArg = rest[i];
+}
+const skipped = (t) => skips.some(([x0, y0, x1, y1, zmin]) => [0, 1, 2].every((v) => {
+  const x = t[v * 3], y = t[v * 3 + 1], z = t[v * 3 + 2];
+  return x >= x0 && x <= x1 && y >= y0 && y <= y1 && z > zmin;
+}));
 const b = fs.readFileSync(stlPath);
 const n = b.readUInt32LE(80);
 const tri = new Float32Array(n * 9);
@@ -17,6 +30,7 @@ mn = [mn[0] - pad, mn[1] - pad]; mx = [mx[0] + pad, mx[1] + pad];
 const W = +widthArg || 2400, s = W / (mx[0] - mn[0]), H = Math.round((mx[1] - mn[1]) * s);
 const Z = new Float32Array(W * H).fill(-Infinity);
 for (let i = 0; i < n; i++) {
+  if (skips.length && skipped(tri.subarray(i * 9, i * 9 + 9))) continue;
   const p = [0, 1, 2].map((v) => [(tri[i * 9 + v * 3] - mn[0]) * s, (mx[1] - tri[i * 9 + v * 3 + 1]) * s, tri[i * 9 + v * 3 + 2]]);
   const x0 = Math.max(0, Math.floor(Math.min(p[0][0], p[1][0], p[2][0]))), x1 = Math.min(W - 1, Math.ceil(Math.max(p[0][0], p[1][0], p[2][0])));
   const y0 = Math.max(0, Math.floor(Math.min(p[0][1], p[1][1], p[2][1]))), y1 = Math.min(H - 1, Math.ceil(Math.max(p[0][1], p[1][1], p[2][1])));
