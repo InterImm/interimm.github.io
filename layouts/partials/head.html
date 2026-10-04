@@ -12,7 +12,7 @@
 {{- $image := "" -}}
 {{- with .Params.images }}{{ $image = index . 0 }}{{ else }}{{ with site.Params.images }}{{ $image = index . 0 }}{{ end }}{{ end -}}
 <meta charset="utf-8">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.classList.add("js");(function(m){if(m)document.documentElement.dataset.theme=m[1]})(document.cookie.match(/(?:^|; )interimm-theme=(light|dark)/))</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#131315" media="(prefers-color-scheme: dark)">

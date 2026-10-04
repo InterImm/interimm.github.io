@@ -9,7 +9,7 @@
    Center. Paper and ink, serif headings, thin rules, one Mars-rust colour, and
    one live element (the signal line under the header) that always knows how far
    away Mars is. Colours are tokens on :root and follow the visitor's light or
-   dark setting. Keep changes additive: other sites depend on these class names. */
+   dark setting, or the theme they picked with the header switch. Keep changes additive: other sites depend on these class names. */
 
 /* ---------- fonts (self-hosted, SIL OFL; see static/kit/fonts) ---------- */
 @font-face {
@@ -83,8 +83,13 @@
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, var(--cjk), monospace;
 }
 
+/* Dark: follows the visitor's system setting unless they picked a theme with the
+   header switch, which interimm.js stores as data-theme="light" or "dark" on <html>.
+   Site styles use the same two selectors for their own dark colours:
+     @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { ... } }
+     :root[data-theme="dark"] { ... } */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #131315;
     --bg-alt: #19191c;
     --surface: #1b1b1e;
@@ -101,8 +106,28 @@
     --accent-soft: rgb(226 122 80 / 0.12);
     --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px rgb(0 0 0 / 0.3);
   }
-  .brand-mark { filter: invert(1); }
+  :root:not([data-theme="light"]) .brand-mark { filter: invert(1); }
 }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #131315;
+  --bg-alt: #19191c;
+  --surface: #1b1b1e;
+  --surface-2: #232327;
+  --text: #ebeae4;
+  --muted: #9b9a93;
+  --border: #2d2d31;
+  --border-strong: #ebeae4;
+  --link: #ebeae4;
+  --focus: #e27a50;
+  --accent: #e27a50;
+  --accent-hover: #ec916c;
+  --accent-text: #1c0700;
+  --accent-soft: rgb(226 122 80 / 0.12);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px rgb(0 0 0 / 0.3);
+}
+:root[data-theme="dark"] .brand-mark { filter: invert(1); }
+:root[data-theme="light"] { color-scheme: light; }
 
 /* `.space` used to be an always-dark starfield band. It is now a quiet header
    band on paper, kept so pages that use it still get the right spacing. */
@@ -203,6 +228,18 @@ ul, ol { margin: 0 0 1em; }
 .lang-link { color: var(--text); }
 .nav-tools .nav-link svg { width: 1rem; height: 1rem; }
 
+/* light/dark switch, added to .nav-tools by interimm.js (or any [data-theme-toggle] button) */
+.theme-toggle {
+  display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0;
+  border: 0; background: none; color: var(--muted); font: inherit; font-size: 0.9375rem; line-height: inherit; cursor: pointer;
+  transition: color 0.15s;
+}
+.theme-toggle:hover { color: var(--text); }
+.theme-toggle svg { width: 1rem; height: 1rem; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme-now="dark"] .theme-toggle .icon-sun { display: inline; }
+:root[data-theme-now="dark"] .theme-toggle .icon-moon { display: none; }
+
 .dropdown { position: relative; }
 .dropdown > summary { list-style: none; }
 .dropdown > summary::-webkit-details-marker { display: none; }
@@ -241,6 +278,7 @@ ul, ol { margin: 0 0 1em; }
   .nav-link, .dropdown > summary { padding: 0.55rem 0; font-size: 1rem; border-bottom: 1px solid var(--border); width: 100%; }
   .nav-tools { flex-direction: row; flex-wrap: wrap; gap: 0 1.5rem; padding-top: 0.25rem; }
   .nav-tools .nav-link { width: auto; border-bottom: 0; }
+  .nav-tools .theme-toggle { padding: 0.55rem 0; font-size: 1rem; }
   .dropdown-menu { position: static; min-width: 0; margin: 0 0 0.5rem; padding: 0.25rem 0; border: 0; box-shadow: none; background: transparent; }
   .dropdown-menu a { padding-inline: 1rem 0; }
 }

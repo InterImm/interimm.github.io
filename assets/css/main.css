@@ -160,3 +160,11 @@
 @media print {
   .instrument-section { display: none; }
 }
+
+/* Dark: the plan is ink on white paper, so show it as white ink on the dark page. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .imagemap-canvas { background: #201f1b; }
+  :root:not([data-theme="light"]) .imagemap-canvas .leaflet-image-layer { filter: invert(0.93) hue-rotate(180deg); }
+}
+:root[data-theme="dark"] .imagemap-canvas { background: #201f1b; }
+:root[data-theme="dark"] .imagemap-canvas .leaflet-image-layer { filter: invert(0.93) hue-rotate(180deg); }

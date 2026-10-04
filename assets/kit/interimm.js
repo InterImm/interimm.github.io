@@ -14,6 +14,12 @@
 //    distance, the one-way signal delay, Mars time (MTC) and the sol. Any
 //    element with data-signal-au, -delay, -mtc or -sol is filled in. The same
 //    calculations are exposed as window.InterImm.astro for page scripts.
+// 4. It adds a light/dark switch to the header. The choice is kept in a cookie
+//    on interimm.org, so it holds across interimm.org and its subdomains, and is
+//    set as data-theme="light" or "dark" on <html>; with no choice the page
+//    follows the system setting. data-theme-now always holds the theme in use.
+//    Page scripts can read and change it through window.InterImm.theme and
+//    listen for the `interimm:theme` event on document.
 (() => {
   document.documentElement.classList.add('js');
   const script = document.currentScript;
@@ -68,6 +74,84 @@
   };
   const astro = { msd, mtc, position, distance, AU_KM, AU_LIGHT_S };
   window.InterImm = Object.assign(window.InterImm || {}, { astro });
+
+  // ---------- theme ----------
+  const root = document.documentElement;
+  const THEME_COOKIE = 'interimm-theme';
+  const darkQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  const systemTheme = () => (darkQuery && darkQuery.matches ? 'dark' : 'light');
+  const savedTheme = () => {
+    const m = document.cookie.match(/(?:^|; )interimm-theme=(light|dark)/);
+    return m ? m[1] : null;
+  };
+  const saveTheme = (t) => {
+    const domain = /(^|\.)interimm\.org$/.test(location.hostname) ? '; domain=interimm.org' : '';
+    document.cookie = t
+      ? `${THEME_COOKIE}=${t}; path=/; max-age=31536000; SameSite=Lax${domain}`
+      : `${THEME_COOKIE}=; path=/; max-age=0; SameSite=Lax${domain}`;
+  };
+  const themeNow = () => root.dataset.theme || systemTheme();
+  const themeLabels = () => (document.documentElement.lang.toLowerCase().startsWith('zh')
+    ? { dark: '切换到深色', light: '切换到浅色' }
+    : { dark: 'Switch to dark theme', light: 'Switch to light theme' });
+  // The browser bar colour: follow the page background when a theme is picked.
+  const syncThemeColor = () => {
+    let meta = document.querySelector('meta[name="theme-color"][data-interimm]');
+    if (!root.dataset.theme) { if (meta) meta.remove(); return; }
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      meta.setAttribute('data-interimm', '');
+      document.head.prepend(meta);
+    }
+    meta.content = getComputedStyle(root).getPropertyValue('--bg').trim() || (root.dataset.theme === 'dark' ? '#131315' : '#f5f5f1');
+  };
+  const syncThemeButtons = () => {
+    const next = themeNow() === 'dark' ? 'light' : 'dark';
+    const label = themeLabels()[next];
+    document.querySelectorAll('[data-theme-toggle]').forEach((b) => {
+      b.setAttribute('aria-label', label);
+      b.title = label;
+    });
+  };
+  const applyTheme = (t) => {
+    if (t === 'light' || t === 'dark') root.dataset.theme = t;
+    else delete root.dataset.theme;
+    const now = themeNow();
+    const changed = root.dataset.themeNow !== now;
+    root.dataset.themeNow = now;
+    syncThemeColor();
+    syncThemeButtons();
+    if (changed) document.dispatchEvent(new CustomEvent('interimm:theme', { detail: { theme: now } }));
+  };
+  // Picking the theme the system already uses clears the choice, so the page
+  // follows the system again from then on.
+  const setTheme = (t) => {
+    const pick = t === systemTheme() ? null : t;
+    saveTheme(pick);
+    applyTheme(pick);
+  };
+  applyTheme(savedTheme());
+  if (darkQuery && darkQuery.addEventListener) darkQuery.addEventListener('change', () => applyTheme(root.dataset.theme));
+  window.InterImm.theme = { get: themeNow, set: setTheme, toggle: () => setTheme(themeNow() === 'dark' ? 'light' : 'dark') };
+
+  const SUN_ICON = '<svg class="icon-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>';
+  const MOON_ICON = '<svg class="icon-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+  const initThemeToggle = () => {
+    const tools = document.querySelector('.site-header .nav-tools');
+    if (tools && !document.querySelector('.site-header [data-theme-toggle]')) {
+      const li = document.createElement('li');
+      li.className = 'nav-item';
+      li.innerHTML = `<button class="theme-toggle" type="button" data-theme-toggle>${MOON_ICON}${SUN_ICON}</button>`;
+      tools.prepend(li);
+    }
+    document.querySelectorAll('[data-theme-toggle]').forEach((b) => {
+      if (b.dataset.themeBound) return;
+      b.dataset.themeBound = '1';
+      b.addEventListener('click', () => window.InterImm.theme.toggle());
+    });
+    syncThemeButtons();
+  };
 
   // "13 min 42 s" / "13 分 42 秒", from the page's own data-unit-min / data-unit-s, else English.
   const duration = (seconds, el) => {
@@ -186,7 +270,7 @@
   const start = () => {
     const header = document.querySelector('[data-interimm-header]');
     const footer = document.querySelector('[data-interimm-footer]');
-    if (!header && !footer) { initMenu(); startSignal(); return; }
+    if (!header && !footer) { initThemeToggle(); initMenu(); startSignal(); return; }
 
     const host = header || footer;
     const lang = host.dataset.lang || (document.documentElement.lang.toLowerCase().startsWith('zh') ? 'cn' : 'en');
@@ -197,7 +281,7 @@
         if (footer) footer.innerHTML = renderFooter(nav);
       })
       .catch(() => { /* keep the page's own fallback markup */ })
-      .finally(() => { initMenu(); startSignal(); });
+      .finally(() => { initThemeToggle(); initMenu(); startSignal(); });
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
