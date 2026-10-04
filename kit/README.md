@@ -64,6 +64,33 @@ The header's language link (中文 / English) goes to the interimm.org home page
 that has its own page in another language says where it is with `data-lang-cn` or `data-lang-en` on the header,
 for example `data-lang-cn="https://cities.interimm.org/?lang=cn"`, and the link goes there instead.
 
+### Light and dark
+
+Every page follows the visitor's system setting, and the header has a switch (moon / sun) to pick light or dark
+by hand. The choice is a cookie on `interimm.org`, so it holds on interimm.org, its project pages
+(`/interplanetary-logistics/`, `/mars-map/`, ...) and its subdomains (cities.interimm.org, book.interimm.org).
+interimm.js adds the switch to `.nav-tools` in the header; put `data-theme-toggle` on any other button to make
+it a switch too. A picked theme is set as `data-theme="light"` or `data-theme="dark"` on `<html>`, and
+`data-theme-now` always says which one is showing.
+
+To avoid a flash of the wrong theme while the deferred script loads, put this in `<head>`, before the stylesheets:
+
+```html
+<script>(function(m){if(m)document.documentElement.dataset.theme=m[1]})(document.cookie.match(/(?:^|; )interimm-theme=(light|dark)/))</script>
+```
+
+Site styles write their own dark colours with the same two selectors the kit uses, so both the system setting
+and the switch work:
+
+```css
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --plot-line: #e27a50; } }
+:root[data-theme="dark"] { --plot-line: #e27a50; }
+```
+
+A plain `@media (prefers-color-scheme: dark)` block still works for visitors who never touch the switch, but
+it ignores the switch. Scripts that draw in colour (canvas, WebGL) read `InterImm.theme.get()` and redraw on the
+`interimm:theme` event, which fires on `document` whenever the theme in use changes, by switch or by system.
+
 ### Caching
 
 GitHub Pages lets browsers cache files for about 10 minutes, so a kit change reaches other sites within that
