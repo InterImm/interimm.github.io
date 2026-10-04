@@ -20,6 +20,12 @@
 //    follows the system setting. data-theme-now always holds the theme in use.
 //    Page scripts can read and change it through window.InterImm.theme and
 //    listen for the `interimm:theme` event on document.
+// 5. A header marked `data-toolkit` gets a small floating button (bottom right)
+//    that opens a panel with the live signal readings, the light/dark switch
+//    and the language links. Put an element with `data-toolkit-links` (and an
+//    optional `data-toolkit-title`) on the page and its links are copied into
+//    the panel too, e.g. a chapter list. Use it with `data-no-signal` to keep a
+//    reading page's header slim.
 (() => {
   document.documentElement.classList.add('js');
   const script = document.currentScript;
@@ -153,6 +159,59 @@
     syncThemeButtons();
   };
 
+
+  // ---------- toolkit: floating button with a small panel ----------
+  const TOOLKIT_TEXT = {
+    cn: { toolkit: '工具箱', theme: '外观', language: '语言', links: '目录', close: '关闭', signal: { distance: '地球至火星', delay: '单程信号', mars: '伊希地', sol: '火星日', min: '分', s: '秒' } },
+    en: { toolkit: 'Toolkit', theme: 'Appearance', language: 'Language', links: 'Contents', close: 'Close', signal: { distance: 'Earth to Mars', delay: 'One-way signal', mars: 'Isidis', sol: 'Sol', min: 'min', s: 's' } },
+  };
+  const TOOLKIT_ICON = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></g></svg>';
+  const initToolkit = (nav) => {
+    const header = document.querySelector('[data-interimm-header][data-toolkit]');
+    if (!header || document.querySelector('[data-interimm-toolkit]')) return;
+    const lang = header.dataset.lang || (document.documentElement.lang.toLowerCase().startsWith('zh') ? 'cn' : 'en');
+    const t = TOOLKIT_TEXT[lang] || TOOLKIT_TEXT.en;
+    const sig = (nav && nav.labels && nav.labels.signal) || t.signal;
+    const languages = nav && nav.languages
+      ? nav.languages.map((l) => ({ code: l.code, name: l.name, url: langUrl(header, l) }))
+      : ['cn', 'en'].filter((l) => header.getAttribute(`data-lang-${l}`)).map((l) => ({ code: l === 'cn' ? 'zh' : 'en', name: l === 'cn' ? '中文' : 'English', url: header.getAttribute(`data-lang-${l}`) }));
+
+    const slot = document.querySelector('[data-toolkit-links]');
+    const links = slot ? Array.from(slot.querySelectorAll('a[href]')) : [];
+    const linksTitle = (slot && slot.dataset.toolkitTitle) || t.links;
+
+    const box = document.createElement('div');
+    box.className = 'toolkit';
+    box.setAttribute('data-interimm-toolkit', '');
+    box.innerHTML = `<button class="toolkit-button" type="button" aria-expanded="false" aria-controls="toolkit-panel" aria-label="${esc(t.toolkit)}" title="${esc(t.toolkit)}">${TOOLKIT_ICON}</button>
+      <div class="toolkit-panel" id="toolkit-panel" role="dialog" aria-label="${esc(t.toolkit)}" hidden>
+        <dl class="toolkit-signal">
+          <div><dt>${esc(sig.distance)}</dt><dd><b data-signal-au>–</b> AU</dd></div>
+          <div><dt>${esc(sig.delay)}</dt><dd><b data-signal-delay data-unit-min="${esc(sig.min)}" data-unit-s="${esc(sig.s)}">–</b></dd></div>
+          <div><dt>${esc(sig.mars)}</dt><dd><b data-signal-mtc>–</b> MTC</dd></div>
+          <div><dt>${esc(sig.sol)}</dt><dd><b data-signal-sol>–</b></dd></div>
+        </dl>
+        <div class="toolkit-tools">
+          <button class="toolkit-row theme-toggle" type="button" data-theme-toggle><span>${esc(t.theme)}</span>${MOON_ICON}${SUN_ICON}</button>
+          ${languages.length ? `<p class="toolkit-langs"><span>${esc(t.language)}</span>${languages.map((l) => `<a href="${esc(l.url)}" hreflang="${esc(l.code)}" lang="${esc(l.code)}">${esc(l.name)}</a>`).join('')}</p>` : ''}
+        </div>
+        ${links.length ? `<nav class="toolkit-links" aria-label="${esc(linksTitle)}"><h2>${esc(linksTitle)}</h2><ul>${links.map((a) => `<li><a href="${esc(a.getAttribute('href'))}">${esc(a.textContent.trim())}</a></li>`).join('')}</ul></nav>` : ''}
+      </div>`;
+    document.body.append(box);
+
+    const button = box.querySelector('.toolkit-button');
+    const panel = box.querySelector('.toolkit-panel');
+    const setOpen = (open, focus) => {
+      panel.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+      if (!open && focus) button.focus();
+    };
+    button.addEventListener('click', () => setOpen(panel.hidden));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) setOpen(false, true); });
+    document.addEventListener('click', (e) => { if (!panel.hidden && !box.contains(e.target)) setOpen(false); });
+    panel.addEventListener('click', (e) => { if (e.target.closest('.toolkit-links a')) setOpen(false); });
+  };
+
   // "13 min 42 s" / "13 分 42 秒", from the page's own data-unit-min / data-unit-s, else English.
   const duration = (seconds, el) => {
     const min = el.dataset.unitMin || 'min';
@@ -270,18 +329,20 @@
   const start = () => {
     const header = document.querySelector('[data-interimm-header]');
     const footer = document.querySelector('[data-interimm-footer]');
-    if (!header && !footer) { initThemeToggle(); initMenu(); startSignal(); return; }
+    if (!header && !footer) { initToolkit(); initThemeToggle(); initMenu(); startSignal(); return; }
 
     const host = header || footer;
     const lang = host.dataset.lang || (document.documentElement.lang.toLowerCase().startsWith('zh') ? 'cn' : 'en');
+    let navData = null;
     fetch(new URL(`nav.${lang}.json`, base))
       .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then((nav) => {
+        navData = nav;
         if (header) header.innerHTML = renderHeader(header, nav, header.dataset.current);
         if (footer) footer.innerHTML = renderFooter(nav);
       })
       .catch(() => { /* keep the page's own fallback markup */ })
-      .finally(() => { initThemeToggle(); initMenu(); startSignal(); });
+      .finally(() => { initToolkit(navData); initThemeToggle(); initMenu(); startSignal(); });
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

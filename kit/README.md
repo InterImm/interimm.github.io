@@ -64,6 +64,18 @@ The header's language link (中文 / English) goes to the interimm.org home page
 that has its own page in another language says where it is with `data-lang-cn` or `data-lang-en` on the header,
 for example `data-lang-cn="https://cities.interimm.org/?lang=cn"`, and the link goes there instead.
 
+### Toolkit button
+
+For pages that are mostly reading, put `data-toolkit` on the header (usually with `data-no-signal`). interimm.js then
+adds a small round button at the bottom right. It opens a panel with the live signal readings, the light/dark
+switch and the language links. To add a list of links to the panel (a chapter list, say), put them in any element
+marked `data-toolkit-links`, hidden if you like, and set `data-toolkit-title` for its heading:
+
+```html
+<header class="site-header" data-interimm-header data-no-signal data-toolkit data-lang="en">...</header>
+<nav hidden data-toolkit-links data-toolkit-title="Chapters"><a href="/history/">History</a> ...</nav>
+```
+
 ### Light and dark
 
 Every page follows the visitor's system setting, and the header has a switch (moon / sun) to pick light or dark

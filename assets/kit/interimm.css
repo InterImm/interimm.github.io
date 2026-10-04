@@ -296,6 +296,36 @@ ul, ol { margin: 0 0 1em; }
 }
 @media (max-width: 30rem) { .signal-inner { gap: 0.1rem 1.25rem; font-size: 0.72rem; } }
 
+/* ---------- toolkit: floating button and panel, opt-in with data-toolkit on the header ---------- */
+.toolkit { position: fixed; z-index: 40; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); }
+.toolkit-button {
+  display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0;
+  border: 1px solid var(--border); border-radius: 50%; background: var(--surface); color: var(--muted);
+  box-shadow: var(--shadow); cursor: pointer; transition: color 0.15s, border-color 0.15s;
+}
+.toolkit-button:hover, .toolkit-button[aria-expanded="true"] { color: var(--text); border-color: var(--border-strong); }
+.toolkit-panel {
+  position: absolute; right: 0; bottom: calc(100% + 0.6rem); width: min(19rem, calc(100vw - 2rem)); max-height: min(30rem, 70vh); overflow-y: auto;
+  padding: 1rem 1.1rem; border: 1px solid var(--border); border-radius: 0.9rem; background: var(--surface); box-shadow: var(--shadow); font-size: 0.9375rem;
+}
+.toolkit-panel[hidden] { display: none; }
+.toolkit-signal { margin: 0; display: grid; gap: 0.35rem; font-family: var(--font-mono); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+.toolkit-signal div { display: flex; justify-content: space-between; gap: 1rem; }
+.toolkit-signal dt { color: var(--muted); }
+.toolkit-signal dd { margin: 0; color: var(--muted); }
+.toolkit-signal b { font-weight: 500; color: var(--text); }
+.toolkit-tools { margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid var(--border); display: grid; gap: 0.4rem; }
+.toolkit-row { width: 100%; justify-content: space-between; padding: 0.3rem 0; }
+.toolkit-row span { color: var(--text); }
+.toolkit-langs { margin: 0; display: flex; align-items: center; gap: 1rem; }
+.toolkit-langs span { margin-right: auto; }
+.toolkit-langs a { color: var(--text); }
+.toolkit-links { margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+.toolkit-links h2 { margin: 0 0 0.4rem; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.toolkit-links ul { margin: 0; padding: 0; list-style: none; display: grid; }
+.toolkit-links a { display: block; padding: 0.4rem 0; color: var(--text); text-decoration: none; }
+.toolkit-links a:hover { color: var(--accent); }
+
 /* ---------- buttons, chips, links ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.6ch;
@@ -438,6 +468,6 @@ ul, ol { margin: 0 0 1em; }
 }
 
 @media print {
-  .site-header, .site-footer, .skip-link, .signal { display: none; }
+  .site-header, .site-footer, .skip-link, .signal, .toolkit { display: none; }
   body { background: #fff; color: #000; }
 }
