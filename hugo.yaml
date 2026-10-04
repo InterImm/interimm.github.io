@@ -117,6 +117,11 @@ languages:
           parent: more
           url: https://interimm.org/interplanetary-logistics/
           weight: 4
+        - identifier: solar-port
+          name: 太阳系星港
+          parent: more
+          url: https://interimm.org/solar-port/
+          weight: 5
   en:
     languageCode: en
     languageName: English
@@ -192,6 +197,11 @@ languages:
           parent: more
           url: https://interimm.org/interplanetary-logistics/
           weight: 4
+        - identifier: solar-port
+          name: Solar Port
+          parent: more
+          url: https://interimm.org/solar-port/en/
+          weight: 5
 
 # City pages read live facility data at build time; don't reuse a stale copy.
 caches:
