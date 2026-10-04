@@ -2,6 +2,36 @@ cn:
   title: "更新"
   description: "星际移民中心的活动记录"
   list:
+    - title: 太阳系星港上线
+      description: 实时星图上查询行星之间的航线、发射窗口、航程、运价和信号延时，并领取登机牌；运价以星际移民中心的货币“脉”（MC）计
+      datetime: "2026-10-04"
+      icon: "☀️"
+      link: https://interimm.org/solar-port/
+    - title: 星际企业中心改版
+      description: 在火星找工作、登记星际企业，并在企业办公室里管理招聘、广告和公告
+      datetime: "2026-10-04"
+      icon: "🏢"
+      link: https://interimm.org/hub/
+    - title: 星际移民之书改版
+      description: 新的版式，支持浅色和深色模式，各章附有开篇动画短片
+      datetime: "2026-10-04"
+      icon: "📖"
+      link: https://book.interimm.org/
+    - title: 火星地图改版
+      description: 新的版式和中英文页面，标出火星城市、阿玛宗共和国和历史着陆遗址
+      datetime: "2026-10-04"
+      icon: "🗺️"
+      link: https://interimm.org/mars-map/
+    - title: 火星开放设施
+      description: 火星殖民地的七座关键工厂实时运行，每小时更新产量和库存
+      datetime: "2026-10-03"
+      icon: "🏭"
+      link: https://interimm.org/mars-open-facilities/
+    - title: 火星时间服务
+      description: 火星时钟改版，提供 JavaScript 库、免费的 JSON 数据接口和可嵌入的小组件
+      datetime: "2026-10-03"
+      icon: "🕒"
+      link: https://interimm.org/mars-clock/
     - title: "星际物流：地火转移窗口规划器"
       description: 计算地球到火星的最低能耗转移窗口，并估算运价；完全在浏览器中运行（页面为英文）
       datetime: "2026-10-01"
@@ -42,6 +72,36 @@ en:
   title: "Updates"
   description: "Activities and Updates"
   list:
+    - title: "Solar Port opens"
+      description: Plan trips between the planets on a live sky map, with launch windows, flight times, fares in MC and signal delay, then collect a boarding pass
+      datetime: "2026-10-04"
+      icon: "☀️"
+      link: https://interimm.org/solar-port/en/
+    - title: The Company Hub, rebuilt
+      description: Find work on Mars, register a company and run its jobs, ads and notices from a Company Office
+      datetime: "2026-10-04"
+      icon: "🏢"
+      link: https://interimm.org/hub/en/
+    - title: The Book, restyled
+      description: A new look with light and dark modes, and short animated films that open each chapter
+      datetime: "2026-10-04"
+      icon: "📖"
+      link: https://book.interimm.org/
+    - title: The Map of Mars, restyled
+      description: A new look and an English edition, marking the Martian cities, the Republic of Amazonia and the historic landing sites
+      datetime: "2026-10-04"
+      icon: "🗺️"
+      link: https://interimm.org/mars-map/en/
+    - title: Mars Open Facilities
+      description: Seven key plants of the Mars colonies running live, with output and stock updated every hour
+      datetime: "2026-10-03"
+      icon: "🏭"
+      link: https://interimm.org/mars-open-facilities/
+    - title: Mars time as a service
+      description: The Mars Clock rebuilt, with a JavaScript library, a free JSON API and an embeddable widget
+      datetime: "2026-10-03"
+      icon: "🕒"
+      link: https://interimm.org/mars-clock/en/
     - title: "Interplanetary Logistics: Earth to Mars transfer planner"
       description: Find the cheapest Earth to Mars transfer window and price a shipment from its delta-v. Runs entirely in the browser
       datetime: "2026-10-01"
