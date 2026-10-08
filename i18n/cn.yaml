@@ -120,3 +120,13 @@
   translation: "停机"
 - id: design_value
   translation: "设计值"
+- id: phase2_label
+  translation: "第二期"
+- id: phase2_text
+  translation: "你正在浏览星际移民的第一期：火星时代。"
+- id: phase2_detail
+  translation: "故事已经来到 2219 年，一个信号从 Ross 128 b 传来。"
+- id: phase2_link
+  translation: "进入通联纪"
+- id: phase2_dismiss
+  translation: "关闭此提示"

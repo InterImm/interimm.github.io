@@ -54,6 +54,9 @@
 {{- with resources.Get "css/main.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
 {{- end }}
+{{- with resources.Get "css/phase2-banner.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{- end }}
 
 {{- if .IsHome }}
 <script type="application/ld+json">
