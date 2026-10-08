@@ -120,3 +120,13 @@
   translation: "Offline"
 - id: design_value
   translation: "design"
+- id: phase2_label
+  translation: "Phase 2"
+- id: phase2_text
+  translation: "You are reading Phase 1, the Mars era of InterImm."
+- id: phase2_detail
+  translation: "The story has moved on to 2219, when a signal arrived from Ross 128 b."
+- id: phase2_link
+  translation: "Enter The Contact Era"
+- id: phase2_dismiss
+  translation: "Dismiss this notice"

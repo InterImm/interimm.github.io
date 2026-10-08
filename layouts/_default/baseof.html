@@ -5,6 +5,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">{{ i18n "skip_to_content" }}</a>
+  {{- partial "phase2-banner.html" . }}
   {{- partial "header.html" . }}
   <main id="main">
     {{- block "main" . }}{{ end }}

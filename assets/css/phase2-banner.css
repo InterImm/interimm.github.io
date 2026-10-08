@@ -1,0 +1,43 @@
+/* The phase 2 notice above the header. It wears phase 2's signal blue so it
+   reads as a message from elsewhere, and sits in the page flow (never fixed)
+   so it covers nothing. */
+.phase2-banner {
+  --p2-bg: #0d1457;
+  --p2-text: #ffffff;
+  --p2-muted: #d0d5f7;
+  --p2-them: #9ff8ff;
+  --p2-us: #ffd84a;
+  background: var(--p2-bg);
+  color: var(--p2-text);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  border-bottom: 1px solid rgb(255 255 255 / 0.14);
+}
+.phase2-dismissed .phase2-banner { display: none; }
+
+.phase2-inner { display: flex; align-items: center; gap: 0.75rem; padding-block: 0.5rem; }
+.phase2-mark { flex: none; color: var(--p2-them); }
+.phase2-text { flex: 1; margin: 0; }
+.phase2-detail { color: var(--p2-muted); }
+.phase2-link {
+  color: var(--p2-them); font-weight: 600; text-decoration: underline;
+  text-underline-offset: 0.2em; text-decoration-thickness: 1px; white-space: nowrap;
+}
+.phase2-link:hover { color: var(--p2-text); }
+.phase2-link:focus-visible, .phase2-close:focus-visible { outline: 2px solid var(--p2-us); outline-offset: 2px; }
+
+/* Only offered once the script can act on it. */
+.phase2-close {
+  display: none; flex: none; align-items: center; justify-content: center;
+  width: 2.25rem; height: 2.25rem; margin-block: -0.375rem; margin-inline-end: -0.5rem;
+  padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--p2-muted); cursor: pointer;
+}
+.js .phase2-close { display: inline-flex; }
+.phase2-close:hover { color: var(--p2-text); background: rgb(255 255 255 / 0.08); }
+
+@media (max-width: 40rem) {
+  .phase2-banner { font-size: 0.8125rem; }
+  .phase2-detail { display: none; }
+}
+
+@media print { .phase2-banner { display: none; } }

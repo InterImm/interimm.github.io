@@ -1,0 +1,20 @@
+{{- /* A slim, dismissable notice above the header that this site is phase 1
+       and links to the phase 2 site. The inline script hides it before paint
+       once dismissed; assets/js/phase2-banner.js wires the close button. The
+       look lives in assets/css/phase2-banner.css, apart from the kit. */ -}}
+{{- $url := "https://interstellar.interimm.org/" -}}
+{{- if ne site.Language.Lang "cn" }}{{ $url = "https://interstellar.interimm.org/en/" }}{{ end -}}
+<script>try{if(localStorage.getItem("interimm-phase2-banner")==="dismissed")document.documentElement.classList.add("phase2-dismissed")}catch(e){}</script>
+<aside class="phase2-banner" aria-label="{{ i18n "phase2_label" }}">
+  <div class="wrap phase2-inner">
+    <svg class="phase2-mark" aria-hidden="true" focusable="false" viewBox="0 0 7 7" width="14" height="14" shape-rendering="crispEdges"><path fill="currentColor" d="M0 3h1v1H0zM2 1h1v5H2zM4 0h1v7H4zM6 2h1v3H6z"/></svg>
+    <p class="phase2-text">
+      <span>{{ i18n "phase2_text" }}</span>
+      <span class="phase2-detail">{{ i18n "phase2_detail" }}</span>
+      <a class="phase2-link" href="{{ $url }}" hreflang="{{ site.Language.LanguageCode }}">{{ i18n "phase2_link" }}<span aria-hidden="true"> →</span></a>
+    </p>
+    <button class="phase2-close" type="button" aria-label="{{ i18n "phase2_dismiss" }}" title="{{ i18n "phase2_dismiss" }}">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 12 12" width="12" height="12"><path d="M2 2l8 8M10 2l-8 8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></svg>
+    </button>
+  </div>
+</aside>

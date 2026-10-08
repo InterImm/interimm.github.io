@@ -1,5 +1,8 @@
 {{- $kit := partialCached "kit.html" . site.Language.Lang }}
 <script src="{{ $kit.js.RelPermalink }}?v={{ substr (md5 $kit.js.Content) 0 10 }}" defer></script>
+{{- with resources.Get "js/phase2-banner.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{- end }}
 {{- if .IsHome }}
 {{- with resources.Get "js/main.js" | minify | fingerprint }}
 <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
